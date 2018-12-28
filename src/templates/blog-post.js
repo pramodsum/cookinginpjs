@@ -2,9 +2,13 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import { Link, graphql } from 'gatsby'
 import get from 'lodash/get'
+import { withStyles } from '@material-ui/core';
 
 import Layout from '../components/Layout'
-import { rhythm, scale } from '../utils/typography'
+
+const styles = {
+
+};
 
 class BlogPostTemplate extends React.Component {
   render() {
@@ -21,14 +25,7 @@ class BlogPostTemplate extends React.Component {
           title={`${post.title} | ${siteTitle}`}
         />
         <h1>{post.title}</h1>
-        <p
-          style={{
-            ...scale(-1 / 5),
-            display: 'block',
-            marginBottom: rhythm(1),
-            marginTop: rhythm(-1),
-          }}
-        >
+        <p>
           {post.published_at}
         </p>
         { post.feature_image &&
@@ -72,7 +69,7 @@ class BlogPostTemplate extends React.Component {
   }
 }
 
-export default BlogPostTemplate
+export default withStyles(styles)(BlogPostTemplate);
 
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {

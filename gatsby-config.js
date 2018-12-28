@@ -116,12 +116,6 @@ module.exports = {
     `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
     {
-      resolve: 'gatsby-plugin-typography',
-      options: {
-        pathToConfigModule: 'src/utils/typography',
-      },
-    },
-    {
       resolve: `gatsby-source-ghost`,
       options: {
         apiUrl: `${process.env.GHOST_API_URL}`,
