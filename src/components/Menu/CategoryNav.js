@@ -1,6 +1,5 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core';
-import { graphql } from "gatsby"
 
 const styles = {
     categoryList: {

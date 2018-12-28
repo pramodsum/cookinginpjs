@@ -4,17 +4,12 @@ import { withStyles } from '@material-ui/core/styles';
 import Menu from './Menu/Menu';
 
 const styles = {
-    header: {
-        background: 'white',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        textAlign: 'center',
-        boxShadow: '0 1px 3px lightgray',
+    'header': {
         fontFamily: "'Playfair Display', Georgia, Serif",
+        background: 'white',
+        boxShadow: '0 1px 3px lightgray',
         color: 'black',
         flexBasis: '300px',
-        textAlign: 'right',
         padding: '2rem 2rem 1rem',
         wordBreak: 'break-word',
         flex: '0 0 auto',
@@ -24,17 +19,29 @@ const styles = {
             color: 'gray'
         }
     },
-    headerMobile: {
+    container: {
+        display: 'flex',
+        flexDirection: 'column',
+        flex: '1 1 auto',
+        justifyContent: 'center',
+        textAlign: 'right',
     },
-    blogTitle: {
-        fontSize: '3.5em',
-        margin: 0
+    mobile: {
     },
-    blogSubtitle: {
+    title: {
+        fontSize: '3rem',
+        margin: 0,
+        letterSpacing: '-2px',
+    },
+    subtitle: {
         fontSize: '1.25rem',
         fontWeight: 300,
         color: 'gray',
+        fontFamily: "'Homemade Apple', cursive",
         margin: '15px 0'
+    },
+    footer: {
+        fontFamily: "'Zeyada', cursive",
     }
 };
 
@@ -60,15 +67,18 @@ class Header extends React.Component {
     render() {
         const { classes, title, onCategoryToggle = () => {} } = this.props;
         return (
-            <div className={`header ${classes.header}`}>
-                <h1 className={classes.blogTitle}>
-                    <Link to={'/'}>
-                        {title}
-                    </Link>
-                </h1>
-                <h3 className={classes.blogSubtitle}>Stories and Musings from Wayfaring Adventurers and Aspiring Home Cooks.</h3>
-                <Menu onCategoryToggle={onCategoryToggle} />
-            </div>
+            <header className={classes.header}>
+                <div className={classes.container}>
+                    <h1 className={classes.title}>
+                        <Link to={'/'}>
+                            {title}
+                        </Link>
+                    </h1>
+                    <h3 className={classes.subtitle}>Stories and Musings from Wayfaring Adventurers and Aspiring Home Cooks.</h3>
+                    <Menu onCategoryToggle={onCategoryToggle} />
+                    <h4 className={classes.footer}>{"Made with <3 by Sumedha"}</h4>
+                </div>
+            </header>
         );
     }
 }

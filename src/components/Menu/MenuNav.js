@@ -6,6 +6,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import CategoryNav from './CategoryNav';
 
 const styles = {
+    nav: {
+        paddingBottom: '1rem',
+    },
     socialLinks: {
         display: 'flex',
         flexFlow: 'row wrap',
@@ -33,7 +36,7 @@ const TWITTER_URL = 'https://www.twitter.com/cookinginpjs/';
 const MenuNav = ({ isOpen, onClick, classes }) => (
     <div>
         {isOpen && 
-            <div>
+            <div className={classes.nav}>
                 <CategoryNav onClick={onClick}/>
                 <div className={classes.socialLinks}>
                     <a href={INSTAGRAM_URL} className={classes.icon} ><FontAwesomeIcon className={classes.socialIcon} icon={['fab', 'instagram']} size='2x' /></a>

@@ -32,11 +32,7 @@ class BlogPostTemplate extends React.Component {
           <img src={process.env.GHOST_API_URL + post.feature_image} />
         }
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
-        <hr
-          style={{
-            marginBottom: rhythm(1),
-          }}
-        />
+        <hr />
 
         <ul
           style={{

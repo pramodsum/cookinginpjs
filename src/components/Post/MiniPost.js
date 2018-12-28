@@ -1,26 +1,29 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core';
+import Paper from '@material-ui/core/Paper';
 import { Link } from "gatsby";
-import { white } from 'ansi-colors';
+import CardMedia from '@material-ui/core/CardMedia';
 
 const styles = {
     post: {
-        width: '50%',
-        padding: '0 0.5rem 1rem',
+        paddingBottom: '1.5rem',
         flex: 'auto',
-        position: 'relative'
     },
-    container: {
-        background: 'white',
-        boxShadow: '0 1px 3px hsla(0,0%,39%,.15)',
-        padding: '2rem'
+    main: {
+        padding: '1.5rem',
+        boxShadow: '0px 1px 5px 0px rgba(0,0,0,0.2), 0px 3px 1px -2px rgba(0,0,0,0.12)',
     },
     imgContainer: {
-        margin: '-2rem -2rem 0',
+        background: 'white',
+        margin: '-1.75em -1.75rem 0',
         position: 'relative',
-        overflow: 'hidden'
+        overflow: 'hidden',
+        // maxHeight: '250px',
+        boxShadow: '0px 1px 5px 0px rgba(0,0,0,0.2), 0px 3px 1px -2px rgba(0,0,0,0.12)',
     },
     img: {
+        height: 0,
+        paddingTop: '100%',
         width: '100%',
         transition: 'opacity .4s',
 
@@ -29,13 +32,15 @@ const styles = {
         }
     },
     title: {
-        fontFamily: '"Playfair Display", Georgia, Serif',
+        // fontFamily: "'Playfair Display', Georgia, Serif",
+        fontFamily: "'Homemade Apple', cursive",
         textTransform: 'capitalize',
         overflowWrap: 'break-word'
     },
     content: {
         color: 'dimgray',
         overflowWrap: 'break-word',
+        fontSize: '15px',
 
         '& iframe': {
             display: 'none',
@@ -47,11 +52,14 @@ const styles = {
 
 const MiniPost = ({ classes, id, slug, title, feature_image, plaintext }) => (
     <div id={id} className={classes.post}>
-        <div className={classes.container}>
+        <Paper className={classes.main}>
             { feature_image && 
                 <div className={classes.imgContainer}>
                     <Link to={slug}>
-                        <img className={classes.img} src={feature_image} />
+                        <CardMedia
+                            className={classes.img}
+                            image={feature_image}
+                        />
                     </Link>
                 </div>
             }
@@ -60,7 +68,7 @@ const MiniPost = ({ classes, id, slug, title, feature_image, plaintext }) => (
                 className={classes.content} 
                 dangerouslySetInnerHTML={{ __html: `${plaintext.slice(0,500)}...` }} 
             />
-        </div>
+        </Paper>
     </div>
 );
 
