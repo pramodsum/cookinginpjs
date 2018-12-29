@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i|Berkshire+Swash|Homemade+Apple|Zeyada');
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i|Homemade+Apple|Zeyada');
 
 a {
     color: black;
@@ -16,14 +16,14 @@ img {
 }
 
 .home {
-    background: #f5f4f2;
     display: flex;
     height: 100vh;
     font-family: 'Playfair Display', Georgia, Serif;
+    overflow-x: hidden;
 }
 
 .content {
     padding: 1rem;
-    overflow: auto;
+    overflow-y: auto;
     width: 100%;
 }

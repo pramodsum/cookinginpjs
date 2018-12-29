@@ -3,8 +3,10 @@ import { Link } from 'gatsby'
 import { withStyles } from '@material-ui/core/styles';
 import Menu from './Menu/Menu';
 
+import divider from '../assets/fork-divider.png';
+
 const styles = {
-    'header': {
+    header: {
         fontFamily: "'Playfair Display', Georgia, Serif",
         background: 'white',
         boxShadow: '0 1px 3px lightgray',
@@ -14,10 +16,6 @@ const styles = {
         wordBreak: 'break-word',
         flex: '0 0 auto',
         overflowY: 'auto',
-
-        '&:hover': {
-            color: 'gray'
-        }
     },
     container: {
         display: 'flex',
@@ -25,16 +23,21 @@ const styles = {
         flex: '1 1 auto',
         justifyContent: 'center',
         textAlign: 'right',
+        height: '100%'
     },
     mobile: {
     },
     title: {
-        fontSize: '3rem',
+        fontSize: '2.85rem',
         margin: 0,
-        letterSpacing: '-2px',
+        // fontFamily: "'Berkshire Swash', cursive",
+
+        '&:hover': {
+            color: 'gray'
+        }
     },
     subtitle: {
-        fontSize: '1.25rem',
+        fontSize: '1.15rem',
         fontWeight: 300,
         color: 'gray',
         fontFamily: "'Homemade Apple', cursive",
@@ -42,14 +45,22 @@ const styles = {
     },
     footer: {
         fontFamily: "'Zeyada', cursive",
+        textAlign: 'center',
+        width: '235px',
+        justifySelf: 'flex-end'
+    },
+    heart: {
+        fontSize: '10px'
+    },
+    divider: {
+        overflow: 'hidden',
+        paddingBottom: '15px',
     }
 };
-
 
 class Header extends React.Component {
     constructor(props) {
         super(props);
-
     }
 
     onResize = () => {
@@ -75,8 +86,13 @@ class Header extends React.Component {
                         </Link>
                     </h1>
                     <h3 className={classes.subtitle}>Stories and Musings from Wayfaring Adventurers and Aspiring Home Cooks.</h3>
+                    <img className={classes.divider} src={divider} />
                     <Menu onCategoryToggle={onCategoryToggle} />
-                    <h4 className={classes.footer}>{"Made with <3 by Sumedha"}</h4>
+                    <footer className={classes.footer}>
+                        {/* <div>{`Cooking in Pajamas @ ${new Date().getFullYear()}`}</div> */}
+                        <div>Made with <small className={classes.heart}>♡</small> by <a href='https://github.com/pramodsum'>Sumedha</a></div>
+                        {/* <div>Powered by <a href='https://ghost.org'>Ghost</a></div> */}
+                    </footer>
                 </div>
             </header>
         );

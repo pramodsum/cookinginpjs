@@ -5,7 +5,6 @@ const styles = {
     categoryList: {
         margin: 0,
         paddingInlineStart: 0,
-        borderTop: '1px solid #eee'
     },
     category: {
         listStyle: 'none',

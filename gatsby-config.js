@@ -108,7 +108,7 @@ module.exports = {
         short_name: `Ghost Blog`,
         start_url: `/`,
         background_color: `#ffffff`,
-        theme_color: `#663399`,
+        theme_color: `##FFEC96`,
         display: `minimal-ui`,
         icon: `src/assets/gatsby-icon.png`,
       },

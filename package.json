@@ -29,7 +29,6 @@
     "react-dom": "^16.5.1",
     "react-helmet": "^5.2.0",
     "react-typography": "^0.16.13",
-    "react-virtualized": "^9.21.0",
     "typeface-merriweather": "0.0.43",
     "typeface-montserrat": "0.0.43",
     "typography": "^0.16.17",
@@ -45,7 +44,9 @@
     "eslint": "^4.19.1",
     "eslint-plugin-react": "^7.11.1",
     "gh-pages": "^1.2.0",
-    "prettier": "^1.14.2"
+    "luxon": "^1.8.3",
+    "prettier": "^1.14.2",
+    "react-markdown": "^4.0.4"
   },
   "homepage": "https://github.com/daviddarnes/gatsby-starter-ghost-blog#readme",
   "keywords": [
