@@ -44,7 +44,6 @@
     "eslint": "^4.19.1",
     "eslint-plugin-react": "^7.11.1",
     "gh-pages": "^1.2.0",
-    "luxon": "^1.8.3",
     "prettier": "^1.14.2",
     "react-markdown": "^4.0.4"
   },

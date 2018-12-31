@@ -86,13 +86,12 @@ query PaginationQuery($skip: Int!, $limit: Int!) {
         title
         slug
         published_at(formatString: "DD MMMM, YYYY")
-        plaintext: markdown
+        markdown
         feature_image: image
         tags {
           id,
           name,
           slug,
-          
         }
       }
     }
