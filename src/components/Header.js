@@ -3,34 +3,28 @@ import { Link } from 'gatsby'
 import { withStyles } from '@material-ui/core/styles';
 import Menu from './Menu/Menu';
 
-import divider from '../assets/fork-divider.png';
+import divider from '../assets/fork-divider-long.png';
 
 const styles = {
     header: {
         fontFamily: "'Playfair Display', Georgia, Serif",
         background: 'white',
-        boxShadow: '0 1px 3px lightgray',
         color: 'black',
-        flexBasis: '300px',
-        padding: '2rem 2rem 1rem',
+        padding: '2rem 2rem 0',
         wordBreak: 'break-word',
-        flex: '0 0 auto',
-        overflowY: 'auto',
+        textAlign: 'center'
     },
     container: {
         display: 'flex',
         flexDirection: 'column',
-        flex: '1 1 auto',
         justifyContent: 'center',
-        textAlign: 'right',
-        height: '100%'
+        width: '100%'
     },
     mobile: {
     },
     title: {
-        fontSize: '2.85rem',
+        fontSize: '5rem',
         margin: 0,
-        // fontFamily: "'Berkshire Swash', cursive",
 
         '&:hover': {
             color: 'gray'
@@ -42,15 +36,6 @@ const styles = {
         color: 'gray',
         fontFamily: "'Homemade Apple', cursive",
         margin: '15px 0'
-    },
-    footer: {
-        fontFamily: "'Zeyada', cursive",
-        textAlign: 'center',
-        width: '235px',
-        justifySelf: 'flex-end'
-    },
-    heart: {
-        fontSize: '10px'
     },
     divider: {
         overflow: 'hidden',
@@ -86,13 +71,8 @@ class Header extends React.Component {
                         </Link>
                     </h1>
                     <h3 className={classes.subtitle}>Stories and Musings from Wayfaring Adventurers and Aspiring Home Cooks.</h3>
-                    <img className={classes.divider} src={divider} />
+                    {/* <img className={classes.divider} src={divider} /> */}
                     <Menu onCategoryToggle={onCategoryToggle} />
-                    <footer className={classes.footer}>
-                        {/* <div>{`Cooking in Pajamas @ ${new Date().getFullYear()}`}</div> */}
-                        <div>Made with <small className={classes.heart}>♡</small> by <a href='https://github.com/pramodsum'>Sumedha</a></div>
-                        {/* <div>Powered by <a href='https://ghost.org'>Ghost</a></div> */}
-                    </footer>
                 </div>
             </header>
         );

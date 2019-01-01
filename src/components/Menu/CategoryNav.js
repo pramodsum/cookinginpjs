@@ -3,13 +3,13 @@ import { withStyles } from '@material-ui/core';
 
 const styles = {
     categoryList: {
-        margin: 0,
         paddingInlineStart: 0,
+        display: 'flex',
+        justifyContent: 'space-between'
     },
     category: {
         listStyle: 'none',
         padding: '0.5rem',
-        borderBottom: '1px solid #eee'
     },
     categoryNav: {
         background: 'none',

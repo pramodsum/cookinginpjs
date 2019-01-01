@@ -1,5 +1,6 @@
 import React from 'react'
 import Helmet from 'react-helmet'
+import Paper from '@material-ui/core/Paper';
 import { Link, graphql } from 'gatsby'
 import get from 'lodash/get'
 import CardMedia from '@material-ui/core/CardMedia';
@@ -15,7 +16,7 @@ import divider from '../assets/fork-divider-long.png';
 
 const styles = {
     post: {
-        padding: '1rem 1rem 0'
+        padding: '1rem 1rem 0',
     },
     title: {
         fontFamily: "'Homemade Apple', cursive",
@@ -132,7 +133,7 @@ class BlogPostTemplate extends React.Component {
                         ))}
                     </ul>
                     { feature_image && 
-                        <CardMedia className={classes.img} image={feature_image} />
+                        <Paper><CardMedia className={classes.img} image={feature_image} /></Paper>
                     }
                     <Markdown 
                         className={classes.content} 
@@ -142,18 +143,19 @@ class BlogPostTemplate extends React.Component {
                 </article>
                 <img className={classes.divider} src={divider} />
                 <ul className={classes.pageLinks}>
-                    <div className={`${classes.link} ${classes.prevLink}`}>
+                    { previous && <div className={`${classes.link} ${classes.prevLink}`}>
                         <ArrowBackIos className={classes.icon} />
                         <li >
-                            { previous && <Link to={previous.slug} rel="prev">{previous.title}</Link> }
+                            <Link to={previous.slug} rel="prev">{previous.title}</Link>
                         </li>
-                    </div>
+                    </div>}
+                    { next && 
                     <div className={`${classes.link} ${classes.nextLink}`}>
                         <li>
-                            { next && <Link to={next.slug} rel="next">{next.title}</Link> }
+                            <Link to={next.slug} rel="next">{next.title}</Link>
                         </li>
                         <ArrowForwardIos className={classes.icon} />
-                    </div>
+                    </div>}
                 </ul>
             </Layout>
         )

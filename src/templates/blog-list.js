@@ -9,6 +9,7 @@ import Layout from '../components/Layout'
 
 const styles = {
     pageLinks: {
+        alignSelf: 'flex-end',
         display: 'flex',
         flexWrap: 'wrap',
         justifyContent: 'space-between',
