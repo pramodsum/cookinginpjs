@@ -4,10 +4,10 @@ import { Link, graphql } from "gatsby"
 import get from 'lodash/get'
 import { withStyles } from '@material-ui/core';
 
-import PostList from '../components/PostList/PostList';
 import Layout from '../components/Layout'
+import MiniPost from '../components/Post/MiniPost';
 
-const styles = {
+const styles = theme => ({
     pageLinks: {
         alignSelf: 'flex-end',
         display: 'flex',
@@ -18,7 +18,7 @@ const styles = {
         padding: 0,
         margin: '10px 1rem'
     }
-};
+});
 
 class BlogList extends React.Component {
     constructor(props) {
@@ -49,7 +49,11 @@ class BlogList extends React.Component {
                     meta={[{ name: 'description', content: siteDescription }]}
                     title={siteTitle}
                 />
-                <PostList posts={posts} ref={this.listRef} />
+                <div className={classes.list}>
+                    {
+                        posts.map(({ node }) => <MiniPost {...node}  key={node.uuid} />)
+                    }
+                </div>
                 <ul className={classes.pageLinks}>
                     <li>{
                         !isFirst &&
@@ -65,7 +69,7 @@ class BlogList extends React.Component {
     }
 }
 
-export default withStyles(styles)(BlogList);
+export default withStyles(styles, { withTheme: true })(BlogList);
 
 export const blogListQuery = graphql`
 query PaginationQuery($skip: Int!, $limit: Int!) {

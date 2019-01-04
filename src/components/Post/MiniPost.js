@@ -1,41 +1,13 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
-import { Link } from "gatsby";
 import CardMedia from '@material-ui/core/CardMedia';
 import LoyaltyOutlined from '@material-ui/icons/LoyaltyOutlined';
 import Markdown from 'react-markdown';
 
-const styles = {
+const styles = theme => ({
     post: {
-        margin: '1%',
-        width: '47.5%'
-    },
-    '@media (max-width: 1024px)': {
-        post: {
-            width: '95%'
-        }
-    },
-    main: {
-        padding: '1rem 1.5rem',
-    },
-    imgContainer: {
-        background: 'white',
-        margin: '-1.75em -1.75rem 0',
-        position: 'relative',
-        overflow: 'hidden',
-        boxShadow: '0px 1px 5px 0px rgba(0,0,0,0.2), 0px 3px 1px -2px rgba(0,0,0,0.12)',
-    },
-    img: {
-        height: 0,
-        paddingTop: '100%',
-        width: '100%',
-        transition: 'opacity .4s',
-        maxHeight: '500px',
-
-        '&:hover': {
-            opacity: '.75'
-        }
+        marginBottom: '1rem'
     },
     header: {
         margin: 0,
@@ -50,6 +22,40 @@ const styles = {
     content: {
         overflowWrap: 'break-word',
         fontSize: '15px',
+    },
+    imgContainer: {
+        position: 'relative',
+    },
+    img: {
+        height: 0,
+        paddingTop: '100%',
+        margin: '1rem 0',
+        width: '100%',
+        transition: 'opacity .4s',
+        maxHeight: '500px',
+        position: 'relative',
+
+        '&:hover': {
+            opacity: '.75'
+        }
+    },
+    imgTag: {
+        top: '11px',
+        left: '-11px',
+        display: 'flex',
+        zIndex: '1',
+        position: 'absolute',
+        flexWrap: 'wrap',
+        background: '#FFEC96',
+        padding: '0.5rem'
+        // transform: scale(1);
+        // transition: transform 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+        // align-items: center;
+        // font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+        // align-content: center;
+        // border-radius: 50%;
+        // flex-direction: row;
+        // justify-content: center;
     },
     footer: {
         listStyle: 'none',
@@ -68,44 +74,36 @@ const styles = {
         marginRight: '3px',
         textTransform: 'lowercase',
     },
-};
+});
 
 const MiniPost = ({ classes, id, slug, title, feature_image, published_at, markdown, tags }) => (
     <article id={id} className={classes.post}>
-        <Paper className={classes.main}>
-            <h1 className={classes.header}><Link className={classes.title} to={slug}>{title}</Link></h1>
-            { feature_image && 
-                <div className={classes.imgContainer}>
-                    <Link to={slug}>
-                        <CardMedia
-                            className={classes.img}
-                            image={feature_image}
-                        />
-                    </Link>
-                </div>
-            }
-            <Markdown 
-                className={classes.content} 
-                source={`${markdown.slice(0, 1000)}...`} 
-                skipHtml={true}
-                disallowedTypes={[
-                    'image',
-                    'html',
-                    'iframe'
-                ]}
-            />
-            <div>{published_at}</div>
-            <ul className={classes.footer}>
-                <LoyaltyOutlined className={classes.icon} />
-                { tags.map(({ id, name, slug }, index) => (
-                    <li key={id} className={classes.tag}>
-                        <a href={`/tags/${slug}`}>#{name}</a>
-                        { index < tags.length - 1 && ', ' }
-                    </li>
-                ))}
-            </ul>
-        </Paper>
+        <h1 className={classes.title}>{title}</h1>
+        { feature_image && 
+            <Paper className={classes.imgContainer}>
+                <CardMedia className={classes.img} image={feature_image} />
+                <div className={classes.imgTag}>{published_at}</div>
+            </Paper>
+        }
+        <Markdown 
+            className={classes.content} 
+            source={`${markdown.slice(0, 1000)}...`} 
+            disallowedTypes={[
+                'image',
+                'html',
+                'iframe'
+            ]}
+        />
+        <ul className={classes.footer}>
+            <LoyaltyOutlined className={classes.icon} />
+            { tags.map(({ id, name, slug }, index) => (
+                <li key={id} className={classes.tag}>
+                    <a href={`/tags/${slug}`}>#{name}</a>
+                    { index < tags.length - 1 && ', ' }
+                </li>
+            ))}
+        </ul>
     </article>
 );
 
-export default withStyles(styles)(MiniPost);
+export default withStyles(styles, { withTheme: true })(MiniPost);

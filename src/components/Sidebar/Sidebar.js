@@ -1,23 +1,60 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import TextField from '@material-ui/core/TextField';
+import Input from '@material-ui/core/Input';
+import CardMedia from '@material-ui/core/CardMedia';
+
+import profileImg from '../../assets/about.jpg';
 
 const INSTAGRAM_URL = 'https://www.instagram.com/cookinginpjs/';
 const FACEBOOK_URL = 'https://www.facebook.com/wearecookinginpjs/';
 const TWITTER_URL = 'https://www.twitter.com/cookinginpjs/';
 
-const styles = {
+const styles = theme => ({
     sidebar: {
         flex: '0 0 300px',
-        textAlign: 'center'
+        padding: '0 1rem',
+        textAlign: 'center',
+
+        [theme.breakpoints.down('sm')]: {
+            display: 'none',
+        },
     },
     container: {
         display: 'flex',
         flexWrap: 'wrap',
     },
-    textField: {
-        margin: '0 1rem',
+    input: {
+        margin: '1rem 0',
+    },
+    inputLabel: {
+        fontFamily: "'Homemade Apple', cursive",
+        lineHeight: 2,
+    },
+    inputFocused: {
+        '&:after': {
+            borderBottomColor: '#FFEC96'
+        },
+    },
+    img: {
+        padding: '1rem 2rem 0',
+        width: '100%',
+        transition: 'opacity .4s',
+        borderRadius: '50%',
+
+        '&:hover': {
+            opacity: '.75'
+        }
+    },
+    aboutTitle: {
+        fontFamily: "'Homemade Apple', cursive",
+        marginBottom: 0
+    },
+    aboutSubtitle: {
+        fontFamily: "'Zeyada', cursive",
+    },
+    about: {
+        fontSize: '0.9rem',
     },
     socialLinks: {
         display: 'flex',
@@ -27,18 +64,12 @@ const styles = {
     },
     icon: {
         padding: '10px 10px 0',
-        display: 'block'
-    },
-    socialIcon: {
-        fill: 'black',
+        display: 'block',
         transition: '.25s ease-in-out',
-
-        '&:hover': {
-            fill: 'gray'
-        }
     },
     footer: {
         fontFamily: "'Zeyada', cursive",
+        fontSize: '1.2rem',
         textAlign: 'center',
         justifySelf: 'flex-end',
         padding: '1rem 0'
@@ -46,7 +77,7 @@ const styles = {
     heart: {
         fontSize: '10px'
     },
-};
+});
 
 class Sidebar extends React.Component {
     render() {
@@ -54,13 +85,23 @@ class Sidebar extends React.Component {
 
         return (
             <div className={classes.sidebar}>
-                <TextField
-                    label="Search"
-                    type="search"
-                    className={classes.textField}
-                    margin="normal"
-                    variant="outlined"
+                <Input
+                    className={classes.input}
+                    placeholder='Search...'
+                    htmlFor="custom-css-standard-input"
+                    fullWidth={true}
+                    classes={{
+                      root: classes.inputLabel,
+                      focused: classes.inputFocused,
+                    }}
+                    inputProps={{
+                        'aria-label': 'Description',
+                    }}
                 />
+                <img className={classes.img} src={profileImg} />
+                <h3 className={classes.aboutTitle}>Hello and welcome!</h3>
+                <p className={classes.about}>We're Sumu & Anu.</p>
+                <p className={classes.about}>We've known each other pretty much forever, and this blog is our way of documenting our culinary exploits, and some non-culinary exploits as well. We're not always on the same page, or in the same state, or even on the same continent, but two things are generally true: at least one of us is not paying attention, and at least one of us is wearing her pajamas.</p>
                 <div className={classes.socialLinks}>
                     <a href={INSTAGRAM_URL} className={classes.icon} ><FontAwesomeIcon className={classes.socialIcon} icon={['fab', 'instagram']} size='2x' /></a>
                     <a href={FACEBOOK_URL} className={classes.icon} ><FontAwesomeIcon className={classes.socialIcon} icon={['fab', 'facebook-square']} size='2x' /></a>
@@ -74,4 +115,4 @@ class Sidebar extends React.Component {
     }
 }
 
-export default withStyles(styles)(Sidebar);
+export default withStyles(styles, { withTheme: true })(Sidebar);

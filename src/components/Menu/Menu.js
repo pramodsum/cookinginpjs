@@ -3,7 +3,7 @@ import { withStyles } from '@material-ui/core';
 
 import MenuNav from './MenuNav';
 
-const styles = {
+const styles = theme => ({
     toggleNav: {
         position: 'relative',
         margin: '10px auto',
@@ -60,7 +60,7 @@ const styles = {
     fourthNav: {
         top: '21px'
     }
-};
+});
 
 /*
 .toggle-nav.open span:first-child {
@@ -119,4 +119,4 @@ class Menu extends React.Component {
     }
 }
 
-export default withStyles(styles)(Menu);
+export default withStyles(styles, { withTheme: true })(Menu);

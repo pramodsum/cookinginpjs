@@ -5,7 +5,7 @@ import Menu from './Menu/Menu';
 
 import divider from '../assets/fork-divider-long.png';
 
-const styles = {
+const styles = theme => ({
     header: {
         fontFamily: "'Playfair Display', Georgia, Serif",
         background: 'white',
@@ -20,28 +20,42 @@ const styles = {
         justifyContent: 'center',
         width: '100%'
     },
-    mobile: {
-    },
     title: {
         fontSize: '5rem',
         margin: 0,
 
         '&:hover': {
             color: 'gray'
-        }
+        },
+
+        [theme.breakpoints.down('sm')]: {
+            fontSize: '4rem',
+        },
+
+        [theme.breakpoints.down('xs')]: {
+            fontSize: '3rem',
+        },
     },
     subtitle: {
         fontSize: '1.15rem',
         fontWeight: 300,
         color: 'gray',
         fontFamily: "'Homemade Apple', cursive",
-        margin: '15px 0'
+        margin: '15px 0',
+
+        [theme.breakpoints.down('sm')]: {
+            fontSize: '1.05rem',
+        },
+
+        [theme.breakpoints.down('xs')]: {
+            fontSize: '0.95rem',
+        },
     },
     divider: {
         overflow: 'hidden',
         paddingBottom: '15px',
     }
-};
+});
 
 class Header extends React.Component {
     constructor(props) {
@@ -79,4 +93,4 @@ class Header extends React.Component {
     }
 }
 
-export default withStyles(styles)(Header);
+export default withStyles(styles, { withTheme: true })(Header);

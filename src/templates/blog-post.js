@@ -14,17 +14,19 @@ import Layout from '../components/Layout'
 
 import divider from '../assets/fork-divider-long.png';
 
-const styles = {
-    post: {
-        padding: '1rem 1rem 0',
-    },
+const styles = theme => ({
     title: {
         fontFamily: "'Homemade Apple', cursive",
         textTransform: 'capitalize',
         overflowWrap: 'break-word',
         margin: '0',
         fontSize: '3rem',
-        lineHeight: '5rem'
+        lineHeight: '5rem',
+
+        [theme.breakpoints.down('sm')]: {
+            fontSize: '2rem',
+            lineHeight: '3rem'
+        },
     },
     img: {
         height: 0,
@@ -41,6 +43,10 @@ const styles = {
     content: {
         overflowWrap: 'break-word',
         fontSize: '1rem',
+
+        [theme.breakpoints.down('sm')]: {
+            fontSize: '1.1rem',
+        },
     },
     footer: {
         listStyle: 'none',
@@ -102,7 +108,7 @@ const styles = {
             marginLeft: '5px',
         }
     }
-};
+});
 
 class BlogPostTemplate extends React.Component {
     render() {
@@ -162,7 +168,7 @@ class BlogPostTemplate extends React.Component {
     }
 }
 
-export default withStyles(styles)(BlogPostTemplate);
+export default withStyles(styles, { withTheme: true })(BlogPostTemplate);
 
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
