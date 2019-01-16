@@ -1,11 +1,14 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core';
 
+import bgy from '../../assets/bgyl.png';
+
 const styles = theme => ({
     categoryList: {
         paddingInlineStart: 0,
         display: 'flex',
         justifyContent: 'space-between',
+        margin: '8px',
 
         [theme.breakpoints.down('sm')]: {
           flexDirection: 'column',
@@ -14,11 +17,15 @@ const styles = theme => ({
     },
     category: {
         listStyle: 'none',
-        padding: '0.5rem',
+        padding: '1rem',
 
         [theme.breakpoints.down('sm')]: {
             borderBottom: '1px solid lightgray',
         },
+
+        '&:hover': {
+            background: `url(${bgy}) repeat`,
+        }
     },
     categoryNav: {
         background: 'none',
@@ -28,11 +35,6 @@ const styles = theme => ({
         lineHeight: '21px',
         textTransform: 'uppercase',
         letterSpacing: '.2em',
-
-        '&:hover': {
-            color: 'gray',
-            transition: '.25s ease-in-out'
-        }
     },
     activeCategory: {
         fontWeight: 'bolder'

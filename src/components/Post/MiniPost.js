@@ -5,6 +5,8 @@ import CardMedia from '@material-ui/core/CardMedia';
 import LoyaltyOutlined from '@material-ui/icons/LoyaltyOutlined';
 import Markdown from 'react-markdown';
 
+import bgy from '../../assets/bgyl.png';
+
 const styles = theme => ({
     post: {
         marginBottom: '1rem'
@@ -17,7 +19,11 @@ const styles = theme => ({
         fontFamily: "'Homemade Apple', cursive",
         textTransform: 'capitalize',
         overflowWrap: 'break-word',
-        lineHeight: '32px'
+        lineHeight: '32px',
+
+        '& a:hover': {
+            background: `url(${bgy}) repeat`
+        }
     },
     content: {
         overflowWrap: 'break-word',
@@ -47,15 +53,10 @@ const styles = theme => ({
         position: 'absolute',
         flexWrap: 'wrap',
         background: '#FFEC96',
-        padding: '0.5rem'
-        // transform: scale(1);
-        // transition: transform 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-        // align-items: center;
-        // font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-        // align-content: center;
-        // border-radius: 50%;
-        // flex-direction: row;
-        // justify-content: center;
+        padding: '0.5rem',
+        fontSize: '0.7rem',
+        textTransform: 'uppercase',
+        letterSpacing: '0.2em'
     },
     footer: {
         listStyle: 'none',
@@ -76,14 +77,16 @@ const styles = theme => ({
     },
 });
 
-const MiniPost = ({ classes, id, slug, title, feature_image, published_at, markdown, tags }) => (
+const MiniPost = ({ classes, id, url, title, feature_image, published_at, markdown, tags, siteUrl }) => (
     <article id={id} className={classes.post}>
-        <h1 className={classes.title}>{title}</h1>
+        <h1 className={classes.title}><a href={`${url}`}>{title}</a></h1>
         { feature_image && 
-            <Paper className={classes.imgContainer}>
-                <CardMedia className={classes.img} image={feature_image} />
-                <div className={classes.imgTag}>{published_at}</div>
-            </Paper>
+            <a href={`${url}`}>
+                <Paper className={classes.imgContainer}>
+                    <CardMedia className={classes.img} image={feature_image} />
+                    <div className={classes.imgTag}>{published_at}</div>
+                </Paper>
+            </a>
         }
         <Markdown 
             className={classes.content} 

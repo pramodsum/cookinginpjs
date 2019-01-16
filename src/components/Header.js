@@ -4,6 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Menu from './Menu/Menu';
 
 import divider from '../assets/fork-divider-long.png';
+import bgy from '../assets/bgyl.png'
 
 const styles = theme => ({
     header: {
@@ -12,7 +13,7 @@ const styles = theme => ({
         color: 'black',
         padding: '2rem 2rem 0',
         wordBreak: 'break-word',
-        textAlign: 'center'
+        textAlign: 'center',
     },
     container: {
         display: 'flex',
@@ -24,8 +25,12 @@ const styles = theme => ({
         fontSize: '5rem',
         margin: 0,
 
-        '&:hover': {
-            color: 'gray'
+        '& a': {
+            padding: '0 30px'
+        },
+        
+        '& a:hover': {
+            background: `url(${bgy}) repeat`,
         },
 
         [theme.breakpoints.down('sm')]: {
@@ -41,7 +46,7 @@ const styles = theme => ({
         fontWeight: 300,
         color: 'gray',
         fontFamily: "'Homemade Apple', cursive",
-        margin: '15px 0',
+        margin: '15px 0 0',
 
         [theme.breakpoints.down('sm')]: {
             fontSize: '1.05rem',

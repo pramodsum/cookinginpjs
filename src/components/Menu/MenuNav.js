@@ -9,11 +9,6 @@ import Nav from './Nav';
 
 const styles = theme => ({
     nav: {
-        paddingBottom: '1rem',
-
-        [theme.breakpoints.down('sm')]: {
-            paddingBottom: '0',
-        },
     },
     icon: {
         fontSize: '36px'
@@ -46,10 +41,6 @@ const categories = [
     {
         name: 'Eating Out',
         slug: '/tag/eating-out'
-    },
-    {
-        name: 'About',
-        slug: '/tag/about'
     }
 ];
 

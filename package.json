@@ -44,6 +44,7 @@
     "eslint": "^4.19.1",
     "eslint-plugin-react": "^7.11.1",
     "gh-pages": "^1.2.0",
+    "instafeed-lite": "^1.0.10",
     "prettier": "^1.14.2",
     "react-markdown": "^4.0.4"
   },

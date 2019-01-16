@@ -35,6 +35,7 @@ class BlogList extends React.Component {
         const posts = get(data, 'allGhostPost.edges');
         const siteTitle = get(data, 'site.siteMetadata.title');
         const siteDescription = get(data, 'site.siteMetadata.description');
+        const siteUrl = get(data, 'site.siteMetadata.siteUrl');
 
         const { currentPage, numPages } = pageContext;
         const isFirst = currentPage === 1;
@@ -51,7 +52,7 @@ class BlogList extends React.Component {
                 />
                 <div className={classes.list}>
                     {
-                        posts.map(({ node }) => <MiniPost {...node}  key={node.uuid} />)
+                        posts.map(({ node }) => <MiniPost {...node} siteUrl={siteUrl} key={node.uuid} />)
                     }
                 </div>
                 <ul className={classes.pageLinks}>
@@ -76,6 +77,7 @@ query PaginationQuery($skip: Int!, $limit: Int!) {
   site {
     siteMetadata {
       title
+      siteUrl
       description
     }
   }
@@ -89,7 +91,7 @@ query PaginationQuery($skip: Int!, $limit: Int!) {
         id
         uuid
         title
-        slug
+        url
         published_at(formatString: "DD MMMM, YYYY")
         markdown
         feature_image: image
