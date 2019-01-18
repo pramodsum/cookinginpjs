@@ -52,3 +52,5 @@ yarn.lock
 # config files
 .env.*
 !.env.example
+
+.netlify/
