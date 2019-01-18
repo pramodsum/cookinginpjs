@@ -8,6 +8,7 @@ exports.createPages = ({ graphql, actions }) => {
   return new Promise((resolve, reject) => {
     const blogPost = path.resolve('./src/templates/blog-post.js')
     const blogPostList = path.resolve('./src/templates/blog-list.js')
+    const blogTagPostList = path.resolve('./src/templates/tag-list.js')
     resolve(
       graphql(
         `
@@ -20,6 +21,10 @@ exports.createPages = ({ graphql, actions }) => {
                   slug
                   published_at(formatString: "DD MMMM, YYYY")
                   feature_image: image
+                  tags {
+                    id
+                    slug
+                  }
                 }
               }
             }
@@ -36,6 +41,7 @@ exports.createPages = ({ graphql, actions }) => {
         const postsPerPage = 6
         const numPages = Math.ceil(posts.length / postsPerPage)
 
+        // Home page:
         Array.from({ length: numPages }).forEach((_, i) => {
           createPage({
             path: i === 0 ? `/` : `/${i + 1}`,
@@ -49,9 +55,20 @@ exports.createPages = ({ graphql, actions }) => {
           })
         })
 
+        let tags = {};
+
+        // Post pages:
         _.each(posts, (post, index) => {
           const previous = index === posts.length - 1 ? null : posts[index + 1].node;
           const next = index === 0 ? null : posts[index - 1].node;
+
+          // Iterate through each post, putting all found tags into `tags`
+          if (_.get(post, "node.tags")) {
+            post.node.tags.forEach(tag => {
+              tags[tag.id] = tags[tag.id] || { slug: tag.slug, count: 0 };
+              tags[tag.id].count++;
+            })
+          }
 
           createPage({
             path: post.node.slug,
@@ -60,6 +77,23 @@ exports.createPages = ({ graphql, actions }) => {
               slug: post.node.slug,
               previous,
               next,
+            },
+          })
+        })
+
+        // Tag pages: 
+        _.each(Object.keys(tags), (id, i) => {
+          const tag = tags[id];
+          const tagpostsPerPage = 6
+          const numTagPages = Math.ceil(tag.count / tagpostsPerPage)
+          createPage({
+            path: `tag/${tag.slug}`,
+            component: blogTagPostList,
+            context: {
+              tag: tag.slug,
+              limit: tag.count,
+              skip: 0,
+              numPages: numTagPages,
             },
           })
         })

@@ -6,14 +6,10 @@ import get from 'lodash/get'
 import Layout from '../components/Layout'
 import PostList from "../components/PostList/PostList";
 
-class BlogList extends React.Component {
+class TagList extends React.Component {
     constructor(props) {
         super(props);
         this.listRef = React.createRef();
-    }
-
-    determineHeight() {
-
     }
 
     render() {
@@ -36,10 +32,10 @@ class BlogList extends React.Component {
     }
 }
 
-export default BlogList;
+export default TagList;
 
-export const blogListQuery = graphql`
-query PaginationQuery($skip: Int!, $limit: Int!) {
+export const tagListQuery = graphql`
+query TagPaginationQuery($skip: Int!, $limit: Int!, $tag: String!) {
   site {
     siteMetadata {
       title
@@ -49,6 +45,7 @@ query PaginationQuery($skip: Int!, $limit: Int!) {
   }
   allGhostPost(
     sort: { order: DESC, fields: [published_at] }
+    filter: { tags: { elemMatch: { name: { eq: $tag }} } }
     limit: $limit
     skip: $skip
   ) {
