@@ -35,10 +35,15 @@ const styles = theme => ({
 
         [theme.breakpoints.down('sm')]: {
             fontSize: '4rem',
+            textAlign: 'center',
+
+            '& a': {
+                padding: '0'
+            },
         },
 
         [theme.breakpoints.down('xs')]: {
-            fontSize: '3rem',
+            fontSize: '3.5rem',
         },
     },
     subtitle: {
@@ -53,7 +58,7 @@ const styles = theme => ({
         },
 
         [theme.breakpoints.down('xs')]: {
-            fontSize: '0.95rem',
+            fontSize: '0.9rem',
         },
     },
     divider: {

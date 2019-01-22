@@ -25,14 +25,3 @@ img {
     margin: auto;
 }
 
-.main {
-    display: flex;
-    justify-content: center;
-    padding: 0 3rem 1rem;
-    overflow-x: hidden;
-}
-
-.content {
-    width: 100%;
-    padding-right: 2rem;
-}

@@ -17,7 +17,7 @@ const styles = theme => ({
     },
     category: {
         listStyle: 'none',
-        padding: '1rem',
+        padding: '0.9rem',
 
         [theme.breakpoints.down('sm')]: {
             borderBottom: '1px solid lightgray',

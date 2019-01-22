@@ -1,5 +1,4 @@
 import React from 'react'
-import Helmet from 'react-helmet'
 import Paper from '@material-ui/core/Paper';
 import { Link, graphql } from 'gatsby'
 import get from 'lodash/get'
@@ -11,7 +10,6 @@ import { withStyles } from '@material-ui/core';
 import Markdown from 'react-markdown';
 
 import Layout from '../components/Layout'
-
 import divider from '../assets/fork-divider-long.png';
 
 const styles = theme => ({
@@ -64,15 +62,9 @@ const styles = theme => ({
         fontSize: '13px',
         marginRight: '3px',
         textTransform: 'lowercase',
-
-        '& a': {
-            // color: '#FFEC96',
-            // color: '#92b3d4'
-        }
     },
     pageLinks: {
         display: 'flex',
-        // flexWrap: 'wrap',
         justifyContent: 'space-between',
         alignItems: 'center',
         listStyle: 'none',
@@ -86,7 +78,14 @@ const styles = theme => ({
 
         '& a': {
             lineHeight: '28px'
-        }
+        },
+
+        [theme.breakpoints.down('xs')]: {
+            flexFlow: 'column',
+            margin: '0',
+            justifyContent: 'unset',
+            alignItems: 'unset',
+        },
     },
     link: {
         display: 'flex',
@@ -99,14 +98,26 @@ const styles = theme => ({
         paddingRight: '10px'
     },
     prevLink: {
-        paddingRight: '15px'
+        paddingRight: '15px',
+
+        [theme.breakpoints.down('xs')]: {
+            paddingRight: '0'
+        },
     },
     nextLink: {
         textAlign: 'right',
 
         '& svg': {
             marginLeft: '5px',
-        }
+
+            [theme.breakpoints.down('sm')]: {
+                marginLeft: '0',
+            },
+        },
+
+        [theme.breakpoints.down('sm')]: {
+            alignSelf: 'flex-end',
+        },
     }
 });
 
@@ -121,12 +132,12 @@ class BlogPostTemplate extends React.Component {
         const { id, slug, title, feature_image, markdown, tags } = post;
 
         return (
-            <Layout location={this.props.location} title={siteTitle}>
-                <Helmet
-                    htmlAttributes={{ lang: 'en' }}
-                    meta={[{ name: 'description', content: siteDescription }]}
-                    title={`${title} | ${siteTitle}`}
-                />
+            <Layout 
+                location={this.props.location} 
+                title={siteTitle}
+                htmlAttributes={{ lang: 'en' }}
+                meta={[{ name: 'description', content: siteDescription }]}
+            >
                 <article className={classes.post}>
                     <h1 className={classes.title}>{title}</h1>
                     <ul className={classes.footer}>

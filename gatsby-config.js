@@ -15,7 +15,7 @@ module.exports = {
     title: `Cooking In Pajamas`,
     author: `Sumedha Pramod & Anagha Bharadwaj`,
     siteUrl: `https://www.cookinginpjs.com`,
-    description: `Just another blog, but this time it's different`,
+    description: `Stories and Musings from Wayfaring Adventurers and Aspiring Home Cooks.`,
   },
   pathPrefix: '/gatsby-starter-ghost-blog',
   plugins: [
