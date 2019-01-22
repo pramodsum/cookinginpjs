@@ -17,7 +17,7 @@ module.exports = {
     siteUrl: `https://www.cookinginpjs.com`,
     description: `Stories and Musings from Wayfaring Adventurers and Aspiring Home Cooks.`,
   },
-  pathPrefix: '/gatsby-starter-ghost-blog',
+  pathPrefix: '/cookinginpjs',
   plugins: [
     {
       resolve: `gatsby-transformer-remark`,
@@ -113,7 +113,6 @@ module.exports = {
         icon: `src/assets/gatsby-icon.png`,
       },
     },
-    `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-ghost`,
