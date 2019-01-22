@@ -82,6 +82,7 @@ const styles = theme => ({
 
         [theme.breakpoints.down('xs')]: {
             flexFlow: 'column',
+            padding: '1rem 0',
             margin: '0',
             justifyContent: 'unset',
             alignItems: 'unset',
@@ -89,13 +90,11 @@ const styles = theme => ({
     },
     link: {
         display: 'flex',
-        fontFamily: "'Playfair Display', Georgia, Serif",
+        fontFamily: "'Homemade Apple', cursive",
+        lineHeight: '1',
         fontSize: '1rem',
         fontWeight: '400',
-        lineHeight: '21px',
-        textTransform: 'uppercase',
-        letterSpacing: '.1em',
-        paddingRight: '10px'
+        paddingRight: '10px',
     },
     prevLink: {
         paddingRight: '15px',
