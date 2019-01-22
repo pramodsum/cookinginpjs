@@ -3,6 +3,7 @@ import { withStyles } from '@material-ui/core';
 import { buildUrl } from 'instafeed-lite';
 
 import InstaPost from './InstaPost';
+// import Map from './Map';
 
 const styles = {
     instaFeed: {
@@ -53,6 +54,7 @@ class InstaFeed extends React.Component {
         const { posts } = this.state;
         return(
             <div>
+                {/* <Map posts={posts} /> */}
                 {posts.length > 0 && <h2 className={classes.title}>*Cue Drool*</h2>}
                 <ul className={classes.instaFeed}>
                     {

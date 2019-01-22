@@ -1,6 +1,6 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core';
-import Input from '@material-ui/core/Input';
+// import Input from '@material-ui/core/Input';
 
 import InstaFeed from './InstaFeed';
 import SocialLinks from './SocialLinks';
