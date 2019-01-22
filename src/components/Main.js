@@ -15,7 +15,7 @@ const styles = theme => ({
         width: '100%',
         paddingRight: '2rem',
 
-        [theme.breakpoints.down('md')]: {
+        [theme.breakpoints.down('sm')]: {
             paddingRight: '0'
         },
     },

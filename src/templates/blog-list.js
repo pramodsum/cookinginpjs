@@ -5,34 +5,22 @@ import get from 'lodash/get'
 import Layout from '../components/Layout'
 import PostList from "../components/PostList/PostList";
 
-class BlogList extends React.Component {
-    constructor(props) {
-        super(props);
-        this.listRef = React.createRef();
-    }
+const BlogList = ({ location, pageContext, data }) => {
+    const posts = get(data, 'allGhostPost.edges');
+    const siteTitle = get(data, 'site.siteMetadata.title');
+    const siteDescription = get(data, 'site.siteMetadata.description');
+    const siteUrl = get(data, 'site.siteMetadata.siteUrl');
 
-    determineHeight() {
-
-    }
-
-    render() {
-        const { location, pageContext, data } = this.props;
-        const posts = get(data, 'allGhostPost.edges');
-        const siteTitle = get(data, 'site.siteMetadata.title');
-        const siteDescription = get(data, 'site.siteMetadata.description');
-        const siteUrl = get(data, 'site.siteMetadata.siteUrl');
-
-        return (
-            <Layout 
-                location={location} 
-                title={siteTitle}
-                htmlAttributes={{ lang: 'en' }}
-                meta={[{ name: 'description', content: siteDescription }]}
-            >
-                <PostList pageContext={pageContext} posts={posts} siteUrl={siteUrl} />
-            </Layout>
-        )
-    }
+    return (
+        <Layout 
+            location={location} 
+            title={siteTitle}
+            htmlAttributes={{ lang: 'en' }}
+            meta={[{ name: 'description', content: siteDescription }]}
+        >
+            <PostList pageContext={pageContext} posts={posts} siteUrl={siteUrl} />
+        </Layout>
+    )
 }
 
 export default BlogList;
