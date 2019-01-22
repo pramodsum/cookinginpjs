@@ -47,7 +47,6 @@ public
 yarn-error.log
 .gatsby-context.js
 .intermediate-representation/
-yarn.lock
 
 # config files
 .env.*
