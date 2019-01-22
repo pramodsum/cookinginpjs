@@ -40,7 +40,7 @@ class TagList extends React.Component {
 export default TagList;
 
 export const tagListQuery = graphql`
-query TagPaginationQuery($skip: Int!, $limit: Int!, $tag: String!) {
+query TagPaginationQuery($skip: Int!, $limit: Int!, $slug: String!) {
     site {
         siteMetadata {
             title
@@ -50,7 +50,7 @@ query TagPaginationQuery($skip: Int!, $limit: Int!, $tag: String!) {
     }
     allGhostPost(
         sort: { order: DESC, fields: [published_at] }
-        filter: { tags: { elemMatch: { name: { eq: $tag }} } }
+        filter: { tags: { elemMatch: { slug: { eq: $slug }} } }
         limit: $limit
         skip: $skip
     ) {

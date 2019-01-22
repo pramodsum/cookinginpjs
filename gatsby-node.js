@@ -82,19 +82,22 @@ exports.createPages = ({ graphql, actions }) => {
         })
 
         // Tag pages: 
-        _.each(Object.keys(tags), (id, i) => {
+        _.each(Object.keys(tags), (id) => {
           const tag = tags[id];
           const numTagPages = Math.ceil(tag.count / postsPerPage)
-          createPage({
-            path: `tag/${tag.slug}`,
-            component: blogTagPostList,
-            context: {
-              tag: tag.slug,
-              limit: tag.count,
-              skip: 0,
-              numPages: numTagPages,
-              // currentPage: i + 1
-            },
+
+          Array.from({ length: numTagPages }).forEach((_, i) => {
+            createPage({
+              path: `tag/${tag.slug}`,
+              component: blogTagPostList,
+              context: {
+                slug: tag.slug,
+                limit: postsPerPage,
+                skip: i * postsPerPage,
+                numPages: numTagPages,
+                currentPage: i + 1
+              },
+            })
           })
         })
       })

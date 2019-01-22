@@ -96,7 +96,7 @@ module.exports = {
               }
             `,
             output: "/rss.xml",
-            title: "Gatsby Ghost Blog RSS Feed",
+            title: "Cooking in Pajamas RSS Feed",
           },
         ],
       },
@@ -104,13 +104,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Ghost Blog`,
-        short_name: `Ghost Blog`,
+        name: `Cooking in Pajamas`,
+        short_name: `cookinginpjs`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `##FFEC96`,
         display: `minimal-ui`,
-        icon: `src/assets/gatsby-icon.png`,
+        icon: `src/assets/pants-mini.png`,
       },
     },
     `gatsby-plugin-react-helmet`,

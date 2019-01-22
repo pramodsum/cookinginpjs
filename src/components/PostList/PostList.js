@@ -33,11 +33,11 @@ const PostList = ({ pageContext, posts, classes, siteUrl }) => {
             <ul className={classes.pageLinks}>
                 <li>{
                     !isFirst &&
-                    <Link to={prevPage} rel="prev">← Previous Page</Link>
+                    <Link to={prevPage} rel="prev">← Back it up</Link>
                 }</li>
                 <li>{
                     !isLast &&
-                    <Link to={nextPage} rel="next">Next Page →</Link>
+                    <Link to={nextPage} rel="next">Thank you, next →</Link>
                 }</li>
             </ul>
         </div>
