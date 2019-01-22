@@ -4,12 +4,14 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faFacebookSquare, faInstagram, faTwitterSquare } from '@fortawesome/free-brands-svg-icons'
 import { faHeart, faComments } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
 
 import Main from '../components/Main';
 
 library.add(faFacebookSquare);
 library.add(faInstagram);
 library.add(faTwitterSquare);
+library.add(faEnvelope);
 library.add(faHeart);
 library.add(faComments);
 
