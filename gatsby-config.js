@@ -54,6 +54,7 @@ module.exports = {
             },
         },
         `gatsby-plugin-sharp`,
+        `gatsby-plugin-jss`,
         `gatsby-transformer-sharp`,
         {
             resolve: `gatsby-source-ghost`,
@@ -62,6 +63,19 @@ module.exports = {
                     ? ghostConfig.development
                     : ghostConfig.production,
         },
+        `gatsby-plugin-sharp`,
+        {
+          resolve: `gatsby-plugin-google-analytics`,
+          options: {
+            trackingId: `UA-55896836-1`,
+          },
+        },
+        // {
+        //   resolve: 'gatsby-plugin-material-ui',
+        //   options: {
+        //     pathToTheme: 'src/themes/default',
+        //   },
+        // },
         /**
          *  Utility Plugins
          */
