@@ -51,6 +51,8 @@ const DefaultLayout  = ({ data, children, bodyClass, classes, showSidebar = true
       <Helmet>
         <html lang={site.lang} />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <script dangerouslySetInnerHTML={{__html: '(window.adsbygoogle = window.adsbygoogle || []).push({});'}}></script>
         <script src="https://cdn.polyfill.io/v2/polyfill.js?features=default,String.prototype.repeat,Array.prototype.find,Array.prototype.findIndex,Math.trunc" />
         <style type="text/css">{`${site.codeinjection_styles}`}</style>
         <body className={bodyClass} />
