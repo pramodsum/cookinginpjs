@@ -1,18 +1,15 @@
 import React from 'react'
-import { Link } from 'gatsby'
-import { Layout } from '../components/common'
+import Layout from '../components/common/Layout'
+import Error from '../components/Error/Error';
 
-const NotFoundPage = () => (
-    <Layout>
-        <div className="container">
-            <article className="content" style={{ textAlign: `center` }}>
-                <h1 className="content-title">Error 404</h1>
-                <section className="content-body">
-                    Page not found, <Link to="/">return home</Link> to start over
-                </section>
-            </article>
-        </div>
-    </Layout>
-)
+class NotFoundPage extends React.Component {
+  render() {
+    return (
+      <Layout showSidebar={false} >
+        <Error />
+      </Layout>
+    )
+  }
+}
 
 export default NotFoundPage

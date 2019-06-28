@@ -1,9 +1,31 @@
 import React from 'react'
+import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 
 import { Layout, PostCard, Pagination } from '../components/common'
 import { MetaData } from '../components/common/meta'
+
+import bgy from '../assets/bgyl.png'
+
+const styles = theme => ({
+    title: {
+        textTransform: 'capitalize',
+        overflowWrap: 'break-word',
+        fontFamily: "'Playfair Display', Georgia, Serif",
+        wordBreak: 'break-word',
+        textAlign: 'center',
+        marginTop: '1rem',
+        borderBottom: '1px dotted black',
+        paddingTop: '0.5rem',
+        paddingBottom: '1rem',
+
+        '& h1': {
+          fontSize: '3rem',
+          margin: '0',
+        },
+    },
+});
 
 /**
 * Tag page (/tag/:slug)
@@ -11,7 +33,7 @@ import { MetaData } from '../components/common/meta'
 * Loads all posts for the requested tag incl. pagination.
 *
 */
-const Tag = ({ data, location, pageContext }) => {
+const Tag = ({ data, location, pageContext, classes }) => {
     const tag = data.ghostTag
     const posts = data.allGhostPost.edges
 
@@ -23,10 +45,9 @@ const Tag = ({ data, location, pageContext }) => {
                 type="series"
             />
             <Layout>
-                <div className="container">
-                    <header className="tag-header">
+                <div>
+                    <header className={classes.title}>
                         <h1>{tag.name}</h1>
-                        {tag.description ? <p>{tag.description}</p> : null }
                     </header>
                     <section className="post-feed">
                         {posts.map(({ node }) => (
@@ -55,7 +76,7 @@ Tag.propTypes = {
     pageContext: PropTypes.object,
 }
 
-export default Tag
+export default withStyles(styles, { withTheme: true })(Tag);
 
 export const pageQuery = graphql`
     query GhostTagQuery($slug: String!, $limit: Int!, $skip: Int!) {

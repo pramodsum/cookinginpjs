@@ -1,17 +1,32 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
+import { withStyles } from '@material-ui/core/styles'
 
-const Pagination = ({ pageContext }) => {
+const styles = theme => ({
+    pageLinks: {
+        alignSelf: 'flex-end',
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        listStyle: 'none',
+        padding: 0,
+        fontFamily: "'Homemade Apple', cursive",
+        fontSize: '1.2rem'
+    },
+});
+
+const Pagination = ({ classes, pageContext }) => {
     const { previousPagePath, nextPagePath, humanPageNumber, numberOfPages } = pageContext
 
     return (
-        <nav className="pagination" role="navigation">
+        <nav  className={classes.pageLinks} role="navigation">
             <div>
                 {previousPagePath && (
 
                     <Link to={previousPagePath} rel="prev">
-                            Previous
+                            ← Back it up
                     </Link>
 
                 )}
@@ -21,7 +36,7 @@ const Pagination = ({ pageContext }) => {
                 {nextPagePath && (
 
                     <Link to={nextPagePath} rel="next">
-                            Next
+                            Thank you, next →
                     </Link>
                 )}
             </div>
@@ -33,4 +48,4 @@ Pagination.propTypes = {
     pageContext: PropTypes.object.isRequired,
 }
 
-export default Pagination
+export default withStyles(styles, { withTheme: true })(Pagination);

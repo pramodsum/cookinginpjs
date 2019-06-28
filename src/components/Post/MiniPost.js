@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -14,7 +13,7 @@ const styles = theme => ({
     },
     header: {
         margin: 0,
-        marginBottom: '50px',
+        marginBottom: '50px'
     },
     title: {
         fontFamily: "'Homemade Apple', cursive",
@@ -22,17 +21,9 @@ const styles = theme => ({
         overflowWrap: 'break-word',
         fontSize: '2rem',
         lineHeight: '3rem',
-        marginBottom: '0',
 
         '& a:hover': {
             background: `url(${bgy}) repeat`
-        },
-
-        '& small': {
-          fontSize: '1rem',
-          fontWeight: '300',
-          lineHeight: '21px',
-          color: 'gray',
         }
     },
     content: {
@@ -92,29 +83,26 @@ const styles = theme => ({
     },
 });
 
-const PostCard = ({ classes, post }) => {
-  const { id, slug, feature_image, title, published_at_pretty, tags, excerpt } = post;
+const MiniPost = ({ classes, post }) => {
+  const { id, slug, feature_image, title, published_at, tags, excerpt } = post;
   return (
     <article id={id} className={classes.post}>
-        <h1 className={classes.title}>
-          <a href={`/${slug}/`}>{title}</a>
-          <br />
-          <small>{readingTimeHelper(post)}</small>
-        </h1>
+        <h1 className={classes.title}><a href={`/${slug}/`}>{title}</a></h1>
         { feature_image &&
             <a href={`/${slug}`}>
                 <Paper className={classes.imgContainer}>
                     <CardMedia className={classes.img} image={feature_image} />
-                    <div className={classes.imgTag}>{published_at_pretty}</div>
+                    <div className={classes.imgTag}>{published_at}</div>
                 </Paper>
             </a>
         }
         <div className={classes.content}>{excerpt}</div>
         <ul className={classes.footer}>
+            <div>{readingTimeHelper(post)}</div>
             <LoyaltyOutlined className={classes.icon} />
-            { tags.map((tag, index) => (
-                <li key={tag.id} className={classes.tag}>
-                    <a href={`/tag/${tag.slug}`}>#{tag.name}</a>
+            { tags.map(({ id, name, slug: tagSlug }, index) => (
+                <li key={id} className={classes.tag}>
+                    <a href={`/tags/${tagSlug}`}>#{name}</a>
                     { index < tags.length - 1 && ', ' }
                 </li>
             ))}
@@ -123,23 +111,4 @@ const PostCard = ({ classes, post }) => {
   );
 }
 
-PostCard.propTypes = {
-    post: PropTypes.shape({
-        slug: PropTypes.string.isRequired,
-        title: PropTypes.string.isRequired,
-        feature_image: PropTypes.string,
-        featured: PropTypes.bool,
-        tags: PropTypes.arrayOf(
-            PropTypes.shape({
-                name: PropTypes.string,
-            })
-        ),
-        excerpt: PropTypes.string.isRequired,
-        primary_author: PropTypes.shape({
-            name: PropTypes.string.isRequired,
-            profile_image: PropTypes.string,
-        }).isRequired,
-    }).isRequired,
-}
-
-export default withStyles(styles, { withTheme: true })(PostCard);
+export default withStyles(styles, { withTheme: true })(MiniPost);
