@@ -5,6 +5,7 @@ import Paper from '@material-ui/core/Paper';
 import CardMedia from '@material-ui/core/CardMedia';
 import LoyaltyOutlined from '@material-ui/icons/LoyaltyOutlined';
 import { readingTime as readingTimeHelper } from '@tryghost/helpers'
+import transformImage from '../../utils/transformImage';
 
 import bgy from '../../assets/bgyl.png';
 
@@ -104,7 +105,7 @@ const PostCard = ({ classes, post }) => {
         { feature_image &&
             <a href={`/${slug}`}>
                 <Paper className={classes.imgContainer}>
-                    <CardMedia className={classes.img} image={feature_image} />
+                    <CardMedia className={classes.img} image={transformImage(feature_image)} />
                     <div className={classes.imgTag}>{published_at_pretty}</div>
                 </Paper>
             </a>
@@ -113,7 +114,7 @@ const PostCard = ({ classes, post }) => {
         <ul className={classes.footer}>
             <LoyaltyOutlined className={classes.icon} />
             { tags.map((tag, index) => (
-                <li key={tag.id} className={classes.tag}>
+                <li key={tag.name} className={classes.tag}>
                     <a href={`/tag/${tag.slug}`}>#{tag.name}</a>
                     { index < tags.length - 1 && ', ' }
                 </li>
