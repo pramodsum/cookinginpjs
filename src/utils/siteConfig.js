@@ -3,7 +3,7 @@ module.exports = {
     author: `Sumedha Pramod & Anagha Bharadwaj`,
     description: `Stories and Musings from Wayfaring Adventurers and Aspiring Home Cooks.`,
 
-    siteUrl: `https://gatsby.ghost.org`, // Site domain. Do not include a trailing slash!
+    siteUrl: `https://cookinginpjs.com`, // Site domain. Do not include a trailing slash!
 
     postsPerPage: 12, // Number of posts shown on paginated pages (changes this requires sometimes to delete the cache)
 

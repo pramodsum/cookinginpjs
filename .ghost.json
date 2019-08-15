@@ -1,7 +1,7 @@
 {
   "development": {
-    "apiUrl": "https://cookinginpjs-admin.com",
-    "contentApiKey": "8fe388567ba8c13d5a940d7f12"
+    "apiUrl": "http://localhost:2368",
+    "contentApiKey": "a456e65de06b218d7981a1b40b"
   },
   "production": {
     "apiUrl": "https://cookinginpjs-admin.com",

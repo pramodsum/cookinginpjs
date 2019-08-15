@@ -15,10 +15,13 @@ try {
         },
     }
 } finally {
-    const { apiUrl, contentApiKey } = process.env.NODE_ENV === `development` ? ghostConfig.development : ghostConfig.production
+    const { apiUrl, contentApiKey } =
+    process.env.NODE_ENV === `development` ? ghostConfig.development : ghostConfig.production
 
     if (!apiUrl || !contentApiKey || contentApiKey.match(/<key>/)) {
-        throw new Error(`GHOST_API_URL and GHOST_CONTENT_API_KEY are required to build. Check the README.`) // eslint-disable-line
+        throw new Error(
+            `GHOST_API_URL and GHOST_CONTENT_API_KEY are required to build. Check the README.`,
+    ) // eslint-disable-line
     }
 }
 
@@ -55,7 +58,36 @@ module.exports = {
         },
         `gatsby-plugin-sharp`,
         `gatsby-plugin-jss`,
+        `gatsby-plugin-sharp`,
+        {
+            resolve: `gatsby-transformer-remark`,
+            options: {
+                plugins: [
+                    {
+                        resolve: `gatsby-remark-images`,
+                        options: {
+                            maxWidth: 590,
+                        },
+                    },
+                    {
+                        resolve: `gatsby-remark-responsive-iframe`,
+                        options: {
+                            wrapperStyle: `margin-bottom: 1.0725rem`,
+                        },
+                    },
+                    `gatsby-remark-prismjs`,
+                    `gatsby-remark-copy-linked-files`,
+                    `gatsby-remark-smartypants`,
+                ],
+            },
+        },
+        `gatsby-plugin-jss`,
         `gatsby-transformer-sharp`,
+        {
+            resolve: `gatsby-source-ghost`,
+            options:
+        process.env.NODE_ENV === `development` ? ghostConfig.development : ghostConfig.production,
+        },
         {
             resolve: `gatsby-source-ghost`,
             options:
