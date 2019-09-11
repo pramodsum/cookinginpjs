@@ -2,3 +2,4 @@
 # https://www.netlify.com/docs/redirects/
 
 https://cookinginpjs.netlify.com/*      https://cookinginpjs.com/:splat    301!
+http://cookinginpjs.netlify.com/*       https://cookinginpjs.com/:splat    301!
