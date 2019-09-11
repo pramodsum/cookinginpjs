@@ -52,7 +52,7 @@ module.exports = {
         {
             resolve: `gatsby-source-filesystem`,
             options: {
-                path: path.join(__dirname, `src`, `images`),
+                path: path.join(__dirname, `src`, `assets`),
                 name: `images`,
             },
         },
@@ -223,8 +223,7 @@ module.exports = {
         {
             resolve: `gatsby-plugin-mailchimp`,
             options: {
-                endpoint:
-          `https://cookinginpjs.us20.list-manage.com/subscribe/post?u=def53558021b621ef3405afd5&amp;id=834f83f15f`,
+                endpoint: `https://cookinginpjs.us20.list-manage.com/subscribe/post?u=def53558021b621ef3405afd5&amp;id=834f83f15f`,
             },
         },
     ],
