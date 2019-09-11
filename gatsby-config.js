@@ -21,25 +21,25 @@ try {
     if (!apiUrl || !contentApiKey || contentApiKey.match(/<key>/)) {
         throw new Error(
             `GHOST_API_URL and GHOST_CONTENT_API_KEY are required to build. Check the README.`,
-    ) // eslint-disable-line
+    ); // eslint-disable-line
     }
 }
 
 /**
-* This is the place where you can tell Gatsby which plugins to use
-* and set them up the way you want.
-*
-* Further info 👉🏼 https://www.gatsbyjs.org/docs/gatsby-config/
-*
-*/
+ * This is the place where you can tell Gatsby which plugins to use
+ * and set them up the way you want.
+ *
+ * Further info 👉🏼 https://www.gatsbyjs.org/docs/gatsby-config/
+ *
+ */
 module.exports = {
     siteMetadata: {
         siteUrl: config.siteUrl,
     },
     plugins: [
-        /**
-         *  Content Plugins
-         */
+    /**
+     *  Content Plugins
+     */
         {
             resolve: `gatsby-source-filesystem`,
             options: {
@@ -91,16 +91,14 @@ module.exports = {
         {
             resolve: `gatsby-source-ghost`,
             options:
-                process.env.NODE_ENV === `development`
-                    ? ghostConfig.development
-                    : ghostConfig.production,
+        process.env.NODE_ENV === `development` ? ghostConfig.development : ghostConfig.production,
         },
         `gatsby-plugin-sharp`,
         {
-          resolve: `gatsby-plugin-google-analytics`,
-          options: {
-            trackingId: `UA-55896836-1`,
-          },
+            resolve: `gatsby-plugin-google-analytics`,
+            options: {
+                trackingId: `UA-55896836-1`,
+            },
         },
         // {
         //   resolve: 'gatsby-plugin-material-ui',
@@ -109,8 +107,8 @@ module.exports = {
         //   },
         // },
         /**
-         *  Utility Plugins
-         */
+     *  Utility Plugins
+     */
         {
             resolve: `gatsby-plugin-ghost-manifest`,
             options: {
@@ -150,9 +148,7 @@ module.exports = {
                     }
                 }
               `,
-                feeds: [
-                    generateRSSFeed(config),
-                ],
+                feeds: [generateRSSFeed(config)],
             },
         },
         {
@@ -215,12 +211,7 @@ module.exports = {
                         sitemap: `pages`,
                     },
                 },
-                exclude: [
-                    `/dev-404-page`,
-                    `/404`,
-                    `/404.html`,
-                    `/offline-plugin-app-shell-fallback`,
-                ],
+                exclude: [`/dev-404-page`, `/404`, `/404.html`, `/offline-plugin-app-shell-fallback`],
                 createLinkInHead: true,
                 addUncaughtPages: true,
             },
@@ -230,9 +221,11 @@ module.exports = {
         `gatsby-plugin-force-trailing-slashes`,
         `gatsby-plugin-offline`,
         {
-          resolve: 'gatsby-plugin-mailchimp',
-          options: {
-            endpoint: 'https://cookinginpjs.us20.list-manage.com/subscribe/post?u=def53558021b621ef3405afd5&amp;id=834f83f15f',
-          },
-        }
+            resolve: `gatsby-plugin-mailchimp`,
+            options: {
+                endpoint:
+          `https://cookinginpjs.us20.list-manage.com/subscribe/post?u=def53558021b621ef3405afd5&amp;id=834f83f15f`,
+            },
+        },
     ],
+}
