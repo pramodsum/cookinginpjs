@@ -91,7 +91,6 @@ class Sidebar extends React.Component {
           format="auto"
           responsive="true"
         />
-        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
       </div>
     );
   }
