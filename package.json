@@ -30,7 +30,7 @@
     "node": "^8.16.1"
   },
   "devDependencies": {
-    "eslint": "6.2.2",
+    "eslint": "6.3.0",
     "eslint-plugin-ghost": "0.5.0",
     "eslint-plugin-react": "7.14.3"
   },
@@ -55,7 +55,7 @@
     "gatsby-plugin-force-trailing-slashes": "1.0.4",
     "gatsby-plugin-google-analytics": "^2.0.5",
     "gatsby-plugin-jss": "^2.0.5",
-    "gatsby-plugin-manifest": "2.2.4",
+    "gatsby-plugin-manifest": "2.2.16",
     "gatsby-plugin-offline": "2.2.10",
     "gatsby-plugin-react-helmet": "3.1.5",
     "gatsby-plugin-remove-serviceworker": "^1.0.0",
