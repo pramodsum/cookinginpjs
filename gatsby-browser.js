@@ -30,3 +30,5 @@ var trustAllScripts = function() {
 exports.onRouteUpdate = function() {
   trustAllScripts();
 };
+
+exports.onServiceWorkerUpdateReady = () => window.location.reload(true);
