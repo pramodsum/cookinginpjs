@@ -53,7 +53,7 @@ module.exports = {
             resolve: `gatsby-source-filesystem`,
             options: {
                 path: path.join(__dirname, `src`, `assets`),
-                name: `images`,
+                name: `assets`,
             },
         },
         `gatsby-plugin-sharp`,
