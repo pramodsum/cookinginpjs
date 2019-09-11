@@ -61,7 +61,7 @@ const styles = (theme) => {
     }
 }
 
-const AboutPage = ({ data, classes }) => (
+const AboutPage = ({ data, classes, location }) => (
   <>
     <MetaData data={data} location={location} type="profile" />
     <Layout showSidebar={false}>
