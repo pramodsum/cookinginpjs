@@ -25,35 +25,26 @@ module.exports = {
     "rules": {
         "ghost/sort-imports-es6-autofix/sort-imports-es6": "off",
         "ghost/ember/use-ember-get-and-set": "off",
-        "no-console": "off",
-        "no-inner-declarations": "off",
-        "valid-jsdoc": "off",
-        "require-jsdoc": "off",
-        "quotes": ["error", "backtick"],
-        "consistent-return": ["error"],
-        "arrow-body-style": [
-            "error",
-            "as-needed",
-            { "requireReturnForObjectLiteral": true }
+        "comma-dangle": 0,
+        "eol-last": "error",
+        "keyword-spacing": "error",
+        "max-len": [
+          "error",
+          {
+            "code": 100,
+            "ignoreUrls": true
+          }
         ],
-        "jsx-quotes": ["error", "prefer-double"],
-        "semi": ["error", "never"],
-        "object-curly-spacing": ["error", "always"],
-        "comma-dangle": [
-            "error",
-            {
-                "arrays": "always-multiline",
-                "objects": "always-multiline",
-                "imports": "always-multiline",
-                "exports": "always-multiline",
-                "functions": "ignore"
-            }
+        "no-console": [2, { "allow": ["warn", "error"] }],
+        "no-unused-vars": [
+          2,
+          {
+            "varsIgnorePattern": "^_",
+            "argsIgnorePattern": "^_"
+          }
         ],
-        "react/prop-types": [
-            "error",
-            {
-                "ignore": ["children"]
-            }
-        ]
+        "object-curly-spacing": [2, "always"],
+        "semi": ["error", "always"]
+      }
     }
 };
