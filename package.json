@@ -3,7 +3,7 @@
   "description": "Cooking In Pajamas Blog Theme",
   "version": "1.0.0",
   "author": "Sumedha Pramod <sumu@cookinginpjs.com>",
-  "homepage": "http://www.cookinginpjs.com",
+  "homepage": "http://cookinginpjs.com",
   "keywords": [
     "gatsby",
     "ghost",
@@ -13,26 +13,24 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pramodsum/cooking-in-pjs-gatsby.git"
+    "url": "git+https://github.com/pramodsum/cooking-in-pjs.git"
   },
   "bugs": {
-    "url": "https://github.com/pramodsum/cooking-in-pjs-gatsby/issues"
+    "url": "https://github.com/pramodsum/cooking-in-pjs/issues"
   },
   "main": "n/a",
   "scripts": {
     "serve": "gatsby build && NODE_ENV=production gatsby serve",
     "build": "gatsby build",
     "dev": "gatsby develop",
-    "lint": "eslint . --ext .js --cache",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "prettier --write \"**/*.{js,jsx,json,md}\"",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing \""
   },
   "engines": {
     "node": "^8.16.1"
   },
   "devDependencies": {
-    "eslint": "6.3.0",
-    "eslint-plugin-ghost": "0.5.0",
-    "eslint-plugin-react": "7.14.3"
+    "prettier": "^1.14.2"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.12",
@@ -75,7 +73,6 @@
     "install-peers": "^1.0.3",
     "lodash": "4.17.15",
     "mapbox-gl": "^0.52.0",
-    "prettier": "^1.14.2",
     "prismjs": "^1.15.0",
     "prop-types": "^15.7.2",
     "react": "16.9.0",

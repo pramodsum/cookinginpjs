@@ -57,37 +57,8 @@ module.exports = {
       },
     },
     `gatsby-plugin-sharp`,
-    `gatsby-plugin-jss`,
-    `gatsby-plugin-sharp`,
-    {
-      resolve: `gatsby-transformer-remark`,
-      options: {
-        plugins: [
-          {
-            resolve: `gatsby-remark-images`,
-            options: {
-              maxWidth: 590,
-            },
-          },
-          {
-            resolve: `gatsby-remark-responsive-iframe`,
-            options: {
-              wrapperStyle: `margin-bottom: 1.0725rem`,
-            },
-          },
-          `gatsby-remark-prismjs`,
-          `gatsby-remark-copy-linked-files`,
-          `gatsby-remark-smartypants`,
-        ],
-      },
-    },
-    `gatsby-plugin-jss`,
     `gatsby-transformer-sharp`,
-    {
-      resolve: `gatsby-source-ghost`,
-      options:
-        process.env.NODE_ENV === `development` ? ghostConfig.development : ghostConfig.production,
-    },
+    `gatsby-plugin-jss`,
     {
       resolve: `gatsby-source-ghost`,
       options:
@@ -106,6 +77,7 @@ module.exports = {
       resolve: `gatsby-plugin-ghost-manifest`,
       options: {
         short_name: config.shortTitle,
+        name: config.title,
         start_url: `/`,
         background_color: config.backgroundColor,
         theme_color: config.themeColor,
@@ -212,6 +184,6 @@ module.exports = {
     `gatsby-plugin-catch-links`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-force-trailing-slashes`,
-    `gatsby-plugin-remove-serviceworker`,
+    `gatsby-plugin-offline`,
   ],
 };
