@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
+import { Helmet } from 'react-helmet';
 import { withStyles } from '@material-ui/core/styles';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -44,7 +44,7 @@ const DefaultLayout = ({ data, children, bodyClass, classes, showSidebar = true 
   const site = data.allGhostSettings.edges[0].node;
   return (
     <div className="home">
-      <Helmet>
+      <Helmet title={site.title} defer={false}>
         <html lang={site.lang} />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         {/* <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -53,8 +53,6 @@ const DefaultLayout = ({ data, children, bodyClass, classes, showSidebar = true 
             __html: `(window.adsbygoogle = window.adsbygoogle || []).push({});`,
           }}></script> */}
         <script src="https://cdn.polyfill.io/v2/polyfill.js?features=default,String.prototype.repeat,Array.prototype.find,Array.prototype.findIndex,Math.trunc" />
-        <style type="text/css">{`${site.codeinjection_styles}`}</style>
-        <body className={bodyClass} />
       </Helmet>
       <Header title={site.title} />
       {showSidebar ? <Main>{children}</Main> : <div>{children}</div>}
