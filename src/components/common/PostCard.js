@@ -105,7 +105,7 @@ const PostCard = ({ classes, post }) => {
         <small>{readingTimeHelper(post)}</small>
       </h1>
       {feature_image && (
-        <a href={`/${slug}`}>
+        <a className="external-scripts" href={`/${slug}`}>
           <Paper className={classes.imgContainer}>
             <CardMedia className={classes.img} image={feature_image} />
             <div className={classes.imgTag}>{published_at_pretty}</div>
