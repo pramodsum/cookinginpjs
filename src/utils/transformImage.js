@@ -1,11 +1,3 @@
-var URL = require(`url`).URL;
-
-function transformImage(urlStr) {
-  const url = new URL(urlStr);
-  if (url.protocol === `http:`) {
-    return `https:` + url.host + url.pathname;
-  }
-  return urlStr;
+export default function transformImage(url) {
+  return url.replace(/^http:\/\//i, 'https://');
 }
-
-export default transformImage;
