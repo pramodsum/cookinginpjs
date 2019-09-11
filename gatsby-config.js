@@ -214,11 +214,5 @@ module.exports = {
         `gatsby-plugin-react-helmet`,
         `gatsby-plugin-force-trailing-slashes`,
         `gatsby-plugin-offline`,
-        {
-            resolve: `gatsby-plugin-mailchimp`,
-            options: {
-                endpoint: `https://cookinginpjs.us20.list-manage.com/subscribe/post?u=def53558021b621ef3405afd5&amp;id=834f83f15f`,
-            },
-        },
     ],
 }
