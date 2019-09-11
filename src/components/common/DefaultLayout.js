@@ -19,7 +19,7 @@ library.add(faEnvelope);
 library.add(faHeart);
 library.add(faComments);
 
-const styles = theme => {
+const styles = () => {
   return {
     footer: {
       fontFamily: `'Zeyada', cursive`,
