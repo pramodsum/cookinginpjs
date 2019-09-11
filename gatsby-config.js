@@ -100,12 +100,6 @@ module.exports = {
                 trackingId: `UA-55896836-1`,
             },
         },
-        // {
-        //   resolve: 'gatsby-plugin-material-ui',
-        //   options: {
-        //     pathToTheme: 'src/themes/default',
-        //   },
-        // },
         /**
      *  Utility Plugins
      */
