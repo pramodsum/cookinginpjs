@@ -1,46 +1,38 @@
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import styled from '@emotion/styled';
 
 import bgy from '../../assets/bgyl.png';
+import Link from '../common/Link';
 
 const MAIL_URL = 'mailto:hello@cookinginpjs.com';
 const INSTAGRAM_URL = 'https://www.instagram.com/cookinginpjs/';
 const FACEBOOK_URL = 'https://www.facebook.com/wearecookinginpjs/';
 const TWITTER_URL = 'https://www.twitter.com/cookinginpjs/';
 
-const styles = {
-  socialLinks: {
-    display: 'flex',
-    flexFlow: 'row wrap',
-    justifyContent: 'center',
-  },
-  icon: {
-    padding: '10px',
-    display: 'block',
-    transition: '.25s ease-in-out',
+const SocialWrapper = styled.div({
+  display: 'flex',
+  flexFlow: 'row wrap',
+  justifyContent: 'center',
+});
 
-    '&:hover': {
-      background: `url(${bgy}) repeat`,
-    },
-  },
-};
+const FaIcon = styled(FontAwesomeIcon)({
+  padding: '10px',
+  display: 'block',
+  transition: '.25s ease-in-out',
 
-const SocialLinks = ({ classes }) => (
-  <div className={classes.socialLinks}>
-    <a href={INSTAGRAM_URL} className={classes.icon}>
-      <FontAwesomeIcon className={classes.socialIcon} icon={['fab', 'instagram']} size="2x" />
-    </a>
-    <a href={FACEBOOK_URL} className={classes.icon}>
-      <FontAwesomeIcon className={classes.socialIcon} icon={['fab', 'facebook-square']} size="2x" />
-    </a>
-    <a href={TWITTER_URL} className={classes.icon}>
-      <FontAwesomeIcon className={classes.socialIcon} icon={['fab', 'twitter-square']} size="2x" />
-    </a>
-    <a href={MAIL_URL} className={classes.icon}>
-      <FontAwesomeIcon className={classes.socialIcon} icon={['far', 'envelope']} size="2x" />
-    </a>
-  </div>
+  '&:hover': {
+    background: `url(${bgy}) repeat`,
+  },
+});
+
+const SocialLinks = () => (
+  <SocialWrapper>
+    <Link href={INSTAGRAM_URL}><FaIcon icon={['fab', 'instagram']} size="2x" /></Link>
+    <Link href={FACEBOOK_URL}><FaIcon icon={['fab', 'facebook-square']} size="2x" /></Link>
+    <Link href={TWITTER_URL}><FaIcon icon={['fab', 'twitter-square']} size="2x" /></Link>
+    <Link href={MAIL_URL}><FaIcon icon={['far', 'envelope']} size="2x" /></Link>
+  </SocialWrapper>
 );
 
-export default withStyles(styles)(SocialLinks);
+export default SocialLinks;

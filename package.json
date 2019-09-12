@@ -32,7 +32,8 @@
   "devDependencies": {
     "eslint": "6.2.2",
     "eslint-plugin-ghost": "0.5.0",
-    "eslint-plugin-react": "7.14.3"
+    "eslint-plugin-react": "7.14.3",
+    "react-responsive-navbar": "^1.0.11"
   },
   "dependencies": {
     "@emotion/core": "^10.0.17",
@@ -51,6 +52,7 @@
     "babel-plugin-styled-components": "^1.10.6",
     "cheerio": "1.0.0-rc.3",
     "classnames": "^2.2.6",
+    "emotion-theming": "^10.0.18",
     "gatsby": "2.14.0",
     "gatsby-awesome-pagination": "0.3.4",
     "gatsby-image": "2.2.14",
@@ -86,6 +88,7 @@
     "react-map-gl": "^4.0.9",
     "react-mapbox-gl": "^4.1.0",
     "react-markdown": "^4.0.4",
+    "react-transition-group": "^4.3.0",
     "react-typography": "^0.16.13",
     "styled-components": "^4.3.2",
     "typeface-merriweather": "0.0.43",

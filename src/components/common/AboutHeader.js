@@ -1,50 +1,35 @@
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
+import styled from '@emotion/styled';
 
 import profileImg from '../../assets/about.jpg';
-import bgy from '../../assets/bgyl.png';
+import Link from './Link';
+import Image from './Image';
 
-const styles = {
-  img: {
-    padding: `1rem 2rem 0`,
-    width: `100%`,
-    height: `auto`,
-    transition: `opacity .4s`,
-    borderRadius: `50%`,
+const Img = styled(Image)`
+  border-radius: 50%;
+`;
 
-    '&:hover': {
-      opacity: `.75`,
-    },
-  },
-  aboutTitle: {
-    fontFamily: `'Homemade Apple', cursive`,
-    marginBottom: 0,
-  },
-  aboutSubtitle: {
-    fontSize: `1rem`,
-    margin: `8px 0`,
+const Title = styled.h3`
+  font-family: 'Homemade Apple', cursive;
+  margin-bottom: 0;
+`;
 
-    '& a': {
-      padding: `8px 0`,
-    },
-
-    '& a:hover': {
-      background: `url(${bgy}) repeat`,
-    },
-  },
-};
+const Subtitle = styled.p`
+  font-size: 1rem;
+  margin: 8px 0;
+`;
 
 const SUMU_EMAIL = `mailto:sumu@cookinginpjs.com`;
 const ANU_EMAIL = `mailto:anu@cookinginpjs.com`;
 
-const AboutHeader = ({ classes }) => (
+const AboutHeader = () => (
   <>
-    <img className={classes.img} src={profileImg} />
-    <h3 className={classes.aboutTitle}>Hello and welcome!</h3>
-    <p className={classes.aboutSubtitle}>
-      We're <a href={SUMU_EMAIL}>Sumu</a> & <a href={ANU_EMAIL}>Anu</a>.
-    </p>
+    <Img showBorder={false} src={profileImg} />
+    <Title>Hello and welcome!</Title>
+    <Subtitle>
+      We're <Link href={SUMU_EMAIL}>Sumu</Link> & <Link href={ANU_EMAIL}>Anu</Link>.
+    </Subtitle>
   </>
 );
 
-export default withStyles(styles)(AboutHeader);
+export default AboutHeader;

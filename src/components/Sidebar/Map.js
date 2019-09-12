@@ -1,5 +1,4 @@
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
 import MapGL, { Marker, Popup, NavigationControl } from 'react-map-gl';
 
 import PostPin from './PostPin';
@@ -104,7 +103,7 @@ class Map extends React.Component {
   }
 
   render() {
-    const { classes, posts } = this.props;
+    const { posts } = this.props;
     const { viewport } = this.state;
     return (
       <div className={classes.container}>
@@ -128,4 +127,4 @@ class Map extends React.Component {
   }
 }
 
-export default withStyles(styles)(Map);
+export default Map;

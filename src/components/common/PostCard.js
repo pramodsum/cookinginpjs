@@ -1,124 +1,105 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-// import LoyaltyOutlined from '@material-ui/icons/LoyaltyOutlined';
 import { readingTime as readingTimeHelper } from '@tryghost/helpers';
 import transformImage from '../../utils/transformImage';
+import styled from '@emotion/styled';
 
-import bgy from '../../assets/bgyl.png';
+import Image from './Image';
+import Link, {InternalLink} from './Link';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const styles = {
-  post: {
-    marginBottom: `1rem`,
-  },
-  header: {
-    margin: 0,
-    marginBottom: `50px`,
-  },
-  title: {
-    fontFamily: `'Homemade Apple', cursive`,
-    textTransform: `capitalize`,
-    overflowWrap: `break-word`,
-    fontSize: `2rem`,
-    lineHeight: `3rem`,
-    marginBottom: `0`,
+const Post = styled.div({
+  marginBottom: '1rem'
+});
 
-    '& a:hover': {
-      background: `url(${bgy}) repeat`,
-    },
+const Title = styled.h1({
+  fontFamily: "'Homemade Apple', cursive",
+  textTransform: 'capitalize',
+  overflowWrap: 'break-word',
+  fontSize: '2rem',
+  lineHeight: '3rem',
 
-    '& small': {
-      fontSize: `1rem`,
-      fontWeight: `300`,
-      lineHeight: `21px`,
-      color: `gray`,
-    },
+  '@media screen and (max-width: 960px)': {
+    fontSize: '1.6rem',
+    lineHeight: '2.5rem',
   },
-  content: {
-    overflowWrap: `break-word`,
-    fontSize: `15px`,
-  },
-  img: {
-    maxWidth: `auto`,
-    height: `100%`,
-    width: `100%`,
-  },
-  imgContainer: {
-    position: `relative`,
-  },
-  img: {
-    height: 0,
-    paddingTop: `100%`,
-    margin: `1rem 0`,
-    width: `100%`,
-    transition: `opacity .4s`,
-    maxHeight: `500px`,
-    position: `relative`,
+});
 
-    '&:hover': {
-      opacity: `.75`,
-    },
-  },
-  imgTag: {
-    top: `11px`,
-    left: `-11px`,
-    display: `flex`,
-    zIndex: `1`,
-    position: `absolute`,
-    flexWrap: `wrap`,
-    background: `#FFEC96`,
-    padding: `0.5rem`,
-    fontSize: `0.7rem`,
-    textTransform: `uppercase`,
-    letterSpacing: `0.2em`,
-  },
-  footer: {
-    listStyle: `none`,
-    display: `inline-flex`,
-    flexWrap: `wrap`,
-    padding: 0,
-    margin: 0,
-  },
-  icon: {
-    color: `rgba(0, 0, 0, 0.54)`,
-    marginRight: `10px`,
-  },
-  tag: {
-    fontFamily: `'Homemade Apple', cursive`,
-    fontSize: `15px`,
-    marginRight: `3px`,
-    textTransform: `lowercase`,
-  },
-};
+const Content = styled.div({
+  overflowWrap: 'break-word',
+  fontSize: '15px'
+});
 
-const PostCard = ({ classes, post }) => {
+const FeatureWrapper = styled.div({
+  position: 'relative',
+});
+
+const PublishedAt = styled.div({
+  top: '11px',
+  left: '-11px',
+  display: 'flex',
+  zIndex: '1',
+  position: 'absolute',
+  flexWrap: 'wrap',
+  background: '#FFEC96',
+  padding: '0.5rem',
+  fontSize: '0.7rem',
+  textTransform: 'uppercase',
+  letterSpacing: '0.2em',
+});
+
+const Footer = styled.ul({
+  listStyle: 'none',
+  display: 'inline-flex',
+  flexWrap: 'wrap',
+  padding: 0,
+  margin: 0,
+});
+
+const TagsIcon = styled(FontAwesomeIcon)({
+  color: 'gray',
+  margin: '0 5px',
+});
+
+const Tag = styled.li({
+  fontFamily: "'Homemade Apple', cursive",
+  fontSize: '15px',
+  marginRight: '3px',
+  textTransform: 'lowercase',
+});
+
+const ReadingTime = styled.div({
+  fontFamily: "'Homemade Apple', cursive",
+  fontSize: '15px',
+  color: 'gray',
+  padding: '10px 0',
+});
+
+const PostCard = ({ post }) => {
   const { id, slug, feature_image, title, published_at_pretty, tags, excerpt } = post;
   return (
-    <article id={id} className={classes.post}>
-      <h1 className={classes.title}>
-        <a href={`/${slug}/`}>{title}</a>
-        <br />
-        <small>{readingTimeHelper(post)}</small>
-      </h1>
+    <Post id={id}>
+      <Title><Link href={`/${slug}/`}>{title}</Link></Title>
       {feature_image && (
-        <a className="external-scripts" href={`/${slug}`}>
-          <div className={classes.imgContainer}>
-            <img className={classes.img} src={transformImage(feature_image)} />
-            <div className={classes.imgTag}>{published_at_pretty}</div>
-          </div>
-        </a>
+        <Link href={`/${slug}`}>
+          <FeatureWrapper>
+            <Image src={transformImage(feature_image)} />
+            <PublishedAt>{published_at_pretty}</PublishedAt>
+          </FeatureWrapper>
+        </Link>
       )}
-      <div className={classes.content}>{excerpt}</div>
-      <ul className={classes.footer}>
-        {/* <LoyaltyOutlined className={classes.icon} /> */}
-        {tags.map((tag, index) => (
-          <li key={tag.name} className={classes.tag}>
-            <a href={`/tag/${tag.slug}`}>#{tag.name}</a>
-            {index < tags.length - 1 && `, `}
-          </li>
+      <Content>{excerpt}</Content>
+      <ReadingTime>{readingTimeHelper(post)}</ReadingTime>
+      <Footer>
+        <TagsIcon icon={['fas', 'tags']} />
+        {tags.map(({ id, name, slug: tagSlug }, index) => (
+          <Tag key={id}>
+            <Link href={`/tags/${tagSlug}`}>#{name}</Link>
+            {index < tags.length - 1 && ', '}
+          </Tag>
         ))}
-      </ul>
-    </article>
+      </Footer>
+    </Post>
   );
 };
 
@@ -141,4 +122,4 @@ PostCard.propTypes = {
   }).isRequired,
 };
 
-export default withStyles(styles)(PostCard);
+export default PostCard;

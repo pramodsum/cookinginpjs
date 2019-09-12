@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link } from 'gatsby'
+import Link from './Link';
 
 /**
 * Navigation component
@@ -16,7 +16,7 @@ const Navigation = ({ data, navClass }) => (
     <>
         {data.map((navItem, i) => {
             if (navItem.url.match(/^\s?http(s?)/gi)) {
-                return <a className={navClass} href={navItem.url} key={i} target="_blank" rel="noopener noreferrer">{navItem.label}</a>
+                return <Link className={navClass} href={navItem.url} key={i} target="_blank" rel="noopener noreferrer">{navItem.label}</Link>
             } else {
                 return <Link className={navClass} to={navItem.url} key={i}>{navItem.label}</Link>
             }

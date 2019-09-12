@@ -1,72 +1,76 @@
 import React from 'react';
+import styled from '@emotion/styled';
 // import PropTypes from "prop-types"
-import { withStyles } from '@material-ui/core/styles';
 
 import profileImg from '../assets/about.jpg';
 import bgy from '../assets/bgyl.png';
 import Layout from '../components/common/Layout';
 import { MetaData } from '../components/common/meta';
+import Image from '../components/common/Image';
+import Link from '../components/common/Link';
 
 const SUMU_EMAIL = `mailto:sumu@cookinginpjs.com`;
 const ANU_EMAIL = `mailto:anu@cookinginpjs.com`;
 
-const styles = {
-  main: {
-    padding: `2rem`,
+const Main = styled.div({
+  marginBottom: '1rem',
+  overflow: 'scroll',
 
-    '@media (min-width: 768px)': {
-      display: `flex`,
-      alignItems: `center`,
-    },
-  },
-  img: {
-    padding: `1rem 2rem 0 0`,
-    width: `100%`,
-    // height: `auto`,
-    transition: `opacity .4s`,
-    borderRadius: `50%`,
+  '@media (min-width: 768px)': {
+    display: 'block',
+    alignItems: 'center',
+  }
+});
 
-    '&:hover': {
-      opacity: `.75`,
-    },
-  },
-  content: {
-    marginBottom: `2.5rem`,
-  },
-  title: {
-    fontFamily: `'Homemade Apple', cursive`,
-    fontSize: `2.5rem`,
-    margin: 0,
-  },
-  salutation: {
-    fontSize: `2rem`,
-    fontFamily: `'Zeyada', cursive`,
-    lineHeight: `1rem`,
-    marginTop: `3rem`,
-  },
-  signature: {
-    fontSize: `3rem`,
-    fontFamily: `'Homemade Apple', cursive`,
-    margin: `8px 0`,
+const Title = styled.h3({
+  fontFamily: "'Homemade Apple', cursive",
+  fontSize: '2.5rem',
+  margin: 0,
+})
 
-    '& a': {
-      padding: `8px 0`,
-    },
+const Content = styled.div({
+  marginBottom: '2.5rem',
+});
 
-    '& a:hover': {
-      background: `url(${bgy}) repeat`,
-    },
+const ImageWrapper = styled.div({
+  marginBottom: '2.5rem',
+  width: '100%',
+  margin: 'auto',
+})
+
+const Img = styled(Image)`
+  border-radius: 50%;
+`;
+
+const Salutation = styled.div({
+  fontSize: '2rem',
+  fontFamily: "'Zedaya', cursive",
+  lineHeight: '1rem',
+  marginTop: '3rem',
+});
+
+const Signature = styled.p({
+  fontSize: '2rem',
+  fontFamily: "'Homemade Apple', cursive",
+  margin: '8px 0',
+
+  '& a': {
+    padding: '8px 0',
   },
-};
 
-const AboutPage = ({ data, classes, location }) => (
+  '& a:hover': {
+    background: `url(${bgy}) repeat`,
+  },
+}); 
+
+const AboutPage = ({ data, location }) => (
   <>
     <MetaData data={data} location={location} type="profile" />
     <Layout showSidebar={false}>
-      <div className={classes.main}>
-        <img className={classes.img} src={profileImg} />
-        <div className={classes.content}>
-          <h3 className={classes.title}>Hello and welcome!</h3>
+      <Main>
+        <ImageWrapper><Img wrapperSize={250} showBorder={false} src={profileImg} /></ImageWrapper>
+        <Content>
+          <Title>Hello and welcome!</Title>
           <p>
             They say that poetry is the food of love, but we disagree; food is the food of love.
             Cinnamon buns soothe your stress cut edges, macarons are fluffy-sweet puppy love, and
@@ -81,15 +85,15 @@ const AboutPage = ({ data, classes, location }) => (
             but two things are generally true: at least one of us is dreaming about food, and at
             least one of us is wearing her pajamas.
           </p>
-          <p className={classes.signature}>
-            <div className={classes.salutation}>Love, {` `}</div>
-            <a href={SUMU_EMAIL}>Sumu</a> &{` `}
-            <a href={ANU_EMAIL}>Anu</a>.
-          </p>
-        </div>
-      </div>
+          <Signature>
+            <Salutation>Love, {` `}</Salutation>
+            <Link href={SUMU_EMAIL}>Sumu</Link> &{` `}
+            <Link href={ANU_EMAIL}>Anu</Link>.
+          </Signature>
+        </Content>
+      </Main>
     </Layout>
   </>
 );
 
-export default withStyles(styles)(AboutPage);
+export default AboutPage;

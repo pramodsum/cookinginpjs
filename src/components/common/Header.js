@@ -1,106 +1,91 @@
 import React from 'react';
-import { Link } from 'gatsby';
-import { withStyles } from '@material-ui/core/styles';
+import styled from '@emotion/styled';
+import {InternalLink} from './Link';
 import Menu from '../Menu/Menu';
 
-// import divider from '../../assets/fork-divider-long.png';
 import bgy from '../../assets/bgyl.png';
 
-const styles = {
-  header: {
-    fontFamily: "'Playfair Display', Georgia, Serif",
-    background: 'white',
-    color: 'black',
-    padding: '2rem 2rem 0',
-    wordBreak: 'break-word',
-    textAlign: 'center',
-  },
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    width: '100%',
-  },
-  title: {
-    fontSize: '5rem',
-    margin: 0,
+const Wrapper = styled.header`
+  font-family: 'Playfair Display', Georgia, Serif;
+  background: white;
+  color: black;
+  word-break: break-word;
+  text-align: center;
+  padding: ${props => props.collapsed ? '2rem 2rem 0' : '1rem 1rem 0'};
 
-    '& a': {
-      padding: '0 30px',
-    },
-
-    '& a:hover': {
-      background: `url(${bgy}) repeat`,
-    },
-
-    '@media screen and (max-width: 960px)': {
-      fontSize: '4rem',
-      textAlign: 'center',
-
-      '& a': {
-        padding: '0',
-      },
-    },
-
-    '@media screen and (max-width: 600px)': {
-      fontSize: '3.75rem',
-    },
-  },
-  subtitle: {
-    fontSize: '1.15rem',
-    fontWeight: 300,
-    color: 'gray',
-    fontFamily: "'Homemade Apple', cursive",
-    margin: '15px 0 0',
-
-    '@media screen and (max-width: 960px)': {
-      fontSize: '1.05rem',
-    },
-
-    '@media screen and (max-width: 600px)': {
-      fontSize: '0.9rem',
-    },
-  },
-  divider: {
-    overflow: 'hidden',
-    paddingBottom: '15px',
-  },
-};
-
-class Header extends React.Component {
-  constructor(props) {
-    super(props);
+  @media screen and (max-width: 960px) {
+    padding: 2rem 0 0;
   }
 
-  onResize = () => {
-    var innerHeight = jQuery('.js-sidebar-inner').height();
-    var footerHeight = jQuery('.js-sidebar-footer').height();
-    var windowHeight = jQuery(window).height();
-    var switchClass = innerHeight + footerHeight + 192 > windowHeight ? true : false;
-    if (switchClass) {
-      jQuery('.js-sidebar-footer').addClass('sidebar-footer-static');
-    } else {
-      jQuery('.js-sidebar-footer').removeClass('sidebar-footer-static');
-    }
-  };
+  @media screen and (max-width: 600px) {
+    padding-top: 1rem;
+  }
+`;
 
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+`;
+
+const Title = styled.h1`
+  font-size: ${props => props.collapsed ? '4rem' : '5rem'};
+  margin: 0;
+
+  & a {
+    padding: 0 30px;
+  }
+
+  & a:hover {
+    background: url(${bgy}) repeat;
+  }
+
+  @media screen and (max-width: 960px) {
+    font-size: 4rem;
+    text-align: center;
+
+    & a {
+      padding: 0;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    font-size: 3rem;
+    padding: 0 2rem;
+  }
+`;
+
+const Subtitle = styled.h3`
+  font-size: 1.15rem;
+  font-weight: 300;
+  color: gray;
+  font-family: 'Homemade Apple', cursive;
+  margin: ${props => props.collapsed ? '10px 0 5px' : '30px 0 15px'};
+
+  @media screen and (max-width: 960px) {
+    font-size: 1.05rem;
+    padding: 0 2rem;
+  }
+`;
+
+class Header extends React.Component {
   render() {
-    const { classes, title, onCategoryToggle = () => {} } = this.props;
+    const { title, onCategoryToggle = () => {}, collapsed } = this.props;
     return (
-      <header className={classes.header}>
-        <div className={classes.container}>
-          <h1 className={classes.title}>
-            <Link to={'/'}>{title}</Link>
-          </h1>
-          <h3 className={classes.subtitle}>
+      <Wrapper collapsed={collapsed}>
+        <Container>
+          <Title collapsed={collapsed}>
+            <InternalLink to={'/'}>{title}</InternalLink>
+          </Title>
+          <Subtitle collapsed={collapsed}>
             Stories and Musings from Wayfaring Adventurers and Aspiring Home Cooks.
-          </h3>
-          {/* <img className={classes.divider} src={divider} /> */}
-          <Menu onCategoryToggle={onCategoryToggle} />
-        </div>
-      </header>
+          </Subtitle>
+          <Menu onCategoryToggle={onCategoryToggle} collapsed={collapsed} />
+        </Container>
+      </Wrapper>
     );
   }
 }
 
-export default withStyles(styles)(Header);
+export default Header;

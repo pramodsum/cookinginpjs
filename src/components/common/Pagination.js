@@ -1,32 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'gatsby';
-import { withStyles } from '@material-ui/core/styles';
+import {InternalLink} from './Link';
+import styled from '@emotion/styled';
 
-const styles = {
-  pageLinks: {
-    alignSelf: 'flex-end',
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    listStyle: 'none',
-    padding: 0,
-    fontFamily: "'Homemade Apple', cursive",
-    fontSize: '1.2rem',
-  },
-};
+const Nav = styled.nav({
+  alignSelf: 'flex-end',
+  display: 'flex',
+  flexWrap: 'wrap',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  listStyle: 'none',
+  padding: 0,
+  fontFamily: "'Homemade Apple', cursive",
+  fontSize: '1.2rem',
+})
 
-const Pagination = ({ classes, pageContext }) => {
+const Pagination = ({ pageContext }) => {
   const { previousPagePath, nextPagePath, humanPageNumber, numberOfPages } = pageContext;
 
   return (
-    <nav className={classes.pageLinks} role="navigation">
+    <Nav role="navigation">
       <div>
         {previousPagePath && (
-          <Link to={previousPagePath} rel="prev">
+          <InternalLink to={previousPagePath} rel="prev">
             ← Back it up
-          </Link>
+          </InternalLink>
         )}
       </div>
       {numberOfPages > 1 && (
@@ -36,12 +34,12 @@ const Pagination = ({ classes, pageContext }) => {
       )}
       <div>
         {nextPagePath && (
-          <Link to={nextPagePath} rel="next">
+          <InternalLink to={nextPagePath} rel="next">
             Thank you, next →
-          </Link>
+          </InternalLink>
         )}
       </div>
-    </nav>
+    </Nav>
   );
 };
 
@@ -49,4 +47,4 @@ Pagination.propTypes = {
   pageContext: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Pagination);
+export default Pagination;

@@ -1,5 +1,4 @@
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 
@@ -72,7 +71,7 @@ Tag.propTypes = {
   pageContext: PropTypes.object,
 };
 
-export default withStyles(styles)(Tag);
+export default Tag;
 
 export const pageQuery = graphql`
   query GhostTagQuery($slug: String!, $limit: Int!, $skip: Int!) {

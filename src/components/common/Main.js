@@ -1,34 +1,34 @@
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
+import styled from '@emotion/styled';
 
 import Sidebar from '../Sidebar/Sidebar';
 
-const styles = {
-  main: {
-    display: 'flex',
-    justifyContent: 'center',
-    padding: '0 3rem 1rem',
-    overflowX: 'hidden',
+const Wrapper = styled.main`
+  display: flex;
+  justify-content: center;
+  padding: 0 3rem 1rem;
+  flex-grow: 1;
+  overflow: auto;
+  min-height: 0;
 
-    '@media screen and (max-width: 960px)': {
-      padding: '0 2rem 1rem',
-    },
-  },
-  content: {
-    width: '100%',
-    paddingRight: '2rem',
+  @media screen and (max-width: 960px) {
+    padding: 0 2rem 1rem;
+  }
+`;
+const Content = styled.div`
+  width: 100%;
+  padding-right: 2rem;
 
-    '@media screen and (max-width: 600px)': {
-      paddingRight: '0',
-    },
-  },
-};
+  @media screen and (max-width: 600px) {
+    padding-right: 0;
+  }
+`;
 
-const Main = ({ classes, children }) => (
-  <main className={classes.main}>
-    <div className={classes.content}>{children}</div>
+const Main = ({ children, onScroll }) => (
+  <Wrapper className='main'>
+    <Content>{children}</Content>
     <Sidebar />
-  </main>
+  </Wrapper>
 );
 
-export default withStyles(styles)(Main);
+export default Main;
