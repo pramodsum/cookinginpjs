@@ -1,19 +1,18 @@
 import { withStyles } from '@material-ui/core/styles';
-import MuiExpansionPanel from '@material-ui/core/ExpansionPanel';
 
 const ExpansionPanel = withStyles({
-    root: {
-        border: 'none',
-        boxShadow: 'none',
+  root: {
+    border: 'none',
+    boxShadow: 'none',
 
-        '&:not(:last-child)': {
-            borderBottom: 0,
-        },
-
-        '&:before': {
-            display: 'none',
-        },
+    '&:not(:last-child)': {
+      borderBottom: 0,
     },
-})(MuiExpansionPanel);
+
+    '&:before': {
+      display: 'none',
+    },
+  },
+});
 
 export default ExpansionPanel;

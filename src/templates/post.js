@@ -1,16 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Paper from '@material-ui/core/Paper';
 import { graphql } from 'gatsby';
-import CardMedia from '@material-ui/core/CardMedia';
-import LoyaltyOutlined from '@material-ui/icons/LoyaltyOutlined';
+// import LoyaltyOutlined from '@material-ui/icons/LoyaltyOutlined';
 import Helmet from 'react-helmet';
 import { withStyles } from '@material-ui/core/styles';
 
 import Layout from '../components/common/Layout';
 import { MetaData } from '../components/common/meta';
 
-const styles = theme => ({
+const styles = {
   title: {
     fontFamily: "'Homemade Apple', cursive",
     textTransform: 'capitalize',
@@ -156,7 +154,7 @@ const styles = theme => ({
       alignSelf: 'flex-end',
     },
   },
-});
+};
 
 /**
  * Single post view (/:slug)
@@ -179,7 +177,7 @@ const Post = ({ data, location, classes }) => {
           <h1 className={classes.title}>{title}</h1>
           {tags.length > 0 && (
             <ul className={classes.footer}>
-              <LoyaltyOutlined className={classes.icon} />
+              {/* <LoyaltyOutlined className={classes.icon} /> */}
               {tags.map(({ id, name, slug }, index) => (
                 <li key={id} className={classes.tag}>
                   <a href={`/tags/${slug}`}>#{name}</a>
@@ -189,9 +187,9 @@ const Post = ({ data, location, classes }) => {
             </ul>
           )}
           {feature_image && (
-            <Paper>
-              <CardMedia className={classes.img} image={feature_image} />
-            </Paper>
+            <div>
+              <img className={classes.img} src={feature_image} />
+            </div>
           )}
           <section
             className={`${classes.content} external-scripts`}
@@ -215,7 +213,7 @@ Post.propTypes = {
   location: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles, { withTheme: true })(Post);
+export default withStyles(styles)(Post);
 
 export const postQuery = graphql`
   query($slug: String!) {

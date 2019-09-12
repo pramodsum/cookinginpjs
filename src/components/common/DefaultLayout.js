@@ -9,7 +9,6 @@ import { faHeart, faComments } from '@fortawesome/free-solid-svg-icons';
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
 
 import Main from './Main';
-import withRoot from '../../utils/withRoot';
 import Header from './Header';
 
 library.add(faFacebookSquare);
@@ -75,4 +74,4 @@ DefaultLayout.propTypes = {
   }).isRequired,
 };
 
-export default withRoot(withStyles(styles, { withTheme: true })(DefaultLayout));
+export default withStyles(styles)(DefaultLayout);

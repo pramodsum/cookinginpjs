@@ -1,14 +1,12 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import CardMedia from '@material-ui/core/CardMedia';
-import LoyaltyOutlined from '@material-ui/icons/LoyaltyOutlined';
+// import LoyaltyOutlined from '@material-ui/icons/LoyaltyOutlined';
 import { readingTime as readingTimeHelper } from '@tryghost/helpers';
 import transformImage from '../../utils/transformImage';
 
 import bgy from '../../assets/bgyl.png';
 
-const styles = theme => ({
+const styles = {
   post: {
     marginBottom: '1rem',
   },
@@ -93,16 +91,16 @@ const MiniPost = ({ classes, post }) => {
       </h1>
       {feature_image && (
         <a href={`/${slug}`}>
-          <Paper className={classes.imgContainer}>
-            <CardMedia className={classes.img} image={transformImage(feature_image)} />
+          <div className={classes.imgContainer}>
+            <img className={classes.img} src={transformImage(feature_image)} />
             <div className={classes.imgTag}>{published_at}</div>
-          </Paper>
+          </div>
         </a>
       )}
       <div className={classes.content}>{excerpt}</div>
       <ul className={classes.footer}>
         <div>{readingTimeHelper(post)}</div>
-        <LoyaltyOutlined className={classes.icon} />
+        {/* <LoyaltyOutlined className={classes.icon} /> */}
         {tags.map(({ id, name, slug: tagSlug }, index) => (
           <li key={id} className={classes.tag}>
             <a href={`/tags/${tagSlug}`}>#{name}</a>
@@ -114,4 +112,4 @@ const MiniPost = ({ classes, post }) => {
   );
 };
 
-export default withStyles(styles, { withTheme: true })(MiniPost);
+export default withStyles(styles)(MiniPost);

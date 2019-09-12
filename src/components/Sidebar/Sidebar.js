@@ -1,7 +1,6 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import AdSense from 'react-adsense';
-// import Input from '@material-ui/core/Input';
 
 import InstaFeed from './InstaFeed';
 import SocialLinks from './SocialLinks';
@@ -9,7 +8,7 @@ import AboutMini from './AboutMini';
 
 import bgy from '../../assets/bgyl.png';
 
-const styles = theme => ({
+const styles = {
   sidebar: {
     flex: '0 0 300px',
     textAlign: 'center',
@@ -53,7 +52,7 @@ const styles = theme => ({
       border: 'black 1px solid',
     },
   },
-});
+};
 
 class Sidebar extends React.Component {
   render() {
@@ -96,4 +95,4 @@ class Sidebar extends React.Component {
   }
 }
 
-export default withStyles(styles, { withTheme: true })(Sidebar);
+export default withStyles(styles)(Sidebar);
