@@ -16,14 +16,6 @@ export default function getPageContext() {
     // eslint-disable-line
     return createPageContext();
   }
-
-  // Reuse context on the client-side.
-  if (!global.__INIT_MATERIAL_UI__) {
-    // eslint-disable-line
-    global.__INIT_MATERIAL_UI__ = createPageContext(); // eslint-disable-line
-  }
-
-  return global.__INIT_MATERIAL_UI__; // eslint-disable-line
 }
 
 // export non-default as well, see https://github.com/gatsbyjs/gatsby/issues/2116#issuecomment-402591618
