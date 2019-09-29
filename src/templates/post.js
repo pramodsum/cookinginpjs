@@ -62,7 +62,7 @@ import Image from '../components/common/Image';
 // };
 
 const PostWrapper = styled.div({
-  marginBottom: '1rem'
+  marginBottom: '1rem',
 });
 
 const Title = styled.h1({
@@ -178,11 +178,12 @@ const Post = ({ data, location }) => {
               ))}
             </TagList>
           )}
-          {feature_image && <FeatureWrapper><Image src={feature_image} /></FeatureWrapper>}
-          <Content
-            className='external-scripts'
-            dangerouslySetInnerHTML={{ __html: html }}
-          />
+          {feature_image && (
+            <FeatureWrapper>
+              <Image src={feature_image} />
+            </FeatureWrapper>
+          )}
+          <Content className="external-scripts" dangerouslySetInnerHTML={{ __html: html }} />
         </PostWrapper>
       </Layout>
     </>

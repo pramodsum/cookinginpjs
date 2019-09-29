@@ -1,63 +1,65 @@
 import React from 'react';
 import MapGL, { Marker, Popup, NavigationControl } from 'react-map-gl';
+import styled from '@emotion/styled';
 
 import PostPin from './PostPin';
 import pants from '../../assets/pants-mini.png';
 
-const TOKEN =
-  'pk.eyJ1IjoiY29va2luZ2lucGpzIiwiYSI6ImNqcjdid3d4bjAyMHQzeW15bDMybXJhdDAifQ.0S7Xpla3lninbrQMivclGw';
-const geocodingUrl = 'https://api.mapbox.com/geocoding/v5';
+const TOKEN = `pk.eyJ1IjoiY29va2luZ2lucGpzIiwiYSI6ImNqcjdid3d4bjAyMHQzeW15bDMybXJhdDAifQ.
+  0S7Xpla3lninbrQMivclGw`;
+// const geocodingUrl = 'https://api.mapbox.com/geocoding/v5';
 
-const mapboxGeocoding = query =>
-  `${geocodingUrl}/mapbox.places/${query}.json?access_token=${TOKEN}`;
+// const mapboxGeocoding = query =>
+//   `${geocodingUrl}/mapbox.places/${query}.json?access_token=${TOKEN}`;
 
 // Define layout to use in Layer component
-const layoutLayer = { 'icon-image': 'pants' };
+// const layoutLayer = { 'icon-image': 'pants' };
 
 // Create an image for the Layer
 const image = new Image();
 image.src = 'data:image/svg+xml;charset=utf-8;base64,' + btoa(pants);
-const images = ['pants', image];
+// const images = ['pants', image];
 
-const styles = {
-  container: {
-    position: 'relative',
-    height: '100%',
-    flex: '1',
-  },
-  popup: {
-    background: 'white',
-    color: '#3f618c',
-    fontWeight: '400',
-    padding: '5px',
-    borderRadius: '2px',
-  },
-  mark: {
-    backgroundColor: '#e74c3c',
-    borderRadius: '50%',
-    width: '20px',
-    height: '20px',
-    border: '4px solid #eaa29b',
-  },
-  map: {
-    position: 'relative',
-    width: '100%',
-    height: '100%',
-    cursor: 'grab',
-    touchAction: 'none',
-    userSelect: 'none',
-    outline: 'none',
+const Container = styled.div({
+  position: 'relative',
+  height: '100%',
+  flex: '1',
+});
 
-    // '& .mapboxgl-canvas': {
-    //     position: 'relative !important'
-    // },
-  },
-};
+const PopUpWrapper = styled(Popup)({
+  background: 'white',
+  color: '#3f618c',
+  fontWeight: '400',
+  padding: '5px',
+  borderRadius: '2px',
+});
+
+// const Mark = styled.div({
+//   backgroundColor: '#e74c3c',
+//   borderRadius: '50%',
+//   width: '20px',
+//   height: '20px',
+//   border: '4px solid #eaa29b',
+// });
+
+const MapWrapper = styled(MapGL)({
+  position: 'relative',
+  width: '100%',
+  height: '100%',
+  cursor: 'grab',
+  touchAction: 'none',
+  userSelect: 'none',
+  outline: 'none',
+
+  // '& .mapboxgl-canvas': {
+  //     position: 'relative !important'
+  // },
+});
 
 class Map extends React.Component {
   constructor(props) {
     super(props);
-    const { posts } = this.props;
+    // const { posts } = this.props;
     this.state = {
       viewport: {
         latitude: 37.785164,
@@ -89,15 +91,15 @@ class Map extends React.Component {
 
     return (
       popupInfo && (
-        <Popup
+        <PopUpWrapper
           tipSize={5}
           anchor="top"
           longitude={popupInfo.longitude}
           latitude={popupInfo.latitude}
           closeOnClick={false}
           onClose={() => this.setState({ popupInfo: null })}>
-          <CityInfo info={popupInfo} />
-        </Popup>
+          {/* <CityInfo info={popupInfo} /> */}
+        </PopUpWrapper>
       )
     );
   }
@@ -106,12 +108,11 @@ class Map extends React.Component {
     const { posts } = this.props;
     const { viewport } = this.state;
     return (
-      <div className={classes.container}>
-        <MapGL
+      <Container>
+        <MapWrapper
           {...viewport}
           width="300px"
           height="300px"
-          className={classes.map}
           mapStyle="mapbox://styles/mapbox/bright-v9"
           onViewportChange={this._updateViewport}
           mapboxApiAccessToken={TOKEN}>
@@ -121,8 +122,8 @@ class Map extends React.Component {
             <NavigationControl onViewportChange={this.updateViewport} />
           </div>
           {/* <ControlPanel containerComponent={this.props.containerComponent} /> */}
-        </MapGL>
-      </div>
+        </MapWrapper>
+      </Container>
     );
   }
 }

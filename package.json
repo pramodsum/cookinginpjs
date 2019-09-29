@@ -23,7 +23,9 @@
     "serve": "gatsby build && NODE_ENV=production gatsby serve",
     "build": "gatsby build",
     "dev": "gatsby develop",
-    "lint": "eslint . --ext .js --cache",
+    "lint": "yarn prettier --write src/**/*.js && eslint src/ --ext .js --cache --fix",
+    "prettier-write": "./prettier_write_all.sh",
+    "prettier-check": "pretty-quick --check",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "engines": {
@@ -31,8 +33,13 @@
   },
   "devDependencies": {
     "eslint": "6.2.2",
+    "eslint-config-prettier": "^6.3.0",
+    "eslint-plugin-emotion": "^10.0.14",
     "eslint-plugin-ghost": "0.5.0",
-    "eslint-plugin-react": "7.14.3",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-react": "^7.14.3",
+    "prettier": "^1.18.2",
+    "pretty-quick": "^1.11.0",
     "react-responsive-navbar": "^1.0.11"
   },
   "dependencies": {
@@ -46,6 +53,7 @@
     "@reach/router": "^1.2.1",
     "@tryghost/helpers": "1.1.8",
     "@tryghost/helpers-gatsby": "1.0.11",
+    "babel-eslint": "^10.0.3",
     "babel-plugin-styled-components": "^1.10.6",
     "cheerio": "1.0.0-rc.3",
     "classnames": "^2.2.6",

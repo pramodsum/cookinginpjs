@@ -24,8 +24,8 @@ const Content = styled.div`
   }
 `;
 
-const Main = ({ children, onScroll }) => (
-  <Wrapper className='main'>
+const Main = ({ children }) => (
+  <Wrapper className="main">
     <Content>{children}</Content>
     <Sidebar />
   </Wrapper>

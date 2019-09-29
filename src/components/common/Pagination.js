@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {InternalLink} from './Link';
+import { InternalLink } from './Link';
 import styled from '@emotion/styled';
 
 const Nav = styled.nav({
@@ -13,7 +13,7 @@ const Nav = styled.nav({
   padding: 0,
   fontFamily: "'Homemade Apple', cursive",
   fontSize: '1.2rem',
-})
+});
 
 const Pagination = ({ pageContext }) => {
   const { previousPagePath, nextPagePath, humanPageNumber, numberOfPages } = pageContext;

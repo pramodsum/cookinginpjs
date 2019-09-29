@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from '@emotion/styled';
 
-import {InternalLink} from '../common/Link';
-import {BackgroundImage} from '../common/Image';
+import { InternalLink } from '../common/Link';
+import { BackgroundImage } from '../common/Image';
 import miggy from '../../assets/Miggy.png';
 import bgy from '../../assets/bgyl.png';
 
@@ -13,7 +13,7 @@ const Wrapper = styled.div({
 
   '@media screen and (max-width: 960px)': {
     textAlign: 'center',
-  }
+  },
 });
 
 const Title = styled.h1({
@@ -35,11 +35,9 @@ const Error = () => (
     <Title>Ruh Roh!</Title>
     <div>
       This is not the page you're looking for... the sadness.{' '}
-      <InternalLink to="/">
-        Let’s go back home
-      </InternalLink>
+      <InternalLink to="/">Let’s go back home</InternalLink>
     </div>
-    <BackgroundImage src={miggy} showBorder={false}/>
+    <BackgroundImage src={miggy} showBorder={false} />
   </Wrapper>
 );
 

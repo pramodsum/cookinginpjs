@@ -45,9 +45,9 @@ const categories = [
 
 const Menu = ({ activeCategory = home.slug, collapsed = false }) => (
   <Wrapper>
-    <ResponsiveMenu 
-      menuOpenButton={<FontAwesomeIcon className='fa-2x' icon={['fas', 'bars']} />}
-      menuCloseButton={<FontAwesomeIcon className='fa-2x' icon={['fas', 'times']} />}
+    <ResponsiveMenu
+      menuOpenButton={<FontAwesomeIcon className="fa-2x" icon={['fas', 'bars']} />}
+      menuCloseButton={<FontAwesomeIcon className="fa-2x" icon={['fas', 'times']} />}
       changeMenuOn="960px"
       menu={<Nav categories={categories} activeCategory={activeCategory} collapsed={collapsed} />}
     />

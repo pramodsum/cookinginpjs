@@ -1,5 +1,4 @@
-/** @jss jss */
-import {css, jss } from '@emotion/core';
+import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import bgy from '../../assets/bgyl.png';
 import { Link } from 'gatsby';
@@ -11,6 +10,6 @@ padding: 8px 0;
   background: url(${bgy}) repeat;
 }`);
 
-export const InternalLink = styled(Link)({LinkCss});
+export const InternalLink = styled(Link)({ LinkCss });
 
-export default styled.a({LinkCss});
+export default styled.a({ LinkCss });

@@ -1,7 +1,7 @@
-import React from 'react'
-import { StaticQuery, graphql } from 'gatsby'
+import React from 'react';
+import { StaticQuery, graphql } from 'gatsby';
 
-import DefaultLayout from './DefaultLayout'
+import DefaultLayout from './DefaultLayout';
 
 /**
  * Main layout component
@@ -12,8 +12,8 @@ import DefaultLayout from './DefaultLayout'
  *
  */
 const LayoutSettingsQuery = props => (
-    <StaticQuery
-        query={graphql`
+  <StaticQuery
+    query={graphql`
       query GhostSettings {
         allGhostSettings {
           edges {
@@ -31,8 +31,8 @@ const LayoutSettingsQuery = props => (
         }
       }
     `}
-        render={data => <DefaultLayout data={data} {...props} />}
-    />
-)
+    render={data => <DefaultLayout data={data} {...props} />}
+  />
+);
 
-export default LayoutSettingsQuery
+export default LayoutSettingsQuery;

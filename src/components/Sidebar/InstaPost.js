@@ -6,7 +6,7 @@ import Image from '../common/Image';
 import Link from '../common/Link';
 
 const Post = styled.div({
-  position: 'relative'
+  position: 'relative',
 });
 
 const MiniImage = styled(Image)({
@@ -14,8 +14,8 @@ const MiniImage = styled(Image)({
   borderRadius: '4px',
 
   '&:hover': {
-    opacity: 0.75
-  }
+    opacity: 0.75,
+  },
 });
 
 const MetaData = styled.div({

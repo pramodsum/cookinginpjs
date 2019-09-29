@@ -3,6 +3,7 @@ import { SheetsRegistry } from 'jss';
 function createPageContext() {
   return {
     // This is needed in order to deduplicate the injection of CSS in the page.
+    // eslint-disable-next-line no-undef
     sheetsManager: new Map(),
     // This is needed in order to inject the critical CSS.
     sheetsRegistry: new SheetsRegistry(),

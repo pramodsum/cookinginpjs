@@ -23,7 +23,7 @@ library.add(faHeart);
 library.add(faBars);
 library.add(faTimes);
 library.add(faComments);
-library.add(faTags)
+library.add(faTags);
 
 const HomeContainer = styled.div`
   background: white;
@@ -39,7 +39,7 @@ const MainWrapper = styled.div`
   flex-grow: 1;
   flex-direction: column;
   min-height: 0;
-  overflow: hidden
+  overflow: hidden;
 `;
 
 const Footer = styled.footer`
@@ -65,11 +65,11 @@ class DefaultLayout extends React.Component {
     super(props);
     this.headerRef = React.createRef();
     this.state = {
-      shouldShrinkHeader: false
+      shouldShrinkHeader: false,
     };
   }
 
-  onResize = (e) => {
+  onResize = e => {
     const target = e.nativeEvent.target;
     if (target.scrollTop > 100) {
       this.setState({ shouldShrinkHeader: true });
@@ -79,10 +79,10 @@ class DefaultLayout extends React.Component {
   };
 
   render() {
-    const { data, children, bodyClass, showSidebar = true } = this.props;
+    const { data, children, showSidebar = true } = this.props;
     const { shouldShrinkHeader } = this.state;
     const site = data.allGhostSettings.edges[0].node;
-  
+
     return (
       <HomeContainer>
         <Helmet title={site.title} defer={false}>
@@ -101,8 +101,10 @@ class DefaultLayout extends React.Component {
           <script src="https://cdn.polyfill.io/v2/polyfill.js?features=default,String.prototype.repeat,Array.prototype.find,Array.prototype.findIndex,Math.trunc" />
         </Helmet>
         <Theme />
-        <Header title={site.title} collapsed={shouldShrinkHeader}/>
-        <MainWrapper onScroll={this.onResize}>{showSidebar ? <Main>{children}</Main> : <div>{children}</div>}</MainWrapper>
+        <Header title={site.title} collapsed={shouldShrinkHeader} />
+        <MainWrapper onScroll={this.onResize}>
+          {showSidebar ? <Main>{children}</Main> : <div>{children}</div>}
+        </MainWrapper>
         <Footer>
           <div>
             Made with <Heart>♡</Heart> by{` `}
@@ -112,7 +114,7 @@ class DefaultLayout extends React.Component {
       </HomeContainer>
     );
   }
-};
+}
 
 DefaultLayout.propTypes = {
   children: PropTypes.node.isRequired,

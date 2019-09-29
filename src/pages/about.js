@@ -19,14 +19,14 @@ const Main = styled.div({
   '@media (min-width: 768px)': {
     display: 'block',
     alignItems: 'center',
-  }
+  },
 });
 
 const Title = styled.h3({
   fontFamily: "'Homemade Apple', cursive",
   fontSize: '2.5rem',
   margin: 0,
-})
+});
 
 const Content = styled.div({
   marginBottom: '2.5rem',
@@ -36,7 +36,7 @@ const ImageWrapper = styled.div({
   marginBottom: '2.5rem',
   width: '100%',
   margin: 'auto',
-})
+});
 
 const Img = styled(Image)`
   border-radius: 50%;
@@ -61,14 +61,16 @@ const Signature = styled.p({
   '& a:hover': {
     background: `url(${bgy}) repeat`,
   },
-}); 
+});
 
 const AboutPage = ({ data, location }) => (
   <>
     <MetaData data={data} location={location} type="profile" />
     <Layout showSidebar={false}>
       <Main>
-        <ImageWrapper><Img wrapperSize={250} showBorder={false} src={profileImg} /></ImageWrapper>
+        <ImageWrapper>
+          <Img wrapperSize={250} showBorder={false} src={profileImg} />
+        </ImageWrapper>
         <Content>
           <Title>Hello and welcome!</Title>
           <p>

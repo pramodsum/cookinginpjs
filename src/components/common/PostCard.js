@@ -5,11 +5,11 @@ import transformImage from '../../utils/transformImage';
 import styled from '@emotion/styled';
 
 import Image from './Image';
-import Link, {InternalLink} from './Link';
+import Link from './Link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Post = styled.div({
-  marginBottom: '1rem'
+  marginBottom: '1rem',
 });
 
 const Title = styled.h1({
@@ -27,7 +27,7 @@ const Title = styled.h1({
 
 const Content = styled.div({
   overflowWrap: 'break-word',
-  fontSize: '15px'
+  fontSize: '15px',
 });
 
 const FeatureWrapper = styled.div({
@@ -79,7 +79,9 @@ const PostCard = ({ post }) => {
   const { id, slug, feature_image, title, published_at_pretty, tags, excerpt } = post;
   return (
     <Post id={id}>
-      <Title><Link href={`/${slug}/`}>{title}</Link></Title>
+      <Title>
+        <Link href={`/${slug}/`}>{title}</Link>
+      </Title>
       {feature_image && (
         <Link href={`/${slug}`}>
           <FeatureWrapper>

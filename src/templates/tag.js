@@ -1,30 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
+import styled from '@emotion/styled';
 
 import { Layout, PostCard, Pagination } from '../components/common';
 import { MetaData } from '../components/common/meta';
 
-import bgy from '../assets/bgyl.png';
+const Title = styled.header({
+  textTransform: 'capitalize',
+  overflowWrap: 'break-word',
+  fontFamily: "'Playfair Display', Georgia, Serif",
+  wordBreak: 'break-word',
+  textAlign: 'center',
+  marginTop: '1rem',
+  borderBottom: '1px dotted black',
+  paddingTop: '0.5rem',
+  paddingBottom: '1rem',
+});
 
-const styles = {
-  title: {
-    textTransform: 'capitalize',
-    overflowWrap: 'break-word',
-    fontFamily: "'Playfair Display', Georgia, Serif",
-    wordBreak: 'break-word',
-    textAlign: 'center',
-    marginTop: '1rem',
-    borderBottom: '1px dotted black',
-    paddingTop: '0.5rem',
-    paddingBottom: '1rem',
-
-    '& h1': {
-      fontSize: '3rem',
-      margin: '0',
-    },
-  },
-};
+const Header = styled.h1({
+  fontSize: '3rem',
+  margin: '0',
+});
 
 /**
  * Tag page (/tag/:slug)
@@ -32,7 +29,7 @@ const styles = {
  * Loads all posts for the requested tag incl. pagination.
  *
  */
-const Tag = ({ data, location, pageContext, classes }) => {
+const Tag = ({ data, location, pageContext }) => {
   const tag = data.ghostTag;
   const posts = data.allGhostPost.edges;
 
@@ -41,9 +38,9 @@ const Tag = ({ data, location, pageContext, classes }) => {
       <MetaData data={data} location={location} type="series" />
       <Layout>
         <div>
-          <header className={classes.title}>
-            <h1>{tag.name}</h1>
-          </header>
+          <Title>
+            <Header>{tag.name}</Header>
+          </Title>
           <section className="post-feed">
             {posts.map(({ node }) => (
               // The tag below includes the markup for each post - components/common/PostCard.js

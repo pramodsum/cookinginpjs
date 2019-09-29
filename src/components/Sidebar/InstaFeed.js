@@ -10,8 +10,8 @@ const Feed = styled.ul({
   flexFlow: 'row wrap',
   justifyContent: 'space-between',
   padding: '0',
-  listStyle: 'none'
-})
+  listStyle: 'none',
+});
 
 const FeedTitle = styled.h2({
   fontFamily: "'Homemade Apple', cursive",
@@ -23,7 +23,7 @@ const OPTIONS = {
   userId: '2462667315',
   sortBy: 'most-liked',
   clientId: '72bfc048bd36447fa3d50e3725fa31ed',
-  accessToken: '2462667315.72bfc04.dc8bae27a5b44f368eda1cb301f8d199'
+  accessToken: '2462667315.72bfc04.dc8bae27a5b44f368eda1cb301f8d199',
 };
 
 class InstaFeed extends React.Component {
@@ -31,13 +31,13 @@ class InstaFeed extends React.Component {
     super(props);
     this.state = { posts: [] };
   }
-  
+
   componentDidMount() {
     fetch(buildUrl(OPTIONS))
       .then(res => res.json())
-      .then(({ meta, data: posts }) => meta.code === 200 && this.setState({ posts }))
+      .then(({ meta, data: posts }) => meta.code === 200 && this.setState({ posts }));
   }
-  
+
   render() {
     const { posts } = this.state;
     return (
@@ -45,12 +45,12 @@ class InstaFeed extends React.Component {
         {/* <Map posts={posts} /> */}
         {posts.length > 0 && <FeedTitle>*Cue Drool*</FeedTitle>}
         <Feed>
-          {
-          posts.map((post) => (
-            <li key={post.id}><InstaPost {...post} /></li>
-            ))
-          }
-          </Feed>
+          {posts.map(post => (
+            <li key={post.id}>
+              <InstaPost {...post} />
+            </li>
+          ))}
+        </Feed>
       </div>
     );
   }

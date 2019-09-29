@@ -5,9 +5,9 @@ import AdSense from 'react-adsense';
 import InstaFeed from './InstaFeed';
 import SocialLinks from './SocialLinks';
 import AboutMini from './AboutMini';
-import Link from '../common/Link';
+// import Link from '../common/Link';
 
-import bgy from '../../assets/bgyl.png';
+// import bgy from '../../assets/bgyl.png';
 
 const Wrapper = styled.div({
   flex: '0 0 300px',
@@ -32,23 +32,23 @@ const Wrapper = styled.div({
 //   },
 // },
 
-const PatreonLink = styled(Link)({
-  background: `url(${bgy}) repeat`,
-  padding: '30px',
-  margin: '10px auto 20px',
-  border: 'black 1px dotted',
-  borderRadius: '4px',
-  fontSize: '1.25rem',
-  fontWeight: '400',
-  lineHeight: '21px',
-  textTransform: 'uppercase',
-  letterSpacing: '.1em',
+// const PatreonLink = styled(Link)({
+//   background: `url(${bgy}) repeat`,
+//   padding: '30px',
+//   margin: '10px auto 20px',
+//   border: 'black 1px dotted',
+//   borderRadius: '4px',
+//   fontSize: '1.25rem',
+//   fontWeight: '400',
+//   lineHeight: '21px',
+//   textTransform: 'uppercase',
+//   letterSpacing: '.1em',
 
-  '&:hover': {
-    fontWeight: '900',
-    border: 'black 1px solid',
-  },
-});
+//   '&:hover': {
+//     fontWeight: '900',
+//     border: 'black 1px solid',
+//   },
+// });
 
 class Sidebar extends React.Component {
   render() {

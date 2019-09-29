@@ -28,10 +28,18 @@ const FaIcon = styled(FontAwesomeIcon)({
 
 const SocialLinks = () => (
   <SocialWrapper>
-    <Link href={INSTAGRAM_URL}><FaIcon icon={['fab', 'instagram']} size="2x" /></Link>
-    <Link href={FACEBOOK_URL}><FaIcon icon={['fab', 'facebook-square']} size="2x" /></Link>
-    <Link href={TWITTER_URL}><FaIcon icon={['fab', 'twitter-square']} size="2x" /></Link>
-    <Link href={MAIL_URL}><FaIcon icon={['far', 'envelope']} size="2x" /></Link>
+    <Link href={INSTAGRAM_URL}>
+      <FaIcon icon={['fab', 'instagram']} size="2x" />
+    </Link>
+    <Link href={FACEBOOK_URL}>
+      <FaIcon icon={['fab', 'facebook-square']} size="2x" />
+    </Link>
+    <Link href={TWITTER_URL}>
+      <FaIcon icon={['fab', 'twitter-square']} size="2x" />
+    </Link>
+    <Link href={MAIL_URL}>
+      <FaIcon icon={['far', 'envelope']} size="2x" />
+    </Link>
   </SocialWrapper>
 );
 
