@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 
+import Link from '../common/Link';
 import bgy from '../../assets/bgyl.png';
 
 const CategoryList = styled.ul`
@@ -29,7 +30,7 @@ const CategoryWrapper = styled.li`
   },
 `;
 
-const Category = styled.a`
+const Category = styled(Link)`
   font-size: 1rem;
   font-weight: 400;
   line-height: 21px;

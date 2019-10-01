@@ -7,9 +7,6 @@ const Wrapper = styled.main`
   display: flex;
   justify-content: center;
   padding: 0 3rem 1rem;
-  flex-grow: 1;
-  overflow: auto;
-  min-height: 0;
 
   @media screen and (max-width: 960px) {
     padding: 0 2rem 1rem;
@@ -25,7 +22,7 @@ const Content = styled.div`
 `;
 
 const Main = ({ children }) => (
-  <Wrapper className="main">
+  <Wrapper>
     <Content>{children}</Content>
     <Sidebar />
   </Wrapper>
