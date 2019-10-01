@@ -97,6 +97,11 @@ class DefaultLayout extends React.Component {
             type="text/css"
             href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
           />
+          <link
+            rel="stylesheet"
+            type="text/css"
+            href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i|Homemade+Apple|Zeyada|Roboto+Slab:100,300,400,700"
+          />
           <script src="https://cdn.polyfill.io/v2/polyfill.js?features=default,String.prototype.repeat,Array.prototype.find,Array.prototype.findIndex,Math.trunc" />
         </Helmet>
         <Header title={site.title} collapsed={shouldShrinkHeader} />
