@@ -87,11 +87,11 @@ class DefaultLayout extends React.Component {
         <Helmet title={site.title} defer={false}>
           <html lang={site.lang} />
           <meta name="viewport" content="width=device-width,initial-scale=1" />
-          {/* <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+          <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
           <script
             dangerouslySetInnerHTML={{
               __html: `(window.adsbygoogle = window.adsbygoogle || []).push({});`,
-            }}></script> */}
+            }}></script>
           <link
             rel="stylesheet"
             type="text/css"
