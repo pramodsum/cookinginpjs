@@ -12,6 +12,7 @@ const Post = styled.div({
 const MiniImage = styled(Image)({
   transition: 'opacity .4s',
   borderRadius: '4px',
+  margin: '4px 0',
 
   '&:hover': {
     opacity: 0.75,
@@ -52,7 +53,7 @@ const InstaPost = ({ images, comments, likes, link }) => {
   return (
     <Post>
       <Link href={link}>
-        <MiniImage src={images.thumbnail.url} wrapperSize={150} />
+        <MiniImage src={images.thumbnail.url} wrapperSize={148} />
         <MetaData>
           <Likes icon={['fas', 'heart']} />
           {likes.count}
