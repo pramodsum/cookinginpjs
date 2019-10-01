@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 
+import { Global, css } from '@emotion/core';
 import styled from '@emotion/styled';
 
 import Link from './Link';
@@ -106,6 +107,17 @@ class DefaultLayout extends React.Component {
           />
           <script src="https://cdn.polyfill.io/v2/polyfill.js?features=default,String.prototype.repeat,Array.prototype.find,Array.prototype.findIndex,Math.trunc" />
         </Helmet>
+        <Global
+          styles={css`
+            a {
+              padding: 8px 0;
+              color: black;
+              text-decoration: none;
+              box-shadow: none;
+              transition: color 0.4s;
+            }
+          `}
+        />
         <Header title={site.title} collapsed={shouldShrinkHeader} />
         <MainWrapper onScroll={this.onResize}>
           {showSidebar ? <Main>{children}</Main> : <div>{children}</div>}
