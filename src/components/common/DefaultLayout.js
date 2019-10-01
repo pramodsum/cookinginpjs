@@ -4,7 +4,6 @@ import { Helmet } from 'react-helmet';
 
 import styled from '@emotion/styled';
 
-import Theme from './Theme';
 import Link from './Link';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -100,7 +99,6 @@ class DefaultLayout extends React.Component {
           />
           <script src="https://cdn.polyfill.io/v2/polyfill.js?features=default,String.prototype.repeat,Array.prototype.find,Array.prototype.findIndex,Math.trunc" />
         </Helmet>
-        <Theme />
         <Header title={site.title} collapsed={shouldShrinkHeader} />
         <MainWrapper onScroll={this.onResize}>
           {showSidebar ? <Main>{children}</Main> : <div>{children}</div>}
