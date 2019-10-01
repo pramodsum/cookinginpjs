@@ -4,6 +4,10 @@ import { Link } from 'gatsby';
 
 const LinkStyles = {
   padding: '8px 0',
+  color: 'black',
+  textDecoration: 'none',
+  boxShadow: 'none',
+  transition: 'color 0.4s',
 
   '&:hover': {
     background: `url(${bgy}) repeat`,

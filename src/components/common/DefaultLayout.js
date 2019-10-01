@@ -26,6 +26,8 @@ library.add(faTags);
 
 const HomeContainer = styled.div`
   background: white;
+  font-family: 'Roboto Slab', serif;
+  font-weight: 300;
   max-width: 1080px;
   height: 100vh;
   display: flex;
