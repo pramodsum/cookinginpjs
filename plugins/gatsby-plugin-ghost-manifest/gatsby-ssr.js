@@ -8,10 +8,63 @@ var _gatsby = require("gatsby");
 
 var _common = require("./common.js");
 
-var _jsxFileName = "/Users/aileen/code/gatsby-starter-ghost/plugins/gatsby-plugin-ghost-manifest/src/gatsby-ssr.js";
+var _styledComponents = require("styled-components");
 
-exports.onRenderBody = function (_ref, pluginOptions) {
-  var setHeadComponents = _ref.setHeadComponents;
+var _server = require("react-dom/server");
+
+var _reactJss = require("react-jss");
+
+var _getPageContext = _interopRequireDefault(require("./getPageContext"));
+
+var _jsxFileName = "/Users/sumedhapramod/cookinginpjs/plugins/gatsby-plugin-ghost-manifest/src/gatsby-ssr.js";
+
+exports.replaceRenderer = function (_ref) {
+  var bodyComponent = _ref.bodyComponent,
+      replaceBodyHTMLString = _ref.replaceBodyHTMLString,
+      setHeadComponents = _ref.setHeadComponents;
+  var sheet = new _styledComponents.ServerStyleSheet(); //styled-components
+
+  var pageContext = (0, _getPageContext.default)();
+
+  var app = _react.default.createElement(_reactJss.JssProvider, {
+    registry: pageContext.sheetsRegistry,
+    generateClassName: pageContext.generateClassName,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 15
+    },
+    __self: this
+  }, _react.default.createElement(_styledComponents.StyleSheetManager, {
+    sheet: sheet.instance,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 18
+    },
+    __self: this
+  }, _react.default.cloneElement(bodyComponent, {
+    pageContext: pageContext
+  })));
+
+  var body = (0, _server.renderToString)(app);
+  replaceBodyHTMLString(body);
+  setHeadComponents([_react.default.createElement("style", {
+    type: "text/css",
+    id: "server-side-jss",
+    key: "server-side-jss",
+    dangerouslySetInnerHTML: {
+      __html: pageContext.sheetsRegistry.toString()
+    },
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 30
+    },
+    __self: this
+  }), sheet.getStyleElement()]);
+  return;
+};
+
+exports.onRenderBody = function (_ref2, pluginOptions) {
+  var setHeadComponents = _ref2.setHeadComponents;
   // We use this to build a final array to pass as the argument to setHeadComponents at the end of onRenderBody.
   var headComponents = [];
   var icons = pluginOptions.icons || _common.defaultIcons; // If icons were generated, also add a favicon link.
@@ -26,7 +79,7 @@ exports.onRenderBody = function (_ref, pluginOptions) {
         href: (0, _gatsby.withPrefix)(favicon),
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 17
+          lineNumber: 54
         },
         __self: this
       }));
@@ -40,7 +93,7 @@ exports.onRenderBody = function (_ref, pluginOptions) {
     href: (0, _gatsby.withPrefix)("/manifest.webmanifest"),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 28
+      lineNumber: 65
     },
     __self: this
   })); // The user has an option to opt out of the theme_color meta tag being inserted into the head.
@@ -55,7 +108,7 @@ exports.onRenderBody = function (_ref, pluginOptions) {
         content: pluginOptions.theme_color,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 44
+          lineNumber: 79
         },
         __self: this
       }));
@@ -71,7 +124,7 @@ exports.onRenderBody = function (_ref, pluginOptions) {
         href: (0, _gatsby.withPrefix)("" + icon.src),
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 55
+          lineNumber: 90
         },
         __self: this
       });
