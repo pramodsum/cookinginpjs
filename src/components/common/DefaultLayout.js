@@ -30,6 +30,10 @@ const HomeContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin: auto;
+
+  & img {
+    max-width: 100%;
+  }
 `;
 
 const Footer = styled.footer`
