@@ -62,29 +62,24 @@ import Image from '../components/common/Image';
 // };
 
 const PostWrapper = styled.div({
-  marginBottom: '1rem',
+  margin: '0 auto 1rem',
+  width: '90%',
+
+  '@media screen and (max-width: 375px)': {
+    width: '95%',
+  },
 });
 
 const Title = styled.h1({
   fontFamily: "'Homemade Apple', cursive",
-  textTransform: 'capitalize',
+  textTransform: 'lowercase',
   overflowWrap: 'break-word',
   fontSize: '2rem',
-  lineHeight: '3rem',
-
-  '@media screen and (max-width: 960px)': {
-    fontSize: '1.6rem',
-    lineHeight: '2.5rem',
-  },
 });
 
 const Content = styled.section({
   overflowWrap: 'break-word',
-  fontSize: '1rem',
-
-  '@media screen and (max-width: 960px)': {
-    fontSize: '1.1rem',
-  },
+  fontSize: '1.2rem',
 
   '& figure': {
     display: 'flex',
@@ -126,6 +121,7 @@ const Content = styled.section({
 
 const FeatureWrapper = styled.div({
   position: 'relative',
+  paddingBottom: '10px',
 });
 
 const TagList = styled.ul({
@@ -142,7 +138,7 @@ const TagsIcon = styled(FontAwesomeIcon)({
 });
 
 const Tag = styled.li({
-  fontFamily: "'Homemade Apple', cursive",
+  fontFamily: "'Srisakdi', cursive",
   fontSize: '15px',
   marginRight: '3px',
   textTransform: 'lowercase',

@@ -1,9 +1,31 @@
 import React from 'react';
+import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 
 import { Layout, PostCard, Pagination } from '../components/common';
 import { MetaData } from '../components/common/meta';
+
+const PostSection = styled.section`
+  display: flex;
+  flex-wrap: wrap;
+`;
+
+const Wrapper = styled.div`
+  margin: 0 auto;
+  padding: 0 1%;
+  max-width: 30%;
+
+  @media screen and (max-width: 768px) {
+    margin: 0 auto;
+    padding: 0;
+    max-width: 45%;
+  }
+
+  @media screen and (max-width: 375px) {
+    max-width: 100%;
+  }
+`;
 
 /**
  * Main index page (home page)
@@ -21,12 +43,15 @@ const Index = ({ data, location, pageContext }) => {
       <MetaData location={location} />
       <Layout isHome={true}>
         <div className="container">
-          <section className="post-feed">
-            {posts.map(({ node }) => (
+          <PostSection className="post-feed">
+            {posts.map(({ node }, index) => (
               // The tag below includes the markup for each post - components/common/PostCard.js
-              <PostCard key={node.uuid} post={node} />
+              <Wrapper>
+                <PostCard key={node.uuid} post={node} />
+                {/* {index < posts.length && <Divider />} */}
+              </Wrapper>
             ))}
-          </section>
+          </PostSection>
           <Pagination pageContext={pageContext} />
         </div>
       </Layout>

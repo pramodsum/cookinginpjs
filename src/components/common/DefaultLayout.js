@@ -24,12 +24,13 @@ library.add(faTags);
 
 const HomeContainer = styled.div`
   background: white;
-  font-family: 'Roboto Slab', serif;
+  font-family: 'Zilla Slab', serif;
   font-weight: 300;
   max-width: 1080px;
   display: flex;
   flex-direction: column;
   margin: auto;
+  padding: 1rem 2rem;
 
   & img {
     max-width: 100%;
@@ -76,6 +77,10 @@ const DefaultLayout = ({ data, children, showSidebar = true }) => {
           rel="stylesheet"
           type="text/css"
           href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i|Homemade+Apple|Zeyada|Roboto+Slab:100,300,400,700"
+        />
+        <link
+          href="https://fonts.googleapis.com/css?family=Abril+Fatface|Srisakdi|Zilla+Slab:400,700&display=swap"
+          rel="stylesheet"
         />
         <script src="https://cdn.polyfill.io/v2/polyfill.js?features=default,String.prototype.repeat,Array.prototype.find,Array.prototype.findIndex,Math.trunc" />
       </Helmet>

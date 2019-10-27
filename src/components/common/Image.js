@@ -23,12 +23,11 @@ const Image = styled.div`
   object-fit: cover;
   height: 0;
   padding-top: 100%;
-  margin: 1rem 0;
   max-height: 500px;
   transition: opacity 0.4s;
   position: relative
 
-  &:hover {
+  '&:hover' {
     opacity: 0.75;
   }
 `;

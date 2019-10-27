@@ -10,7 +10,7 @@ const Nav = styled.nav({
   justifyContent: 'space-between',
   alignItems: 'center',
   listStyle: 'none',
-  padding: 0,
+  padding: '1rem 0',
   fontFamily: "'Homemade Apple', cursive",
   fontSize: '1.2rem',
 });

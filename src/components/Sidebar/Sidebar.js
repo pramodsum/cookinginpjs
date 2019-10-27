@@ -12,6 +12,7 @@ import AboutMini from './AboutMini';
 const Wrapper = styled.div({
   flex: '0 0 300px',
   textAlign: 'center',
+  paddingLeft: '2rem',
 
   '@media screen and (max-width: 960px)': {
     display: 'none',

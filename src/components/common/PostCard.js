@@ -8,30 +8,23 @@ import Image from './Image';
 import Link from './Link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+const STOCK_PHOTO =
+  'https://images.unsplash.com/photo-1558035579-a10d04acf787?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80';
+
 const Post = styled.div({
   marginBottom: '1rem',
 });
 
 const Title = styled.h1({
   fontFamily: "'Homemade Apple', cursive",
-  textTransform: 'capitalize',
+  textTransform: 'lowercase',
   overflowWrap: 'break-word',
   fontSize: '2rem',
-  lineHeight: '3rem',
-
-  '@media screen and (max-width: 960px)': {
-    fontSize: '1.6rem',
-    lineHeight: '2.5rem',
-  },
-});
-
-const Content = styled.div({
-  overflowWrap: 'break-word',
-  fontSize: '15px',
 });
 
 const FeatureWrapper = styled.div({
   position: 'relative',
+  paddingBottom: '10px',
 });
 
 const PublishedAt = styled.div({
@@ -62,36 +55,34 @@ const TagsIcon = styled(FontAwesomeIcon)({
 });
 
 const Tag = styled.li({
-  fontFamily: "'Homemade Apple', cursive",
+  fontFamily: "'Srisakdi', cursive",
   fontSize: '15px',
   marginRight: '3px',
   textTransform: 'lowercase',
 });
 
 const ReadingTime = styled.div({
-  fontFamily: "'Homemade Apple', cursive",
-  fontSize: '15px',
+  fontFamily: "'Srisakdi', cursive",
+  textTransform: 'lowercase',
+  fontSize: '0.8rem',
   color: 'gray',
-  padding: '10px 0',
+  paddingTop: '10px',
 });
 
 const PostCard = ({ post }) => {
   const { id, slug, feature_image, title, published_at_pretty, tags, excerpt } = post;
   return (
     <Post id={id}>
+      <Link href={`/${slug}`}>
+        <FeatureWrapper>
+          <Image src={feature_image ? transformImage(feature_image) : STOCK_PHOTO} />
+          <PublishedAt>{published_at_pretty}</PublishedAt>
+        </FeatureWrapper>
+      </Link>
       <Title>
         <Link href={`/${slug}/`}>{title}</Link>
+        <ReadingTime>{readingTimeHelper(post)}</ReadingTime>
       </Title>
-      {feature_image && (
-        <Link href={`/${slug}`}>
-          <FeatureWrapper>
-            <Image src={transformImage(feature_image)} />
-            <PublishedAt>{published_at_pretty}</PublishedAt>
-          </FeatureWrapper>
-        </Link>
-      )}
-      <Content>{excerpt}</Content>
-      <ReadingTime>{readingTimeHelper(post)}</ReadingTime>
       <Footer>
         <TagsIcon icon={['fas', 'tags']} />
         {tags.map(({ id, name, slug: tagSlug }, index) => (
@@ -101,6 +92,7 @@ const PostCard = ({ post }) => {
           </Tag>
         ))}
       </Footer>
+      {/* <Content>{excerpt}</Content> */}
     </Post>
   );
 };
