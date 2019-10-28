@@ -46,10 +46,11 @@ const StyledLink = styled(Link)`
 
 const MorePosts = styled(Link)`
   font-size: 1.2rem;
-  font-weight: 400;
+  font-weight: 600;
   line-height: 21px;
   text-transform: uppercase;
   letter-spacing: 0.2em;
+  color: #fb175f;
 `;
 
 const Wrapper = styled.div`
