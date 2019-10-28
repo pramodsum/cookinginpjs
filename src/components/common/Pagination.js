@@ -11,7 +11,7 @@ const Nav = styled.nav({
   alignItems: 'center',
   listStyle: 'none',
   padding: '1rem 0',
-  fontFamily: "'Homemade Apple', cursive",
+  fontFamily: "'Srisakdi', cursive",
   fontSize: '1.2rem',
 });
 
@@ -27,11 +27,6 @@ const Pagination = ({ pageContext }) => {
           </InternalLink>
         )}
       </div>
-      {numberOfPages > 1 && (
-        <div className="pagination-location">
-          Page {humanPageNumber} of {numberOfPages}
-        </div>
-      )}
       <div>
         {nextPagePath && (
           <InternalLink to={nextPagePath} rel="next">

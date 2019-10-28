@@ -27,8 +27,8 @@ const Image = styled.div`
   transition: opacity 0.4s;
   position: relative
 
-  '&:hover' {
-    opacity: 0.75;
+  &:hover {
+    opacity: 0.5;
   }
 `;
 

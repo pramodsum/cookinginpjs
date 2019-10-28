@@ -21,12 +21,20 @@ const Post = styled.div({
   marginBottom: '1rem',
 });
 
-const Title = styled.h1({
-  fontFamily: "'Homemade Apple', cursive",
-  textTransform: 'lowercase',
-  overflowWrap: 'break-word',
-  fontSize: '2rem',
-});
+const Title = styled.h1`
+  font-family: 'Homemade Apple', cursive;
+  text-transform: lowercase;
+  overflow-wrap: break-word;
+  font-size: 1.7rem;
+
+  @media screen and (max-width: 768px) {
+    font-size: 1.5rem;
+  }
+
+  @media screen and (max-width: 375px) {
+    font-size: 1.5rem;
+  }
+`;
 
 const FeatureWrapper = styled.div({
   position: 'relative',
