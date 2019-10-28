@@ -22,13 +22,13 @@ const Post = styled.div({
 });
 
 const Title = styled.h1`
-  font-family: 'Homemade Apple', cursive;
+  font-family: 'Playfair Display', Georgia, Serif;
   text-transform: lowercase;
   overflow-wrap: break-word;
-  font-size: 1.7rem;
+  font-size: 1.2rem;
 
   @media screen and (max-width: 768px) {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
 
   @media screen and (max-width: 375px) {
@@ -70,14 +70,23 @@ const TagsIcon = styled(FontAwesomeIcon)({
 });
 
 const Tag = styled.li({
-  fontFamily: "'Srisakdi', cursive",
+  fontFamily: "'Zilla Slab', serif",
   fontSize: '15px',
   marginRight: '3px',
   textTransform: 'lowercase',
 });
 
+const TagLink = styled(Link)`
+  padding: 0;
+
+  &:hover {
+    background: none;
+    color: #fb175f;
+  }
+`;
+
 const ReadingTime = styled.div({
-  fontFamily: "'Srisakdi', cursive",
+  fontFamily: "'Homemade Apple', cursive",
   textTransform: 'lowercase',
   fontSize: '0.8rem',
   color: 'gray',
@@ -108,7 +117,7 @@ const PostCard = ({ post }) => {
         <TagsIcon icon={['fas', 'tags']} />
         {tags.map(({ id, name, slug: tagSlug }, index) => (
           <Tag key={id}>
-            <Link href={`/tags/${tagSlug}`}>#{name}</Link>
+            <TagLink href={`/tags/${tagSlug}`}>#{name}</TagLink>
             {index < tags.length - 1 && ', '}
           </Tag>
         ))}

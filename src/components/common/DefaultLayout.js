@@ -11,6 +11,7 @@ import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
 import Main from './Main';
 import Header from './Header';
 import Link from './Link';
+import SocialLinks from './SocialLinks';
 
 library.add(faFacebookSquare);
 library.add(faInstagram);
@@ -34,12 +35,12 @@ const HomeContainer = styled.div`
 
   & img {
     width: 100%;
-    height:auto;
+    height: auto;
   }
 `;
 
 const Footer = styled.footer`
-  font-family: 'Zeyada', cursive;
+  font-family: 'Homemade Apple', cursive;
   font-size: 1.2rem;
   text-align: center;
   justify-self: flex-end;
@@ -54,6 +55,21 @@ const Footer = styled.footer`
 
 const Heart = styled.small`
   font-size: 10px;
+`;
+
+const Social = styled.div`
+  text-align: left;
+  padding-bottom: 3rem;
+
+  & strong {
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+`;
+
+const BoldLink = styled(Link)`
+  font-weight: 600;
+  color: #fb175f;
 `;
 
 const DefaultLayout = ({ data, children, showSidebar = true }) => {
@@ -87,6 +103,11 @@ const DefaultLayout = ({ data, children, showSidebar = true }) => {
       </Helmet>
       <Header title={site.title} />
       {showSidebar ? <Main>{children}</Main> : <div>{children}</div>}
+      <Social>
+        <strong>Need more?</strong> We'd love to hear from you on{' '}
+        <BoldLink href="https://instagram.com/cookinginpjs/">instagram</BoldLink>.
+        <SocialLinks justify="flex-start" />
+      </Social>
       <Footer>
         <div>
           Made with <Heart>♡</Heart> by{` `}

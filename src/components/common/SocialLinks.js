@@ -3,18 +3,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styled from '@emotion/styled';
 
 import bgy from '../../assets/bgyl.png';
-import Link from '../common/Link';
+import Link from './Link';
 
 const MAIL_URL = 'mailto:hello@cookinginpjs.com';
 const INSTAGRAM_URL = 'https://www.instagram.com/cookinginpjs/';
 const FACEBOOK_URL = 'https://www.facebook.com/wearecookinginpjs/';
 const TWITTER_URL = 'https://www.twitter.com/cookinginpjs/';
 
-const SocialWrapper = styled.div({
-  display: 'flex',
-  flexFlow: 'row wrap',
-  justifyContent: 'center',
-});
+const SocialWrapper = styled.div`
+  display: flex;
+  flex-flow: row-wrap;
+  justify-content: ${props => props.justify};
+`;
 
 const FaIcon = styled(FontAwesomeIcon)({
   padding: '10px',
@@ -26,8 +26,8 @@ const FaIcon = styled(FontAwesomeIcon)({
   },
 });
 
-const SocialLinks = () => (
-  <SocialWrapper>
+const SocialLinks = ({ justify = 'center' }) => (
+  <SocialWrapper justify={justify}>
     <Link href={INSTAGRAM_URL}>
       <FaIcon icon={['fab', 'instagram']} size="2x" />
     </Link>

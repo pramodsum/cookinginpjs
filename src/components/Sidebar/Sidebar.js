@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import AdSense from 'react-adsense';
 
 import InstaFeed from './InstaFeed';
-import SocialLinks from './SocialLinks';
+import SocialLinks from '../common/SocialLinks';
 import AboutMini from './AboutMini';
 // import Link from '../common/Link';
 

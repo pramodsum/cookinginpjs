@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 
-import { Layout, PostCard, Pagination } from '../components/common';
+import { Layout, PostCard } from '../components/common';
 import { MetaData } from '../components/common/meta';
 import Link from '../components/common/Link';
 import bgy from '../assets/bgyl.png';
@@ -23,33 +23,23 @@ const SectionWrapper = styled.div`
 const PostSection = styled.section`
   display: flex;
   flex-wrap: wrap;
-  padding-bottom: 1rem;
+  padding-bottom: 1.2rem;
 `;
 
 const Title = styled.h2`
   background: url(${bgy}) repeat;
-  padding: 0 10px 10px;
-  font-family: 'Srisakdi', cursive;
+  padding: 10px;
+  font-family: 'Playfair Display', Georgia, Serif;
   font-size: 2rem;
   text-transform: capitalize;
 `;
 
-const StyledLink = styled(Link)`
-  color: black;
-  text-decoration: none;
-
-  &:hover {
-    color: rgba(0, 0, 0, 0.5);
-    background: none;
-  }
-`;
-
 const MorePosts = styled(Link)`
-  font-size: 1.2rem;
-  font-weight: 600;
-  line-height: 21px;
+  font-size: 1.8rem;
+  font-weight: 400;
+  padding-top: 10px;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.1em;
   color: #fb175f;
 `;
 
@@ -69,6 +59,12 @@ const Wrapper = styled.div`
   }
 `;
 
+const Divider = styled.hr`
+  border: none;
+  height: 2px;
+  background: #ffec96;
+`;
+
 const Section = ({ title, link, posts: allPosts, shouldLimit = true, moreTitle }) => {
   const posts = shouldLimit ? allPosts.slice(0, 3) : allPosts;
   return (
@@ -77,7 +73,7 @@ const Section = ({ title, link, posts: allPosts, shouldLimit = true, moreTitle }
         <Link href={link}>{title}</Link>
       </Title>
       <PostSection className="post-feed">
-        {posts.map(({ node }, index) => (
+        {posts.map(({ node }) => (
           // The tag below includes the markup for each post - components/common/PostCard.js
           <Wrapper>
             <PostCard key={node.uuid} post={node} />
@@ -85,6 +81,7 @@ const Section = ({ title, link, posts: allPosts, shouldLimit = true, moreTitle }
         ))}
       </PostSection>
       <MorePosts href={link}>{moreTitle} ⇢</MorePosts>
+      <Divider />
     </SectionWrapper>
   );
 };
@@ -97,7 +94,7 @@ const Section = ({ title, link, posts: allPosts, shouldLimit = true, moreTitle }
  * in /utils/siteConfig.js under `postsPerPage`.
  *
  */
-const Index = ({ data, location, pageContext }) => (
+const Index = ({ data, location }) => (
   <>
     <MetaData location={location} />
     <Layout isHome={true}>
@@ -128,7 +125,9 @@ const Index = ({ data, location, pageContext }) => (
 
 Index.propTypes = {
   data: PropTypes.shape({
-    allGhostPost: PropTypes.object.isRequired,
+    latest: PropTypes.object.isRequired,
+    desserts: PropTypes.object.isRequired,
+    vegetarian: PropTypes.object.isRequired,
   }).isRequired,
   location: PropTypes.shape({
     pathname: PropTypes.string.isRequired,
