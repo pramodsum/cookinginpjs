@@ -33,7 +33,8 @@ const HomeContainer = styled.div`
   padding: 1rem 2rem;
 
   & img {
-    max-width: 100%;
+    width: 100%;
+    height:auto;
   }
 `;
 
