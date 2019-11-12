@@ -75,8 +75,8 @@ const Section = ({ title, link, posts: allPosts, shouldLimit = true, moreTitle }
       <PostSection className="post-feed">
         {posts.map(({ node }) => (
           // The tag below includes the markup for each post - components/common/PostCard.js
-          <Wrapper>
-            <PostCard key={node.uuid} post={node} />
+          <Wrapper key={node.uuid}>
+            <PostCard post={node} />
           </Wrapper>
         ))}
       </PostSection>

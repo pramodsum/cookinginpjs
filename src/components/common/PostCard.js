@@ -94,7 +94,7 @@ const ReadingTime = styled.div({
 });
 
 const PostCard = ({ post }) => {
-  const { id, slug, feature_image, title, published_at_pretty, tags, excerpt } = post;
+  const { id, slug, feature_image, title, published_at_pretty, tags } = post;
   return (
     <Post id={id}>
       <Link href={`/${slug}`}>
@@ -115,8 +115,8 @@ const PostCard = ({ post }) => {
       </Title>
       <Footer>
         <TagsIcon icon={['fas', 'tags']} />
-        {tags.map(({ id, name, slug: tagSlug }, index) => (
-          <Tag key={id}>
+        {tags.map(({ name, slug: tagSlug }, index) => (
+          <Tag key={`${slug}-${tagSlug}`}>
             <TagLink href={`/tags/${tagSlug}`}>#{name}</TagLink>
             {index < tags.length - 1 && ', '}
           </Tag>
