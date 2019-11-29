@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import AdSense from 'react-adsense';
+// import AdSense from 'react-adsense';
 
 import InstaFeed from './InstaFeed';
 import SocialLinks from '../common/SocialLinks';
@@ -78,13 +78,13 @@ class Sidebar extends React.Component {
         <script async src="https://c6.patreon.com/becomePatronButton.bundle.js" /> */}
         <SocialLinks />
         <InstaFeed />
-        <AdSense.Google
+        {/* <AdSense.Google
           client="ca-pub-2905840351559408"
           slot="1776887355"
           style={{ display: 'block' }}
           format="auto"
           responsive="true"
-        />
+        /> */}
       </Wrapper>
     );
   }
