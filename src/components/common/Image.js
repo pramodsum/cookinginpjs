@@ -9,8 +9,8 @@ const Wrapper = styled.div`
     `0px 1px 5px 0px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 
     0px 3px 1px -2px rgba(0, 0, 0, 0.12)`};
   position: relative;
-  height: ${props => (props.size ? `${props.size}px` : '100%')};
-  width: ${props => (props.size ? `${props.size}px` : '100%')};
+  height: ${props => (props.size ? `${props.size}` : '100%')};
+  width: ${props => (props.size ? `${props.size}` : '100%')};
 `;
 
 const Image = styled.div`
@@ -27,7 +27,7 @@ const Image = styled.div`
   transition: opacity 0.4s;
   position: relative
 
-  &:hover {
+  '&:hover' {
     opacity: 0.5;
   }
 `;

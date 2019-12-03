@@ -53,7 +53,7 @@ const InstaPost = ({ images, comments, likes, link }) => {
   return (
     <Post>
       <Link href={link}>
-        <MiniImage src={images.thumbnail.url} wrapperSize={148} />
+        <MiniImage src={images.thumbnail.url} wrapperSize="148px" />
         <MetaData>
           <Likes icon={['fas', 'heart']} />
           {likes.count}

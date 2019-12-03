@@ -69,7 +69,7 @@ const AboutPage = ({ data, location }) => (
     <Layout showSidebar={false}>
       <Main>
         <ImageWrapper>
-          <Img wrapperSize={250} showBorder={false} src={profileImg} />
+          <Img wrapperSize="250px" showBorder={false} src={profileImg} />
         </ImageWrapper>
         <Content>
           <Title>Hello and welcome!</Title>
