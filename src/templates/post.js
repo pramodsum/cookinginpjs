@@ -92,6 +92,12 @@ const Content = styled.section({
       '-webkit-margin-end': 0,
     },
   },
+
+  '& img': {
+    width: '100%',
+    height: '100%',
+  },
+
   '& blockquote': {
     display: 'block',
     borderWidth: '2px 0',

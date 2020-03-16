@@ -1,4 +1,3 @@
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
@@ -9,6 +8,7 @@ import { MetaData } from '../components/common/meta';
 
 /**
  * Single page (/:slug)
+ 
  *
  * This file renders a single page and loads all the content.
  *

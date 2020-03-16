@@ -25,8 +25,10 @@ library.add(faTags);
 
 const HomeContainer = styled.div`
   background: white;
-  font-family: 'Zilla Slab', serif;
+  font-family: 'Karma', serif;
+  font-size: 17px;
   font-weight: 300;
+  line-height: 1.5;
   max-width: 1080px;
   display: flex;
   flex-direction: column;
@@ -93,10 +95,7 @@ const DefaultLayout = ({ data, children, showSidebar = true }) => {
         <link
           rel="stylesheet"
           type="text/css"
-          href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i|Homemade+Apple|Zeyada|Roboto+Slab:100,300,400,700"
-        />
-        <link
-          href="https://fonts.googleapis.com/css?family=Abril+Fatface|Srisakdi|Zilla+Slab:400,700&display=swap"
+          href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i|Homemade+Apple|Zeyada|Roboto+Slab:100,300,400,700|Abril+Fatface|Srisakdi|Karma:300,400,500,600,700&display=swap"
           rel="stylesheet"
         />
         <script src="https://cdn.polyfill.io/v2/polyfill.js?features=default,String.prototype.repeat,Array.prototype.find,Array.prototype.findIndex,Math.trunc" />

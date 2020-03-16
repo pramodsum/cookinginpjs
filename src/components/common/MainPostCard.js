@@ -24,15 +24,8 @@ const Title = styled.h1`
   font-family: 'Playfair Display', Georgia, Serif;
   text-transform: lowercase;
   overflow-wrap: break-word;
-  font-size: 1.5rem;
-
-  @media screen and (max-width: 768px) {
-    font-size: 1.2rem;
-  }
-
-  @media screen and (max-width: 375px) {
-    font-size: 1.5rem;
-  }
+  font-size: 2rem;
+  margin: 0;
 `;
 
 const FeatureWrapper = styled.div`
@@ -43,13 +36,14 @@ const FeatureWrapper = styled.div`
 const Content = styled.div`
   padding: 10px 0;
   word-break: break-word;
+  font-size: 1rem;
 `;
 
 const MoreLink = styled(Link)`
   margin-top: 10px;
   color: #fb175f;
   font-weight: bolder;
-  font-size: 1.2rem;
+  font-size: 1rem;
 `;
 
 const PublishedAt = styled.div`
@@ -79,11 +73,11 @@ const PostCard = ({ post }) => {
         </Link>
       </div>
       <div>
-        <PublishedAt>{published_at_pretty}</PublishedAt>
         <Title>
+          <PublishedAt>{published_at_pretty}</PublishedAt>
           <Link href={`/${slug}/`}>{title}</Link>
         </Title>
-        <Content>{excerpt}</Content>
+        <Content>{excerpt.slice(0, 350)}...</Content>
         <MoreLink href={`/${slug}`}>Come with me if you want to eat ⇢</MoreLink>
       </div>
     </Post>

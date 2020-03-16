@@ -70,7 +70,6 @@ const TagsIcon = styled(FontAwesomeIcon)({
 });
 
 const Tag = styled.li({
-  fontFamily: "'Zilla Slab', serif",
   fontSize: '15px',
   marginRight: '3px',
   textTransform: 'lowercase',
