@@ -77,7 +77,7 @@ const PostCard = ({ post }) => {
           <PublishedAt>{published_at_pretty}</PublishedAt>
           <Link href={`/${slug}/`}>{title}</Link>
         </Title>
-        <Content>{excerpt.slice(0, 350)}...</Content>
+        {excerpt && <Content>{excerpt.slice(0, 350)}...</Content>}
         <MoreLink href={`/${slug}`}>Come with me if you want to eat ⇢</MoreLink>
       </div>
     </Post>
