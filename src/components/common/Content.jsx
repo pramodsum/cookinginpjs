@@ -55,12 +55,27 @@ const Content = styled.section({
     gridGap: '10px',
     gridTemplateColumns: 'repeat(2,1fr)',
 
-    '& title': {
-      fontWeight: 'bolder',
+    '& imgtitle': {
+      fontWeight: 'bold',
     },
 
     '& img': {
       height: 'auto',
+    },
+  },
+
+  '& ingredients': {
+    display: 'flex',
+    gridGap: '10px',
+    gridTemplateColumns: 'repeat(2,1fr)',
+
+    '& header': {
+      fontWeight: 'bold',
+    },
+
+    '& row': {
+      display: 'flex',
+      justifyContent: 'space-between',
     },
   },
 });
