@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import transformImage from '../../utils/transformImage';
 import styled from '@emotion/styled';
 
 import Image from './Image';
 import Link from './Link';
+import transformImage from '../../utils/transformImage';
+import {media} from '../../utils/mediaBreakpoints'
 
 const STOCK_PHOTOS = [
   'https://images.unsplash.com/photo-1558035579-a10d04acf787?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80',
@@ -18,6 +19,18 @@ const STOCK_PHOTOS = [
 const Post = styled.div`
   margin-bottom: 1rem;
   display: flex;
+
+  ${media.smallerThan.XS} {
+    flex-direction: column;
+  }
+`;
+
+const PhotoContainer = styled.div`
+  padding-right: 20px;
+
+${media.smallerThan.XS} {
+  padding-right: 0;
+}
 `;
 
 const Title = styled.h1`
@@ -55,10 +68,10 @@ const PublishedAt = styled.div`
 `;
 
 const PostCard = ({ post }) => {
-  const { id, slug, feature_image, title, published_at_pretty, tags, excerpt } = post;
+  const { id, slug, feature_image, title, published_at_pretty, excerpt } = post;
   return (
     <Post id={id}>
-      <div style={{ paddingRight: '20px' }}>
+      <PhotoContainer>
         <Link href={`/${slug}`}>
           <FeatureWrapper>
             <Image
@@ -71,7 +84,7 @@ const PostCard = ({ post }) => {
             />
           </FeatureWrapper>
         </Link>
-      </div>
+      </PhotoContainer>
       <div>
         <Title>
           <PublishedAt>{published_at_pretty}</PublishedAt>

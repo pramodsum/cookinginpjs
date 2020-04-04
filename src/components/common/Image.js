@@ -1,16 +1,23 @@
 import React from 'react';
 import styled from '@emotion/styled';
 
+import {media} from '../../utils/mediaBreakpoints'
+
 const Wrapper = styled.div`
   background: white;
   border-radius: 4px;
   box-shadow: ${props =>
     props.showBorder &&
-    `0px 1px 5px 0px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 
+    `0px 1px 5px 0px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14),
     0px 3px 1px -2px rgba(0, 0, 0, 0.12)`};
   position: relative;
   height: ${props => (props.size ? `${props.size}` : '100%')};
   width: ${props => (props.size ? `${props.size}` : '100%')};
+
+  ${media.smallerThan.XS} {
+    width: 100%;
+    height: auto;
+  }
 `;
 
 const Image = styled.div`
