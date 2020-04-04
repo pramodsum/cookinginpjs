@@ -1,11 +1,12 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styled from '@emotion/styled';
+import { Box } from '@chakra-ui/core';
 
 import Image from '../common/Image';
 import Link from '../common/Link';
 
-const Post = styled.div({
+const Post = styled(Box)({
   position: 'relative',
 });
 
@@ -19,7 +20,7 @@ const MiniImage = styled(Image)({
   },
 });
 
-const MetaData = styled.div({
+const MetaData = styled(Box)({
   position: 'absolute',
   top: '0',
   height: '100%',

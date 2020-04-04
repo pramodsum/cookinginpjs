@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import { Box } from '@chakra-ui/core';
 // import AdSense from 'react-adsense';
 
 import InstaFeed from './InstaFeed';
@@ -9,7 +10,7 @@ import AboutMini from './AboutMini';
 
 // import bgy from '../../assets/bgyl.png';
 
-const Wrapper = styled.div({
+const Wrapper = styled(Box)({
   flex: '0 0 300px',
   textAlign: 'center',
   padding: '2rem 0 2rem 2rem',

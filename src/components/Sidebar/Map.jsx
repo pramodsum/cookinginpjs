@@ -1,6 +1,7 @@
 import React from 'react';
 import MapGL, { Marker, Popup, NavigationControl } from 'react-map-gl';
 import styled from '@emotion/styled';
+import { Box } from '@chakra-ui/core';
 
 import PostPin from './PostPin';
 import pants from '../../assets/pants-mini.png';
@@ -20,7 +21,7 @@ const image = new Image();
 image.src = 'data:image/svg+xml;charset=utf-8;base64,' + btoa(pants);
 // const images = ['pants', image];
 
-const Container = styled.div({
+const Container = styled(Box)({
   position: 'relative',
   height: '100%',
   flex: '1',
@@ -34,7 +35,7 @@ const PopUpWrapper = styled(Popup)({
   borderRadius: '2px',
 });
 
-// const Mark = styled.div({
+// const Mark = styled(Box)({
 //   backgroundColor: '#e74c3c',
 //   borderRadius: '50%',
 //   width: '20px',

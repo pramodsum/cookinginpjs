@@ -1,6 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styled from '@emotion/styled';
+import { Box } from '@chakra-ui/core';
 
 import bgy from '../../assets/bgyl.png';
 import Link from './Link';
@@ -10,7 +11,7 @@ const INSTAGRAM_URL = 'https://www.instagram.com/cookinginpjs/';
 const FACEBOOK_URL = 'https://www.facebook.com/wearecookinginpjs/';
 const TWITTER_URL = 'https://www.twitter.com/cookinginpjs/';
 
-const SocialWrapper = styled.div`
+const SocialWrapper = styled(Box)`
   display: flex;
   flex-flow: row-wrap;
   justify-content: ${props => props.justify};

@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import { Box } from '@chakra-ui/core';
+
 import { InternalLink } from './Link';
 import Menu from '../Menu/Menu';
 
@@ -22,7 +24,7 @@ const Wrapper = styled.header`
   }
 `;
 
-const Container = styled.div`
+const Container = styled(Box)`
   display: flex;
   flex-direction: column;
   justify-content: center;

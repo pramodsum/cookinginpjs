@@ -4,13 +4,14 @@ import React from 'react';
 import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
+import { Box } from '@chakra-ui/core';
 
 import { Layout, PostCard, MainPostCard } from '../components/common';
 import { MetaData } from '../components/common/meta';
 import Link from '../components/common/Link';
 import bgy from '../assets/bgyl.png';
 
-const SectionWrapper = styled.div`
+const SectionWrapper = styled(Box)`
   padding-bottom: 2rem;
 
   @media screen and (max-width: 768px) {
@@ -45,7 +46,7 @@ const MorePosts = styled(Link)`
   color: #fb175f;
 `;
 
-const Wrapper = styled.div`
+const Wrapper = styled(Box)`
   margin: 0 auto;
   padding: 0 1%;
   max-width: ${props => (props.isUnbounded ? '100%' : '30%')};

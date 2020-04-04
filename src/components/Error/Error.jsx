@@ -1,12 +1,13 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import { Box } from '@chakra-ui/core';
 
 import { InternalLink } from '../common/Link';
 import { BackgroundImage } from '../common/Image';
 import miggy from '../../assets/Miggy.png';
 import bgy from '../../assets/bgyl.png';
 
-const Wrapper = styled.div({
+const Wrapper = styled(Box)({
   justifyContent: 'center',
   padding: '0 2rem 1rem',
   overflowX: 'hidden',

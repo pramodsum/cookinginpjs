@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import styled from '@emotion/styled';
+import { Box } from '@chakra-ui/core';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faFacebookSquare, faInstagram, faTwitterSquare } from '@fortawesome/free-brands-svg-icons';
@@ -23,7 +24,7 @@ library.add(faTimes);
 library.add(faComments);
 library.add(faTags);
 
-const HomeContainer = styled.div`
+const HomeContainer = styled(Box)`
   background: white;
   font-family: 'Karma', serif;
   font-size: 17px;
@@ -59,7 +60,7 @@ const Heart = styled.small`
   font-size: 10px;
 `;
 
-const Social = styled.div`
+const Social = styled(Box)`
   text-align: left;
   padding-bottom: 3rem;
 

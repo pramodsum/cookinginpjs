@@ -1,9 +1,10 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import { Box } from '@chakra-ui/core';
 
-import {media} from '../../utils/mediaBreakpoints'
+import { media } from '../../utils/mediaBreakpoints';
 
-const Wrapper = styled.div`
+const Wrapper = styled(Box)`
   background: white;
   border-radius: 4px;
   box-shadow: ${props =>
@@ -20,7 +21,7 @@ const Wrapper = styled.div`
   }
 `;
 
-const Image = styled.div`
+const Image = styled(Box)`
   display: block;
   background-image: url(${props => props.src});
   background-size: cover;

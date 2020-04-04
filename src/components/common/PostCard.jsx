@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { readingTime as readingTimeHelper } from '@tryghost/helpers';
 import transformImage from '../../utils/transformImage';
 import styled from '@emotion/styled';
+import { Box } from '@chakra-ui/core';
 
 import Image from './Image';
 import Link from './Link';
@@ -17,7 +18,7 @@ const STOCK_PHOTOS = [
   'https://images.unsplash.com/photo-1481349518771-20055b2a7b24?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1618&q=80',
 ];
 
-const Post = styled.div({
+const Post = styled(Box)({
   marginBottom: '1rem',
 });
 
@@ -36,12 +37,12 @@ const Title = styled.h1`
   }
 `;
 
-const FeatureWrapper = styled.div({
+const FeatureWrapper = styled(Box)({
   position: 'relative',
   paddingBottom: '10px',
 });
 
-const PublishedAt = styled.div({
+const PublishedAt = styled(Box)({
   top: '11px',
   left: '-11px',
   display: 'flex',
@@ -84,7 +85,7 @@ const TagLink = styled(Link)`
   }
 `;
 
-const ReadingTime = styled.div({
+const ReadingTime = styled(Box)({
   fontFamily: "'Homemade Apple', cursive",
   textTransform: 'lowercase',
   fontSize: '0.8rem',

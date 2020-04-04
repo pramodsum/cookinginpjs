@@ -3,12 +3,14 @@ import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import Helmet from 'react-helmet';
 import styled from '@emotion/styled';
+import { Box, SimpleGrid } from '@chakra-ui/core';
 
 import Layout from '../components/common/Layout';
 import { MetaData } from '../components/common/meta';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from '../components/common/Link';
 import Image from '../components/common/Image';
+import Content from '../components/common/Content';
 
 // NOTE: bring this back when i figure out pagination :(
 // const styles = {
@@ -61,7 +63,7 @@ import Image from '../components/common/Image';
 //   },
 // };
 
-const PostWrapper = styled.div({
+const PostWrapper = styled(Box)({
   margin: '0 auto 1rem',
   width: '90%',
 
@@ -77,55 +79,7 @@ const Title = styled.h1({
   fontSize: '2rem',
 });
 
-const Content = styled.section({
-  overflowWrap: 'break-word',
-  fontSize: '1.2rem',
-
-  '& figure': {
-    display: 'flex',
-    justifyContent: 'center',
-
-    '@media screen and (max-width: 960px)': {
-      marginStart: 0,
-      '-webkit-margin-start': 0,
-      marginEnd: 0,
-      '-webkit-margin-end': 0,
-    },
-  },
-
-  '& img': {
-    width: '100%',
-    height: '100%',
-  },
-
-  '& blockquote': {
-    display: 'block',
-    borderWidth: '2px 0',
-    borderStyle: 'solid',
-    borderColor: 'rgb(255,236,150, .75)',
-    padding: '1.5em 0',
-    margin: '2em 0',
-    position: 'relative',
-    textAlign: 'center',
-  },
-  '& blockquote:before': {
-    content: 'open-quote',
-    position: 'absolute',
-    top: '0em',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: '3rem',
-    height: '2rem',
-    font: '6em/1.08em "PT Sans", sans-serif',
-    color: '#666',
-    textAlign: 'center',
-  },
-  '& blockquote.instagram-media:before': {
-    content: 'none',
-  },
-});
-
-const FeatureWrapper = styled.div({
+const FeatureWrapper = styled(Box)({
   position: 'relative',
   paddingBottom: '10px',
 });

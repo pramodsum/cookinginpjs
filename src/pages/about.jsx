@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import { Box } from '@chakra-ui/core';
 // import PropTypes from "prop-types"
 
 import profileImg from '../assets/about.jpg';
@@ -12,7 +13,7 @@ import Link from '../components/common/Link';
 const SUMU_EMAIL = `mailto:sumu@cookinginpjs.com`;
 const ANU_EMAIL = `mailto:anu@cookinginpjs.com`;
 
-const Main = styled.div({
+const Main = styled(Box)({
   marginBottom: '1rem',
   overflow: 'scroll',
 
@@ -28,11 +29,11 @@ const Title = styled.h3({
   margin: 0,
 });
 
-const Content = styled.div({
+const Content = styled(Box)({
   marginBottom: '2.5rem',
 });
 
-const ImageWrapper = styled.div({
+const ImageWrapper = styled(Box)({
   marginBottom: '2.5rem',
   width: '100%',
   margin: 'auto',
@@ -42,7 +43,7 @@ const Img = styled(Image)`
   border-radius: 50%;
 `;
 
-const Salutation = styled.div({
+const Salutation = styled(Box)({
   fontSize: '2rem',
   fontFamily: "'Zedaya', cursive",
   lineHeight: '1rem',
