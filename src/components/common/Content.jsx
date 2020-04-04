@@ -76,6 +76,11 @@ const Content = styled.section({
     '& row': {
       display: 'flex',
       justifyContent: 'space-between',
+
+      '&:first-child': {
+        borderBottom: '1px dashed gray',
+        marginBottom: '10px',
+      },
     },
   },
 });
