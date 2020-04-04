@@ -65,9 +65,9 @@ const Content = styled.section({
   },
 
   '& ingredients': {
-    display: 'flex',
-    gridGap: '10px',
-    gridTemplateColumns: 'repeat(2,1fr)',
+    display: 'grid',
+    gridColumnGap: '5px',
+    gridTemplateColumns: 'repeat(1,1fr)',
 
     '& header': {
       fontWeight: 'bold',
