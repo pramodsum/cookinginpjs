@@ -11,6 +11,13 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const result = await graphql(`
     {
+      allShopifyProduct {
+        edges {
+          node {
+            handle
+          }
+        }
+      }
       allGhostPost(sort: { order: ASC, fields: published_at }) {
         edges {
           node {
@@ -65,6 +72,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const authors = result.data.allGhostAuthor.edges;
   const pages = result.data.allGhostPage.edges;
   const posts = result.data.allGhostPost.edges;
+  const products = result.data.allShopifyProduct.edges;
 
   // Load templates
   const indexTemplate = path.resolve(`./src/templates/index.jsx`);
@@ -72,6 +80,23 @@ exports.createPages = async ({ graphql, actions }) => {
   const authorTemplate = path.resolve(`./src/templates/author.jsx`);
   const pageTemplate = path.resolve(`./src/templates/page.jsx`);
   const postTemplate = path.resolve(`./src/templates/post.jsx`);
+  const productTemplate = path.resolve('./src/templates/product.jsx');
+
+  products.forEach(({ node }) => {
+    // This part here defines, that our pages will use
+    // a `/:slug/` permalink.
+    node.url = `/${node.slug}/`;
+
+    createPage({
+      path: `/cake-shop/${node.handle}/`,
+      component: productTemplate,
+      context: {
+        // Data passed to context is available
+        // in page queries as GraphQL variables.
+        handle: node.handle,
+      },
+    });
+  });
 
   // Create tag pages
   tags.forEach(({ node }) => {

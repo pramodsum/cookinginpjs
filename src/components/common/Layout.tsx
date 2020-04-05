@@ -1,6 +1,7 @@
 import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 import DefaultLayout, { DefaultLayoutProps } from './DefaultLayout';
+import { ThemeProvider } from '@chakra-ui/core';
 
 /**
  * Main layout component
@@ -30,7 +31,11 @@ const LayoutSettingsQuery: React.FC<Partial<DefaultLayoutProps>> = props => (
         }
       }
     `}
-    render={data => <DefaultLayout data={data} {...props} />}
+    render={data => (
+      <ThemeProvider>
+        <DefaultLayout data={data} {...props} />
+      </ThemeProvider>
+    )}
   />
 );
 

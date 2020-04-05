@@ -237,3 +237,41 @@ export const ghostSettingsFields = graphql`
     }
   }
 `;
+
+export const shopifyProductFields = graphql`
+  fragment ShopifyProductFields on ShopifyProduct {
+    id
+    title
+    handle
+    productType
+    description
+    descriptionHtml
+    shopifyId
+    options {
+      id
+      name
+      values
+    }
+    variants {
+      id
+      title
+      price
+      availableForSale
+      shopifyId
+      selectedOptions {
+        name
+        value
+      }
+    }
+    priceRange {
+      minVariantPrice {
+        amount
+        currencyCode
+      }
+      maxVariantPrice {
+        amount
+        currencyCode
+      }
+    }
+  }
+`;

@@ -190,5 +190,15 @@ module.exports = {
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-emotion`,
     `gatsby-plugin-remove-serviceworker`,
+    {
+      resolve: `gatsby-source-shopify`,
+      options: {
+        // The domain name of your Shopify shop.
+        shopName: `cooking-in-pajamas`,
+        // The storefront access token
+        accessToken: `4ebb75a6a0df933e82687c948a51f208`,
+        verbose: true,
+      },
+    },
   ],
 };
