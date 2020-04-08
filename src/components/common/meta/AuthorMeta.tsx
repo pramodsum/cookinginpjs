@@ -72,21 +72,35 @@ const AuthorMeta: React.FC<AuthorMetaProps> = ({ data, settings, canonical }) =>
   );
 };
 
-const AuthorMetaQuery = (props: AuthorMetaProps) => (
-  <StaticQuery
-    query={graphql`
-      query GhostSettingsAuthorMeta {
-        allGhostSettings {
-          edges {
-            node {
-              ...GhostSettingsFields
-            }
+export const authorMetaQuery = graphql`
+  query GhostSettingsAuthorMeta {
+    allGhostSettings {
+      edges {
+        node {
+          title
+          description
+          logo
+          icon
+          cover_image
+          facebook
+          twitter
+          lang
+          timezone
+          codeinjection_head
+          codeinjection_foot
+          codeinjection_styles
+          navigation {
+              label
+              url
           }
         }
       }
-    `}
-    render={data => <AuthorMeta settings={data} {...props} />}
-  />
+    }
+  }
+`;
+
+const AuthorMetaQuery = (props: AuthorMetaProps) => (
+  <StaticQuery query={authorMetaQuery} render={data => <AuthorMeta settings={data} {...props} />} />
 );
 
 export default AuthorMetaQuery;

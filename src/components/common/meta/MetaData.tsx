@@ -14,8 +14,9 @@ export type MetaDataProps = {
     ghostTag?: Tag;
     ghostAuthor?: Author;
     ghostPage?: Page;
+    shopifyProduct?: any;
   };
-  settings: Settings;
+  settings?: Settings;
   location: {
     pathname: string;
   };
@@ -68,22 +69,21 @@ const MetaData: React.SFC<MetaDataProps> = ({
   }
 };
 
-const MetaDataQuery = (props: MetaDataProps) => (
-  <StaticQuery
-    query={graphql`
-      query GhostSettingsMetaData {
-        allGhostSettings {
-          edges {
-            node {
-              title
-              description
-            }
-          }
+export const metadataQuery = graphql`
+  query GhostSettingsMetaData {
+    allGhostSettings {
+      edges {
+        node {
+          title
+          description
         }
       }
-    `}
-    render={data => <MetaData settings={data} {...props} />}
-  />
+    }
+  }
+`;
+
+const MetaDataQuery = (props: MetaDataProps) => (
+  <StaticQuery query={metadataQuery} render={data => <MetaData settings={data} {...props} />} />
 );
 
 export default MetaDataQuery;

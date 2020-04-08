@@ -11,26 +11,44 @@ import { ThemeProvider } from '@chakra-ui/core';
  * styles, and meta data for each page.
  *
  */
-const LayoutSettingsQuery: React.FC<Partial<DefaultLayoutProps>> = props => (
-  <StaticQuery
-    query={graphql`
-      query GhostSettings {
-        allGhostSettings {
-          edges {
-            node {
-              ...GhostSettingsFields
-            }
-          }
-        }
-        file(relativePath: { eq: "ghost-icon.png" }) {
-          childImageSharp {
-            fixed(width: 30, height: 30) {
-              ...GatsbyImageSharpFixed
-            }
+
+export const settingsQuery = graphql`
+  query GhostSettings {
+    allGhostSettings {
+      edges {
+        node {
+          title
+          description
+          logo
+          icon
+          cover_image
+          facebook
+          twitter
+          lang
+          timezone
+          codeinjection_head
+          codeinjection_foot
+          codeinjection_styles
+          navigation {
+              label
+              url
           }
         }
       }
-    `}
+    }
+    file(relativePath: { eq: "ghost-icon.png" }) {
+      childImageSharp {
+        fixed(width: 30, height: 30) {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
+  }
+`;
+
+const LayoutSettingsQuery: React.FC<Partial<DefaultLayoutProps>> = props => (
+  <StaticQuery
+    query={settingsQuery}
     render={data => (
       <ThemeProvider>
         <DefaultLayout data={data} {...props} />

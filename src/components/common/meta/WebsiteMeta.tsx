@@ -99,19 +99,36 @@ const WebsiteMeta: React.SFC<WebsiteMetaProps> = ({
   );
 };
 
-const WebsiteMetaQuery = (props: WebsiteMetaProps) => (
-  <StaticQuery
-    query={graphql`
-      query GhostSettingsWebsiteMeta {
-        allGhostSettings {
-          edges {
-            node {
-              ...GhostSettingsFields
-            }
+export const websiteMetaQuery = graphql`
+  query GhostSettingsWebsiteMeta {
+    allGhostSettings {
+      edges {
+        node {
+          title
+          description
+          logo
+          icon
+          cover_image
+          facebook
+          twitter
+          lang
+          timezone
+          codeinjection_head
+          codeinjection_foot
+          codeinjection_styles
+          navigation {
+              label
+              url
           }
         }
       }
-    `}
+    }
+  }
+`;
+
+const WebsiteMetaQuery = (props: WebsiteMetaProps) => (
+  <StaticQuery
+    query={websiteMetaQuery}
     render={data => <WebsiteMeta settings={data} {...props} />}
   />
 );

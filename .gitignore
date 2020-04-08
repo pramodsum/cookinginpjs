@@ -73,3 +73,7 @@ typings/
 public
 yarn-error.log
 .netlify/
+
+# Apollo
+schema.json
+_types

@@ -80,7 +80,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const authorTemplate = path.resolve(`./src/templates/author.jsx`);
   const pageTemplate = path.resolve(`./src/templates/page.jsx`);
   const postTemplate = path.resolve(`./src/templates/post.jsx`);
-  const productTemplate = path.resolve('./src/templates/product.jsx');
+  const productTemplate = path.resolve('./src/templates/product.tsx');
 
   products.forEach(({ node }) => {
     // This part here defines, that our pages will use
@@ -88,7 +88,7 @@ exports.createPages = async ({ graphql, actions }) => {
     node.url = `/${node.slug}/`;
 
     createPage({
-      path: `/cake-shop/${node.handle}/`,
+      path: `/shop/${node.handle}/`,
       component: productTemplate,
       context: {
         // Data passed to context is available

@@ -1,98 +1,160 @@
+// @ts-nocheck
 import React from 'react';
 import styled from '@emotion/styled';
+import uniqBy from 'lodash/uniqBy';
 
-import { Box, SimpleGrid, RadioButtonGroup, Radio } from '@chakra-ui/core';
-import { FormControl, Select, MenuItem } from '@material-ui/core';
+import { Box, RadioButtonGroup, Radio, Heading, HeadingProps } from '@chakra-ui/core';
+import {
+  ProductQuery_shopifyProduct,
+  ProductQuery_shopifyProduct_options,
+  ProductQuery_shopifyProduct_variants,
+} from '../../templates/_types/ProductQuery';
+import { CakeVariant } from '../common/CakeImg';
 
-const OptionTitle = styled.h3({
+const H3: React.FC<HeadingProps> = props => <Heading as="h3" size="md" {...props} />;
+
+const OptionTitle = styled(H3)({
   fontFamily: "'Homemade Apple', cursive",
   textTransform: 'lowercase',
   overflowWrap: 'break-word',
-  fontSize: '1.25rem',
 });
 
-interface IOrderFormProps {
-  options: any[];
-  variants: any[]
-}
+const RadioButtonGrid = styled(RadioButtonGroup)`
+  display: grid;
+  grid-column-gap: 5px;
+  grid-template-columns: repeat(3, 1fr);
+`;
 
-const OrderForm: React.FC<IOrderFormProps> = ({ options, variants }) => {
-  const sizes = options[0];
-  const [size, onSizeChange] = React.useState<string>(sizes[0]);
-  const layers = options[1];
-  const [layer, onLayerChange] = React.useState<string>(layers[0]);
-  const frostingFlavors = options[2];
-  const [frosting, onFrostingChange] = React.useState<string>(frostingFlavors[0]);
-  // debugger;
+const RadioButton = styled(Radio)`
+  margin-bottom: 5px;
 
-  const findMatchingVariant = () => {
-    const matching = variants.find(variant => {
-      return (
-        variant.selectedOptions.some(selected => selected.value === size) &&
-        variant.selectedOptions.some(selected => selected.value === layer) &&
-        variant.selectedOptions.some(selected => selected.value === frosting)
-      );
-    });
-    console.log(matching);
-  };
+  & div {
+    color: unset;
+  }
+`;
+
+const filterVariants = (
+  parentArr: ProductQuery_shopifyProduct_variants[],
+  name: string,
+  value: string,
+) =>
+  parentArr.filter((variant: ProductQuery_shopifyProduct_variants) =>
+    variant.selectedOptions.some(option => option.name === name && option.value === value),
+  );
+
+const parseValuesFromOption = (
+  parentArr: ProductQuery_shopifyProduct_variants_selectedOptions[],
+  name: string,
+) =>
+  uniqBy(
+    parentArr.map((variant: ProductQuery_shopifyProduct_variants) =>
+      variant.selectedOptions.find(option => option.name === name),
+    ),
+    'value',
+  );
+
+const OrderForm: React.FC<ProductQuery_shopifyProduct & {
+  findMatchingVariant: (size: string, layer: string, frosting: string) => void;
+  variants: ProductQuery_shopifyProduct_variants[];
+  selectedVariant: ProductQuery_shopifyProduct_variants;
+  setCakeVariant: React.Dispatch<CakeVariant>;
+}> = ({ options, selectedVariant, findMatchingVariant, priceRange, variants, setCakeVariant }) => {
+  const sizes: string[] = options[0] || [];
+  const [size, onSizeChange] = React.useState<string>();
+
+  const [frostingOptions, setFrostingOptions] = React.useState<
+    ProductQuery_shopifyProduct_variants[]
+  >([]);
+  const frostingFlavors: ProductQuery_shopifyProduct_options = options[2];
+  const [frosting, onFrostingChange] = React.useState<string>();
+
+  const [layerOptions, setLayerOptions] = React.useState<ProductQuery_shopifyProduct_variants[]>(
+    [],
+  );
+  const layers: ProductQuery_shopifyProduct_options = options[1];
+  const [layer, onLayerChange] = React.useState<string>();
 
   React.useEffect(() => {
-    // size && console.log(sizes[size]);
-    layer && console.log(layer);
-    // findMatchingVariant();
+    setCakeVariant({ size, layer: layer || 'Single', frosting });
+    size && layer && frosting && findMatchingVariant(size, layer, frosting);
   }, [size, layer, frosting]);
+
+  React.useEffect(() => {
+    if (size && frosting) return;
+    const sizeFilteredVariants = filterVariants(variants, 'Size', size);
+    const frostingVariants = parseValuesFromOption(sizeFilteredVariants, 'Frosting Flavor');
+    setFrostingOptions(frostingVariants);
+  }, [size]);
+
+  React.useEffect(() => {
+    if (size && layer && frosting) return;
+    const sizeFilteredVariants = filterVariants(variants, 'Size', size);
+    const frostingFilteredVariants = filterVariants(
+      sizeFilteredVariants,
+      'Frosting Flavor',
+      frosting,
+    );
+    const layerVariants = parseValuesFromOption(frostingFilteredVariants, 'Layers');
+    setLayerOptions(layerVariants);
+  }, [size, frosting]);
+
   return (
     <Box>
-      {/* <Box my={3}>
-        <FormControl>
-          <OptionTitle>{sizes.name}</OptionTitle>
-          <Select
-            onChange={e => {
-              debugger;
-              console.log(e);
-              onSizeChange(e.target.value);
-            }}
-            value={sizes.values[size]}
-            variant="outlined">
-            <SimpleGrid columns={3} spacing="5px">
-              {sizes.values.map((value, index) => (
-                <MenuItem key={value} value={index}>
-                  {value}
-                </MenuItem>
-              ))}
-            </SimpleGrid>
-          </Select>
-        </FormControl>
-      </Box> */}
+      <OptionTitle
+        display="flex"
+        justifyContent="space-between"
+        alignItems="center"
+        borderBottom="1px dashed gray"
+        mt={0}>
+        <Box>Price: </Box>
+        {selectedVariant ? (
+          <OptionTitle fontWeight="300" m={0}>
+            ${selectedVariant.price}
+          </OptionTitle>
+        ) : (
+          <OptionTitle fontWeight="300" m={0}>
+            ${priceRange.minVariantPrice.amount} - ${priceRange.maxVariantPrice.amount}
+          </OptionTitle>
+        )}
+      </OptionTitle>
       <Box my={3}>
-        <OptionTitle>{layers.name}</OptionTitle>
-        <RadioButtonGroup
-          onChange={(value: string)=> {
-            debugger;
-            onLayerChange(value);
-          }}
-          defaultValue={layers.values[0]}
-          value={layer}>
-          {/* <SimpleGrid columns={3} spacing="5px"> */}
-          {layers.values.map((value: string) => (
-            <Radio value={value}>{value}</Radio>
+        <OptionTitle>{sizes.name}</OptionTitle>
+        <RadioButtonGrid onChange={(value: string) => onSizeChange(value)} value={size}>
+          {sizes.values.map((value: string, index: number) => (
+            <RadioButton key={index} value={value}>
+              {value}
+            </RadioButton>
           ))}
-          {/* </SimpleGrid> */}
-        </RadioButtonGroup>
+        </RadioButtonGrid>
       </Box>
-      {/* <Box my={3}>
-      <OptionTitle>{frostingFlavors.name}</OptionTitle>
-      <RadioButtonGroup
-        onChange={e => e?.target && onFrostingChange(e.target.value)}
-        defaultValue={frostingFlavors[0]}
-        value={frosting}>
-        <SimpleGrid columns={3} spacing="5px">
-          {frostingFlavors.values.map(value => (
-            <Radio value={value}>{value}</Radio>
-          ))}
-        </SimpleGrid>
-      </RadioButtonGroup>
-    </Box> */}
+      {size && frostingOptions.length > 0 && (
+        <Box my={3}>
+          <OptionTitle>{frostingFlavors.name}</OptionTitle>
+          <RadioButtonGrid onChange={(value: string) => onFrostingChange(value)} value={frosting}>
+            {frostingOptions.map(
+              ({ value }: ProductQuery_shopifyProduct_variants_selectedOptions, index: number) => (
+                <RadioButton key={index} value={value}>
+                  {value}
+                </RadioButton>
+              ),
+            )}
+          </RadioButtonGrid>
+        </Box>
+      )}
+      {size && frosting && layerOptions.length > 0 && (
+        <Box my={3}>
+          <OptionTitle>{layers.name}</OptionTitle>
+          <RadioButtonGrid onChange={(value: string) => onLayerChange(value)} value={layer}>
+            {layerOptions.map(
+              ({ value }: ProductQuery_shopifyProduct_variants_selectedOptions, index: number) => (
+                <RadioButton key={index} value={value}>
+                  {value}
+                </RadioButton>
+              ),
+            )}
+          </RadioButtonGrid>
+        </Box>
+      )}
     </Box>
   );
 };

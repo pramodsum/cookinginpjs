@@ -190,6 +190,8 @@ module.exports = {
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-emotion`,
     `gatsby-plugin-remove-serviceworker`,
+    `gatsby-plugin-generate-types`,
+    // `gatsby-plugin-codegen`,
     {
       resolve: `gatsby-source-shopify`,
       options: {

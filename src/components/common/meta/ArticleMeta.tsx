@@ -137,19 +137,36 @@ const ArticleMetaGhost: React.SFC<ArticleMetaGhostProps> = ({ data, settings, ca
   );
 };
 
-const ArticleMetaQuery = (props: ArticleMetaGhostProps) => (
-  <StaticQuery
-    query={graphql`
-      query GhostSettingsArticleMeta {
-        allGhostSettings {
-          edges {
-            node {
-              ...GhostSettingsFields
-            }
+export const articleMetaQuery = graphql`
+  query GhostSettingsArticleMeta {
+    allGhostSettings {
+      edges {
+        node {
+          title
+          description
+          logo
+          icon
+          cover_image
+          facebook
+          twitter
+          lang
+          timezone
+          codeinjection_head
+          codeinjection_foot
+          codeinjection_styles
+          navigation {
+              label
+              url
           }
         }
       }
-    `}
+    }
+  }
+`;
+
+const ArticleMetaQuery = (props: ArticleMetaGhostProps) => (
+  <StaticQuery
+    query={articleMetaQuery}
     render={data => <ArticleMetaGhost settings={data} {...props} />}
   />
 );
