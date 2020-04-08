@@ -182,6 +182,8 @@ module.exports = {
         addUncaughtPages: true,
       },
     },
+    'gatsby-plugin-tslint',
+    'gatsby-plugin-typescript',
     `gatsby-plugin-catch-links`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-force-trailing-slashes`,
