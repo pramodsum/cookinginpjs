@@ -2,3 +2,5 @@ public/**
 plugins/**/*.js
 !plugins/*/src/*.js
 src/utils/siteConfig.js
+**/*.png
+**/*.json
