@@ -30,7 +30,7 @@ const Title = styled.h1({
 });
 
 type ProductProps = {
-  pageResources: {
+  pageResources?: {
     json: {
       data: {
         shopifyProduct: ProductQuery_shopifyProduct;
@@ -44,12 +44,12 @@ type ProductProps = {
 };
 
 const Product: React.SFC<ProductProps> = ({
-  pageResources: {
-    json: { data },
-  },
+  pageResources,
   location,
 }) => {
-  const { shopifyProduct } = data;
+  if (!pageResources?.json?.data) return null;
+
+  const { shopifyProduct } = pageResources.json.data;
   const { title, descriptionHtml, variants } = shopifyProduct;
   const [selectedVariant, setSelectedVariant] = React.useState<
     ProductQuery_shopifyProduct_variants
@@ -68,21 +68,22 @@ const Product: React.SFC<ProductProps> = ({
 
   return (
     <>
-      <MetaData data={data} location={location} type="website" />
+      <MetaData data={pageResources.json.data} location={location} type="website" />
       <Layout>
         <ProductWrapper>
           <Title>{title}</Title>
           <Box display="flex">
-            
             <CakeImgBackground>
               {cakeVariant && <CakeImg cakeFlavor={title} variant={cakeVariant} />}
             </CakeImgBackground>
-            {shopifyProduct && <OrderForm
-              findMatchingVariant={findMatchingVariant}
-              selectedVariant={selectedVariant}
-              setCakeVariant={setCakeVariant}
-              {...shopifyProduct}
-            />}
+            {shopifyProduct && (
+              <OrderForm
+                findMatchingVariant={findMatchingVariant}
+                selectedVariant={selectedVariant}
+                setCakeVariant={setCakeVariant}
+                {...shopifyProduct}
+              />
+            )}
           </Box>
           {/* <p dangerouslySetInnerHTML={{ __html: descriptionHtml }} /> */}
           {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}

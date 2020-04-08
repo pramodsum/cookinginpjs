@@ -30,8 +30,8 @@ export const settingsQuery = graphql`
           codeinjection_foot
           codeinjection_styles
           navigation {
-              label
-              url
+            label
+            url
           }
         }
       }

@@ -155,8 +155,8 @@ export const articleMetaQuery = graphql`
           codeinjection_foot
           codeinjection_styles
           navigation {
-              label
-              url
+            label
+            url
           }
         }
       }
