@@ -14,12 +14,12 @@ export type AuthorMetaProps = {
   canonical: string;
 };
 
-const AuthorMeta: React.SFC<AuthorMetaProps> = ({ data, settings, canonical }) => {
-  settings = settings?.allGhostSettings.edges[0].node;
+const AuthorMeta: React.FC<AuthorMetaProps> = ({ data, settings, canonical }) => {
+  const authorSettings = settings.allGhostSettings.edges[0].node;
   const author = getAuthorProperties(data);
-  const shareImage = author.image || _.get(settings, `cover_image`, null);
-  const title = `${data.name} - ${settings?.title}`;
-  const description = data.bio || config.siteDescriptionMeta || setting?s.description;
+  const shareImage = author.image || _.get(authorSettings, `cover_image`, null);
+  const title = `${data.name} - ${authorSettings.title}`;
+  const description = data.bio || config.siteDescriptionMeta || authorSettings.description;
 
   return (
     <>
@@ -27,7 +27,7 @@ const AuthorMeta: React.SFC<AuthorMetaProps> = ({ data, settings, canonical }) =
         <title>{title}</title>
         <meta name="description" content={description} />
         <link rel="canonical" href={canonical} />
-        <meta property="og:site_name" content={settings?.title} />
+        <meta property="og:site_name" content={authorSettings.title} />
         <meta property="og:type" content="profile" />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
@@ -35,13 +35,13 @@ const AuthorMeta: React.SFC<AuthorMetaProps> = ({ data, settings, canonical }) =
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
         <meta name="twitter:url" content={canonical} />
-        {settings?.twitter && (
+        {authorSettings.twitter && (
           <meta
             name="twitter:site"
-            content={`https://twitter.com/${settings?.twitter.replace(/^@/, ``)}/`}
+            content={`https://twitter.com/${authorSettings.twitter.replace(/^@/, ``)}/`}
           />
         )}
-        {settings?.twitter && <meta name="twitter:creator" content={settings?.twitter} />}
+        {authorSettings.twitter && <meta name="twitter:creator" content={authorSettings.twitter} />}
         <script type="application/ld+json">{`
                     {
                         "@context": "https://schema.org/",

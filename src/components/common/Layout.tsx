@@ -1,6 +1,6 @@
-import React from "react";
-import { StaticQuery, graphql } from "gatsby";
-import DefaultLayout, { DefaultLayoutProps } from "./DefaultLayout";
+import React from 'react';
+import { StaticQuery, graphql } from 'gatsby';
+import DefaultLayout, { DefaultLayoutProps } from './DefaultLayout';
 
 /**
  * Main layout component

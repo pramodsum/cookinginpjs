@@ -20,7 +20,9 @@ export const getAuthorProperties = (primaryAuthor: Author) => {
     name: primaryAuthor.name,
     sameAsArray: `["${_.join(authorProfiles, `", "`)}"]`,
     image: primaryAuthor.profile_image,
-    facebookUrl: primaryAuthor.facebook && `https://www.facebook.com/${primaryAuthor.facebook.replace(/^\//, ``)}/`
+    facebookUrl:
+      primaryAuthor.facebook &&
+      `https://www.facebook.com/${primaryAuthor.facebook.replace(/^\//, ``)}/`,
   };
 };
 

@@ -1,26 +1,16 @@
-import React from "react";
-import { Helmet } from "react-helmet";
-import styled from "@emotion/styled";
-import { Box } from "@chakra-ui/core";
-import { library } from "@fortawesome/fontawesome-svg-core";
-import {
-  faFacebookSquare,
-  faInstagram,
-  faTwitterSquare
-} from "@fortawesome/free-brands-svg-icons";
-import {
-  faHeart,
-  faComments,
-  faBars,
-  faTimes,
-  faTags
-} from "@fortawesome/free-solid-svg-icons";
-import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
-import Main from "./Main";
-import Header from "./Header";
-import Link from "./Link";
-import SocialLinks from "./SocialLinks";
-import {  AllGhostSettings } from "../../utils/types";
+import React from 'react';
+import { Helmet } from 'react-helmet';
+import styled from '@emotion/styled';
+import { Box } from '@chakra-ui/core';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faFacebookSquare, faInstagram, faTwitterSquare } from '@fortawesome/free-brands-svg-icons';
+import { faHeart, faComments, faBars, faTimes, faTags } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
+import Main from './Main';
+import Header from './Header';
+import Link from './Link';
+import SocialLinks from './SocialLinks';
+import { AllGhostSettings } from '../../utils/types';
 
 library.add(faFacebookSquare);
 library.add(faInstagram);
@@ -34,7 +24,7 @@ library.add(faTags);
 
 const HomeContainer = styled(Box)`
   background: white;
-  font-family: "Karma", serif;
+  font-family: 'Karma', serif;
   font-size: 17px;
   font-weight: 300;
   line-height: 1.5;
@@ -51,7 +41,7 @@ const HomeContainer = styled(Box)`
 `;
 
 const Footer = styled.footer`
-  font-family: "Homemade Apple", cursive;
+  font-family: 'Homemade Apple', cursive;
   font-size: 1.2rem;
   text-align: center;
   justify-self: flex-end;
@@ -78,39 +68,31 @@ const Social = styled(Box)`
   }
 `;
 
-
 const BoldLink = styled(Link)`
   font-weight: 600;
   color: #fb175f;
 `;
 
 export type DefaultLayoutProps = {
-  bodyClass?: string,
-  isHome?: boolean,
+  bodyClass?: string;
+  isHome?: boolean;
   showSidebar?: boolean;
   data: {
     allGhostSettings: AllGhostSettings;
-  }
+  };
 };
 
-const DefaultLayout: React.SFC<DefaultLayoutProps> = ({
-  data,
-  children,
-  showSidebar = true
-}) => {
+const DefaultLayout: React.SFC<DefaultLayoutProps> = ({ data, children, showSidebar = true }) => {
   const site = data.allGhostSettings.edges[0].node;
   return (
     <HomeContainer>
       <Helmet title={site.title} defer={false}>
         <html lang={site.lang} />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
-        <script
-          async
-          src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
-        />
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" />
         <script
           dangerouslySetInnerHTML={{
-            __html: `(window.adsbygoogle = window.adsbygoogle || []).push({});`
+            __html: `(window.adsbygoogle = window.adsbygoogle || []).push({});`,
           }}
         />
         <link
@@ -128,10 +110,8 @@ const DefaultLayout: React.SFC<DefaultLayoutProps> = ({
       <Header title={site.title} />
       {showSidebar ? <Main>{children}</Main> : <div>{children}</div>}
       <Social>
-        <strong>Need more?</strong> We'd love to hear from you on{" "}
-        <BoldLink href="https://instagram.com/cookinginpjs/">
-          instagram
-        </BoldLink>.
+        <strong>Need more?</strong> We'd love to hear from you on{' '}
+        <BoldLink href="https://instagram.com/cookinginpjs/">instagram</BoldLink>.
         <SocialLinks justify="flex-start" />
       </Social>
       <Footer>

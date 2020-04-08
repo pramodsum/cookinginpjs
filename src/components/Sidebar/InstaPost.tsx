@@ -1,49 +1,49 @@
-import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import styled from "@emotion/styled";
-import { Box } from "@chakra-ui/core";
-import Image from "../common/Image";
-import Link from "../common/Link";
+import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import styled from '@emotion/styled';
+import { Box } from '@chakra-ui/core';
+import Image from '../common/Image';
+import Link from '../common/Link';
 
 const Post = styled(Box)({
-  position: "relative"
+  position: 'relative',
 });
 
 const MiniImage = styled(Image)({
-  transition: "opacity .4s",
-  borderRadius: "4px",
-  margin: "4px 0",
-  "&:hover": {
-    opacity: 0.75
-  }
+  transition: 'opacity .4s',
+  borderRadius: '4px',
+  margin: '4px 0',
+  '&:hover': {
+    opacity: 0.75,
+  },
 });
 
 const MetaData = styled(Box)({
-  position: "absolute",
-  top: "0",
-  height: "100%",
-  width: "100%",
-  opacity: "0",
-  transition: "opacity 100ms ease",
-  display: "flex",
-  fontSize: "1.25rem",
-  justifyContent: "center",
-  alignItems: "center",
-  fontWeight: "bolder",
-  "&:hover": {
-    opacity: "1",
-    background: "rgba(255,255,255, 0.8)"
-  }
+  position: 'absolute',
+  top: '0',
+  height: '100%',
+  width: '100%',
+  opacity: '0',
+  transition: 'opacity 100ms ease',
+  display: 'flex',
+  fontSize: '1.25rem',
+  justifyContent: 'center',
+  alignItems: 'center',
+  fontWeight: 'bolder',
+  '&:hover': {
+    opacity: '1',
+    background: 'rgba(255,255,255, 0.8)',
+  },
 });
 
 const Likes = styled(FontAwesomeIcon)({
-  color: "LightCoral",
-  margin: "0 5px"
+  color: 'LightCoral',
+  margin: '0 5px',
 });
 
 const Comments = styled(FontAwesomeIcon)({
-  color: "SlateBlue",
-  margin: "0 5px"
+  color: 'SlateBlue',
+  margin: '0 5px',
 });
 
 export type InstaPostProps = {
@@ -51,16 +51,16 @@ export type InstaPostProps = {
   link: string;
   images: {
     thumbnail: {
-      url: string
-    }
-  }
+      url: string;
+    };
+  };
   comments: {
     count: number;
-  }
+  };
   likes: {
     count: number;
-  }
-}
+  };
+};
 
 const InstaPost: React.FC<InstaPostProps> = ({ images, comments, likes, link }) => {
   return (
@@ -68,9 +68,9 @@ const InstaPost: React.FC<InstaPostProps> = ({ images, comments, likes, link }) 
       <Link href={link}>
         <MiniImage src={images.thumbnail.url} wrapperSize="148px" />
         <MetaData>
-          <Likes icon={["fas", "heart"]} />
+          <Likes icon={['fas', 'heart']} />
           {likes.count}
-          <Comments icon={["fas", "comments"]} />
+          <Comments icon={['fas', 'comments']} />
           {comments.count}
         </MetaData>
       </Link>

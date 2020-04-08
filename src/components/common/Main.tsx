@@ -1,7 +1,7 @@
-import React from "react";
-import styled from "@emotion/styled";
-import { Box } from "@chakra-ui/core";
-import Sidebar from "../Sidebar/Sidebar";
+import React from 'react';
+import styled from '@emotion/styled';
+import { Box } from '@chakra-ui/core';
+import Sidebar from '../Sidebar/Sidebar';
 
 const Wrapper = styled.main`
   display: flex;

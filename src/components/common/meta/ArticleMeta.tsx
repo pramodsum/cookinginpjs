@@ -19,9 +19,10 @@ export type ArticleMetaGhostProps = {
 
 const ArticleMetaGhost: React.SFC<ArticleMetaGhostProps> = ({ data, settings, canonical }) => {
   const ghostPost = data;
-  settings = settings?.allGhostSettings.edges[0].node;
+  const articleSettings = settings.allGhostSettings.edges[0].node;
   const author = getAuthorProperties(ghostPost.primary_author);
   const publicTags = _.map(
+    // @ts-ignore
     tagsHelper(ghostPost, { visibility: `public`, fn: (tag: Tag) => tag }),
     `name`,
   );
@@ -30,8 +31,9 @@ const ArticleMetaGhost: React.SFC<ArticleMetaGhostProps> = ({ data, settings, ca
     ? ghostPost.feature_image
     : _.get(settings, `cover_image`, null);
   const publisherLogo =
-    settings?.logo || config.siteIcon
-      ? url.resolve(config.siteUrl, settings?.logo || config.siteIcon)
+    articleSettings.logo || config.siteIcon
+      ? // @ts-ignore
+        url.resolve(config.siteUrl, articleSettings.logo || config.siteIcon)
       : null;
   return (
     <>
@@ -40,7 +42,7 @@ const ArticleMetaGhost: React.SFC<ArticleMetaGhostProps> = ({ data, settings, ca
         <meta name="description" content={ghostPost.meta_description || ghostPost.excerpt} />
         <link rel="canonical" href={canonical} />
 
-        <meta property="og:site_name" content={settings?.title} />
+        <meta property="og:site_name" content={articleSettings.title} />
         <meta property="og:type" content="article" />
         <meta
           property="og:title"
@@ -72,13 +74,15 @@ const ArticleMetaGhost: React.SFC<ArticleMetaGhostProps> = ({ data, settings, ca
         {primaryTag && <meta name="twitter:label2" content="Filed under" />}
         {primaryTag && <meta name="twitter:data2" content={primaryTag} />}
 
-        {settings?.twitter && (
+        {articleSettings.twitter && (
           <meta
             name="twitter:site"
-            content={`https://twitter.com/${settings?.twitter.replace(/^@/, ``)}/`}
+            content={`https://twitter.com/${articleSettings.twitter.replace(/^@/, ``)}/`}
           />
         )}
-        {settings?.twitter && <meta name="twitter:creator" content={settings?.twitter} />}
+        {articleSettings.twitter && (
+          <meta name="twitter:creator" content={articleSettings.twitter} />
+        )}
         <script type="application/ld+json">{`
                     {
                         "@context": "https://schema.org/",
@@ -112,7 +116,7 @@ const ArticleMetaGhost: React.SFC<ArticleMetaGhostProps> = ({ data, settings, ca
                         }
                         "publisher": {
                             "@type": "Organization",
-                            "name": "${settings?.title}",
+                            "name": "${articleSettings.title}",
                             "logo": {
                                 "@type": "ImageObject",
                                 "url": "${publisherLogo}",

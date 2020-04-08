@@ -5,6 +5,7 @@ export type Tag = {
 };
 
 type Edge = {
+  // @ts-ignore
   node: any;
 };
 
@@ -22,14 +23,14 @@ export type Settings = {
 };
 
 export type Page = {
-  title?: string,
-  meta_title?: string,
-  meta_description?: string,
-  name?: string,
-  feature_image?: string,
-  description?: string,
-  bio?: string,
-  profile_image?: string
+  title?: string;
+  meta_title?: string;
+  meta_description?: string;
+  name?: string;
+  feature_image?: string;
+  description?: string;
+  bio?: string;
+  profile_image?: string;
 };
 
 export type PageContext = {
@@ -37,10 +38,10 @@ export type PageContext = {
   nextPagePath: string;
   humanPageNumber?: number;
   numberOfPages?: number;
-}
+};
 
 export type Author = {
-  name?: string ;
+  name?: string;
   bio?: string;
   profile_image?: string;
   website?: string;
@@ -66,5 +67,4 @@ export type Post = {
   updated_at: string;
   twitter_title?: string;
   twitter_description?: string;
-
 };

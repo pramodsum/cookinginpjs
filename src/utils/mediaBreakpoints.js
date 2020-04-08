@@ -18,9 +18,8 @@ export const BREAKPOINTS_SORTED_LIST = sortBy(
 export const getCurrentBreakpoint = () => {
   return find(
     BREAKPOINTS_SORTED_LIST,
-    breakpoint =>
-      window.matchMedia(`(min-width: ${BREAKPOINTS_DICT[breakpoint]}px)`).matches,
-  )
+    breakpoint => window.matchMedia(`(min-width: ${BREAKPOINTS_DICT[breakpoint]}px)`).matches,
+  );
 };
 
 export const media = {

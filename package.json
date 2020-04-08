@@ -34,7 +34,7 @@
     "prettier-check": "pretty-quick --check",
     "test": "echo \"Error: no test specified\" && exit 1",
     "type-check": "tsc --noEmit",
-    "lint": "eslint --ignore-path .gitignore . --ext ts --ext tsx --ext js --ext jsx"
+    "lint": "eslint --ignore-path .gitignore . --ext ts --ext tsx"
   },
   "devDependencies": {
     "@types/react": "^16.9.5",
@@ -47,6 +47,7 @@
     "eslint-plugin-ghost": "0.6.0",
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-react-hooks": "^3.0.0",
     "prettier": "^1.18.2",
     "pretty-quick": "^1.11.0",
     "react-responsive-navbar": "^1.0.11",
@@ -79,6 +80,7 @@
     "cheerio": "1.0.0-rc.3",
     "classnames": "^2.2.6",
     "emotion-theming": "^10.0.27",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
     "gatsby": "2.17.4",
     "gatsby-awesome-pagination": "0.3.4",
     "gatsby-image": "2.2.29",

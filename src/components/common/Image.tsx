@@ -1,9 +1,9 @@
-import React from "react";
-import styled from "@emotion/styled";
-import { Box } from "@chakra-ui/core";
-import { media } from "../../utils/mediaBreakpoints";
+import React from 'react';
+import styled from '@emotion/styled';
+import { Box } from '@chakra-ui/core';
+import { media } from '../../utils/mediaBreakpoints';
 
-const Wrapper = styled(Box) <{ showBorder?: boolean; size?: string}>`
+const Wrapper = styled(Box)<{ showBorder?: boolean; size?: string }>`
   background: white;
   border-radius: 4px;
   box-shadow: ${props =>
@@ -11,8 +11,8 @@ const Wrapper = styled(Box) <{ showBorder?: boolean; size?: string}>`
     `0px 1px 5px 0px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14),
     0px 3px 1px -2px rgba(0, 0, 0, 0.12)`};
   position: relative;
-  height: ${props => (props.size ? `${props.size}` : "100%")};
-  width: ${props => (props.size ? `${props.size}` : "100%")};
+  height: ${props => (props.size ? `${props.size}` : '100%')};
+  width: ${props => (props.size ? `${props.size}` : '100%')};
 
   ${media.smallerThan.XS} {
     width: 100%;
@@ -20,7 +20,7 @@ const Wrapper = styled(Box) <{ showBorder?: boolean; size?: string}>`
   }
 `;
 
-const Image = styled(Box)<{src: string}>`
+const Image = styled(Box)<{ src: string }>`
   display: block;
   background-image: url(${props => props.src});
   background-size: cover;
@@ -44,7 +44,7 @@ type ImgProps = {
   size?: string;
   src: string;
   showBorder?: boolean;
-}
+};
 
 const Img: React.FC<ImgProps> = ({ wrapperSize, showBorder = true, ...rest }) => (
   <Wrapper size={wrapperSize} showBorder={showBorder}>
@@ -53,7 +53,7 @@ const Img: React.FC<ImgProps> = ({ wrapperSize, showBorder = true, ...rest }) =>
 );
 
 export const BackgroundImage = styled(Img)({
-  backgroundSize: "contain"
+  backgroundSize: 'contain',
 });
 
 export default Img;

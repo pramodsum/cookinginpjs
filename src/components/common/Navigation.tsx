@@ -1,14 +1,14 @@
-import React from "react";
-import Link from "./Link";
+import React from 'react';
+import Link from './Link';
 
 type NavItem = {
   url: string;
   label: string;
-}
+};
 
 type NavigationProps = {
-  data: NavItem[],
-  navClass?: string
+  data: NavItem[];
+  navClass?: string;
 };
 
 const Navigation: React.SFC<NavigationProps> = ({ data, navClass = 'site-nav-item' }) => (
@@ -21,8 +21,7 @@ const Navigation: React.SFC<NavigationProps> = ({ data, navClass = 'site-nav-ite
             href={navItem.url}
             key={i}
             target="_blank"
-            rel="noopener noreferrer"
-          >
+            rel="noopener noreferrer">
             {navItem.label}
           </Link>
         );

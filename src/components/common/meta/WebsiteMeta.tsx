@@ -1,21 +1,21 @@
-import React from "react";
-import Helmet from "react-helmet";
-import _ from "lodash";
-import { StaticQuery, graphql } from "gatsby";
-import url from "url";
-import ImageMeta from "./ImageMeta";
+import React from 'react';
+import Helmet from 'react-helmet';
+import _ from 'lodash';
+import { StaticQuery, graphql } from 'gatsby';
+import url from 'url';
+import ImageMeta from './ImageMeta';
 // @ts-ignore
-import config from "../../../utils/siteConfig";
-import { Settings, Page } from "../../../utils/types";
+import config from '../../../utils/siteConfig';
+import { Settings, Page } from '../../../utils/types';
 
 export type WebsiteMetaProps = {
-  data: Page,
-  settings?: Settings,
-  canonical: string,
-  title?: string,
-  description?: string,
-  image?: string,
-  type: any
+  data: Page;
+  settings?: Settings;
+  canonical: string;
+  title?: string;
+  description?: string;
+  image?: string;
+  type: string;
 };
 
 const WebsiteMeta: React.SFC<WebsiteMetaProps> = ({
@@ -25,32 +25,26 @@ const WebsiteMeta: React.SFC<WebsiteMetaProps> = ({
   title,
   description,
   image,
-  type
+  type,
 }) => {
-  settings = settings?.allGhostSettings.edges[0].node;
-  const publisherLogo = url.resolve(
-    config.siteUrl,
-    settings?.logo || config.siteIcon
-  );
-  let shareImage =
-    image || data.feature_image || _.get(settings, `cover_image`, null);
+  const websiteSettings = settings.allGhostSettings.edges[0].node;
+  const publisherLogo = url.resolve(config.siteUrl, websiteSettings.logo || config.siteIcon);
+  let shareImage = image || data.feature_image || _.get(settings, `cover_image`, null);
   shareImage = shareImage ? url.resolve(config.siteUrl, shareImage) : null;
   description =
     description ||
     data.meta_description ||
     data.description ||
     config.siteDescriptionMeta ||
-    settings?.description;
-  title = `${title || data.meta_title || data.name || data.title} - ${
-    settings?.title
-  }`;
+    websiteSettings.description;
+  title = `${title || data.meta_title || data.name || data.title} - ${websiteSettings.title}`;
   return (
     <>
       <Helmet>
         <title>{title}</title>
         <meta name="description" content={description} />
         <link rel="canonical" href={canonical} />
-        <meta property="og:site_name" content={settings?.title} />
+        <meta property="og:site_name" content={websiteSettings.title} />
         <meta property="og:type" content="website" />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
@@ -58,17 +52,14 @@ const WebsiteMeta: React.SFC<WebsiteMetaProps> = ({
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
         <meta name="twitter:url" content={canonical} />
-        {settings?.twitter && (
+        {websiteSettings.twitter && (
           <meta
             name="twitter:site"
-            content={`https://twitter.com/${settings?.twitter.replace(
-              /^@/,
-              ``
-            )}/`}
+            content={`https://twitter.com/${websiteSettings.twitter.replace(/^@/, ``)}/`}
           />
         )}
-        {settings?.twitter && (
-          <meta name="twitter:creator" content={settings?.twitter} />
+        {websiteSettings.twitter && (
+          <meta name="twitter:creator" content={websiteSettings.twitter} />
         )}
         <script type="application/ld+json">{`
                     {
@@ -87,7 +78,7 @@ const WebsiteMeta: React.SFC<WebsiteMetaProps> = ({
                         }
                         "publisher": {
                             "@type": "Organization",
-                            "name": "${settings?.title}",
+                            "name": "${websiteSettings.title}",
                             "logo": {
                                 "@type": "ImageObject",
                                 "url": "${publisherLogo}",

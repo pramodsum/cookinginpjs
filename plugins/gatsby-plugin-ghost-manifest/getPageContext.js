@@ -1,9 +1,9 @@
-"use strict";
+'use strict';
 
 exports.__esModule = true;
 exports.getPageContext = exports.default = getPageContext;
 
-var _jss = require("jss");
+const _jss = require('jss');
 
 function createPageContext() {
   return {
@@ -11,7 +11,7 @@ function createPageContext() {
     // eslint-disable-next-line no-undef
     sheetsManager: new Map(),
     // This is needed in order to inject the critical CSS.
-    sheetsRegistry: new _jss.SheetsRegistry()
+    sheetsRegistry: new _jss.SheetsRegistry(),
   };
 }
 

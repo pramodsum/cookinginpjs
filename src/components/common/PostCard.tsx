@@ -6,7 +6,7 @@ import { Box } from '@chakra-ui/core';
 import Image from './Image';
 import Link from './Link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Post } from '../../utils/types';
+import { Post as PostProps } from '../../utils/types';
 
 const STOCK_PHOTOS = [
   'https://images.unsplash.com/photo-1558035579-a10d04acf787?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80',
@@ -93,7 +93,7 @@ const ReadingTime = styled(Box)({
 });
 
 type PostCardProps = {
-  post: Post
+  post: PostProps;
 };
 
 const PostCard: React.SFC<PostCardProps> = ({ post }) => {

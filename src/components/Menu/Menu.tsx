@@ -1,9 +1,9 @@
-import React from "react";
-import styled from "@emotion/styled";
-import ResponsiveMenu from "react-responsive-navbar";
+import React from 'react';
+import styled from '@emotion/styled';
+import ResponsiveMenu from 'react-responsive-navbar';
 // import { CSSTransition } from 'react-transition-group';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Nav from "./Nav";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Nav from './Nav';
 
 const Wrapper = styled.nav`
   padding: 8px;
@@ -14,59 +14,48 @@ const Wrapper = styled.nav`
 `;
 
 const home = {
-  name: "Home",
-  slug: "/"
+  name: 'Home',
+  slug: '/',
 };
 
 const categories = [
   home,
   {
-    name: "Herbivores",
-    slug: "/tag/herbivores"
+    name: 'Herbivores',
+    slug: '/tag/herbivores',
   },
   {
-    name: "Carnivores",
-    slug: "/tag/carnivores"
+    name: 'Carnivores',
+    slug: '/tag/carnivores',
   },
   {
-    name: "Sugar Rush",
-    slug: "/tag/desserts"
+    name: 'Sugar Rush',
+    slug: '/tag/desserts',
   },
   {
-    name: "Noodz",
-    slug: "/tag/noodz"
+    name: 'Noodz',
+    slug: '/tag/noodz',
   },
   {
-    name: "Giggle Juice",
-    slug: "/tag/giggle-juice"
-  }
+    name: 'Giggle Juice',
+    slug: '/tag/giggle-juice',
+  },
 ];
 
 type MenuProps = {
   activeCategory?: string;
   collapsed?: boolean;
-}
+};
 
 const Menu: React.FC<MenuProps> = ({ activeCategory = home.slug, collapsed = false }) => (
   <Wrapper>
     <ResponsiveMenu
-      menuOpenButton={
-        <FontAwesomeIcon className="fa-2x" icon={["fas", "bars"]} />
-      }
-      menuCloseButton={
-        <FontAwesomeIcon className="fa-2x" icon={["fas", "times"]} />
-      }
+      menuOpenButton={<FontAwesomeIcon className="fa-2x" icon={['fas', 'bars']} />}
+      menuCloseButton={<FontAwesomeIcon className="fa-2x" icon={['fas', 'times']} />}
       changeMenuOn="960px"
-      menu={
-        <Nav
-          categories={categories}
-          activeCategory={activeCategory}
-          collapsed={collapsed}
-        />
-      }
+      menu={<Nav categories={categories} activeCategory={activeCategory} collapsed={collapsed} />}
     />
   </Wrapper>
 );
-
 
 export default Menu;
