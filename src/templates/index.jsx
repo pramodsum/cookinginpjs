@@ -129,24 +129,32 @@ const MainSection = ({ title, link, posts: allPosts }) => {
  * in /utils/siteConfig.js under `postsPerPage`.
  *
  */
-const Index = ({ data, location }) => (
+const Index = ({ data, location, pageContext }) => (
   <>
     <MetaData location={location} />
     <Layout isHome={true}>
       <div className="container">
-        <MainSection posts={data.latest.edges} title="What's new?" link="/" />
-        <Section
-          posts={data.desserts.edges}
-          title="Sugar Rush"
-          link="desserts"
-          moreTitle="Get in my belly"
+        <MainSection
+          posts={data.latest.edges}
+          title="What's new?"
+          link={pageContext.nextPagePath}
         />
-        <Section
-          posts={data.vegetarian.edges}
-          title="Herbivores"
-          link="herbivores"
-          moreTitle="Feed me"
-        />
+        {pageContext.pageNumber === 0 && (
+          <>
+            <Section
+              posts={data.desserts.edges}
+              title="Sugar Rush"
+              link="desserts"
+              moreTitle="Get in my belly"
+            />
+            <Section
+              posts={data.vegetarian.edges}
+              title="Herbivores"
+              link="herbivores"
+              moreTitle="Feed me"
+            />
+          </>
+        )}
       </div>
     </Layout>
   </>
@@ -161,7 +169,9 @@ Index.propTypes = {
   location: PropTypes.shape({
     pathname: PropTypes.string.isRequired,
   }).isRequired,
-  pageContext: PropTypes.object,
+  pageContext: PropTypes.shape({
+    nextPagePath: PropTypes.string.isRequired,
+  }),
 };
 
 export default Index;

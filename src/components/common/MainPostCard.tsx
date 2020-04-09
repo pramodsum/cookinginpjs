@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import { Box } from '@chakra-ui/core';
 import Image from './Image';
 import Link from './Link';
+import { readingTime as readingTimeHelper } from '@tryghost/helpers';
 
 import transformImage from '../../utils/transformImage';
 import { media } from '../../utils/mediaBreakpoints';
@@ -64,6 +65,14 @@ const PublishedAt = styled(Box)`
   padding-top: 5px;
 `;
 
+const ReadingTime = styled(Box)({
+  fontFamily: "'Homemade Apple', cursive",
+  textTransform: 'lowercase',
+  fontSize: '0.8rem',
+  color: 'gray',
+  paddingTop: '10px',
+});
+
 type PostCardProps = {
   post: PostProps;
 };
@@ -90,6 +99,7 @@ const PostCard: React.SFC<PostCardProps> = ({ post }) => {
         <Title>
           <PublishedAt>{published_at_pretty}</PublishedAt>
           <Link href={`/${slug}/`}>{title}</Link>
+        <ReadingTime>{readingTimeHelper(post)}</ReadingTime>
         </Title>
         {excerpt && <Content>{excerpt.slice(0, 350)}...</Content>}
         <Box display="flex" flexDirection={['column', 'row']} />
