@@ -16,6 +16,7 @@ const Content = styled.section({
     },
 
     '& figcaption': {
+      textAlign: 'center',
       fontSize: '1rem',
       color: 'gray',
     },
