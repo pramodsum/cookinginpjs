@@ -38,6 +38,14 @@ const HomeContainer = styled(Box)`
     width: 100%;
     height: auto;
   }
+
+@media screen and (max-width: 960px) {
+  padding: 1rem;
+}
+
+  @media screen and (max-width: 768px) {
+    padding: 1rem 0.5rem;
+  }
 `;
 
 const Footer = styled.footer`

@@ -5,13 +5,24 @@ const Content = styled.section({
   fontSize: '1.2rem',
   '& figure': {
     display: 'flex',
+    flexDirection: 'column',
     justifyContent: 'center',
+
     '@media screen and (max-width: 960px)': {
       marginStart: 0,
       WebkitMarginStart: 0,
       marginEnd: 0,
       WebkitMarginEnd: 0,
     },
+
+    '& figcaption': {
+      fontSize: '1rem',
+      color: 'gray',
+    },
+
+    '& iframe': {
+      width: '100%'
+    }
   },
   '& img': {
     width: '100%',
@@ -43,6 +54,7 @@ const Content = styled.section({
   '& blockquote.instagram-media:before': {
     content: 'none',
   },
+
   '& grid': {
     display: 'grid',
     gridGap: '10px',
@@ -54,6 +66,7 @@ const Content = styled.section({
       height: 'auto',
     },
   },
+
   '& ingredients': {
     display: 'grid',
     gridColumnGap: '5px',
@@ -67,6 +80,12 @@ const Content = styled.section({
       '&:first-child': {
         borderBottom: '1px dashed gray',
         marginBottom: '10px',
+      },
+
+      '& div:last-child': {
+        marginLeft: '5px',
+        minWidth: '110px',
+        textAlign: 'right'
       },
     },
   },
