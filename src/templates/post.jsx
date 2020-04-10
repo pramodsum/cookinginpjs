@@ -4,6 +4,7 @@ import { graphql } from 'gatsby';
 import Helmet from 'react-helmet';
 import styled from '@emotion/styled';
 import { Box, SimpleGrid } from '@chakra-ui/core';
+import { readingTime as readingTimeHelper } from '@tryghost/helpers';
 
 import Layout from '../components/common/Layout';
 import { MetaData } from '../components/common/meta';
@@ -104,6 +105,14 @@ const Tag = styled.li({
   textTransform: 'lowercase',
 });
 
+const ReadingTime = styled(Box)({
+  fontFamily: "'Homemade Apple', cursive",
+  textTransform: 'lowercase',
+  fontSize: '1.2rem',
+  color: 'gray',
+  paddingTop: '10px',
+});
+
 /**
  * Single post view (/:slug)
  *
@@ -123,6 +132,7 @@ const Post = ({ data, location }) => {
       <Layout>
         <PostWrapper>
           <Title>{title}</Title>
+          <ReadingTime>{readingTimeHelper(page)}</ReadingTime>
           {tags.length > 0 && (
             <TagList>
               <TagsIcon icon={['fas', 'tags']} />
