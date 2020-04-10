@@ -34,7 +34,7 @@ const Content = styled.section({
     display: 'block',
     borderWidth: '2px 0',
     borderStyle: 'solid',
-    borderColor: 'rgb(255,236,150, .75)',
+    borderColor: 'rgba(255,236,150, .75)',
     padding: '1.5em 0',
     margin: '2em 0',
     position: 'relative',
@@ -70,22 +70,33 @@ const Content = styled.section({
 
   '& ingredients': {
     display: 'grid',
-    gridColumnGap: '5px',
+    gridColumnGap: '15px',
     gridTemplateColumns: 'repeat(1,1fr)',
+
     '& header': {
       fontWeight: 'bold',
+
+      '&:last-child': {
+        paddingLeft: '5px',
+        borderLeft: '1px dashed gray',
+        textAlign: 'right'
+      },
     },
     '& row': {
       display: 'flex',
       justifyContent: 'space-between',
+      
       '&:first-child': {
         borderBottom: '1px dashed gray',
-        marginBottom: '10px',
+      },
+      '&:nth-child(2n)': {
+        background: '#fffbeb'
       },
 
       '& div:last-child': {
-        marginLeft: '5px',
-        minWidth: '110px',
+        minWidth: '130px',
+        maxWidth: '130px',
+        borderLeft: '1px dashed gray',
         textAlign: 'right'
       },
     },
