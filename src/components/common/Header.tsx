@@ -31,7 +31,8 @@ const Container = styled(Box)`
 `;
 
 const Title = styled.h1<{ collapsed?: boolean }>`
-  font-size: ${props => (props.collapsed ? '4rem' : '5rem')};
+  font-size: ${props => (props.collapsed ? '5rem' : '6rem')};
+  letter-spacing: ${props => (props.collapsed ? '-1px' : '-3px')};
   margin: 0;
 
   & a {
@@ -43,7 +44,8 @@ const Title = styled.h1<{ collapsed?: boolean }>`
   }
 
   @media screen and (max-width: 960px) {
-    font-size: 4rem;
+    font-size: 5rem;
+    letter-spacing: -1px;
     text-align: center;
 
     & a {
@@ -52,7 +54,8 @@ const Title = styled.h1<{ collapsed?: boolean }>`
   }
 
   @media screen and (max-width: 600px) {
-    font-size: 3rem;
+    font-size: 3.75rem;
+    letter-spacing: -2px;
     padding: 0 2rem;
   }
 `;

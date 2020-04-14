@@ -11,6 +11,10 @@ const Wrapper = styled.nav`
   @media screen and (max-width: 960px) {
     padding: 20px 0;
   }
+
+  @media screen and (max-width: 600px) {
+    padding: 10px 0 0;
+  }
 `;
 
 const home = {
