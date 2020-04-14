@@ -2,6 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styled from '@emotion/styled';
 import { Box } from '@chakra-ui/core';
+// @ts-ignore
 import bgy from '../../assets/bgyl.png';
 import Link from './Link';
 

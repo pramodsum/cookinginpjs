@@ -23,7 +23,7 @@ const ANU_EMAIL = `mailto:anu@cookinginpjs.com`;
 
 const AboutHeader = () => (
   <>
-    <Img showBorder={false} src={profileImg} />
+    <Img data-pin-nopin="true" showBorder={false} src={profileImg} />
     <Title>Hello and welcome!</Title>
     <Subtitle>
       We're <Link href={SUMU_EMAIL}>Sumu</Link> & <Link href={ANU_EMAIL}>Anu</Link>.

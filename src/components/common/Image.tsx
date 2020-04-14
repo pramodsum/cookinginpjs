@@ -48,7 +48,7 @@ type ImgProps = {
 
 const Img: React.FC<ImgProps> = ({ wrapperSize, showBorder = true, ...rest }) => (
   <Wrapper size={wrapperSize} showBorder={showBorder}>
-    <Image {...rest} />
+    <Image as="image" {...rest} />
   </Wrapper>
 );
 

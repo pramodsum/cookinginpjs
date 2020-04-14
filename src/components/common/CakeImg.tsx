@@ -188,7 +188,7 @@ const Cake: React.FC<{ cakeWidth: number }> = ({ children, cakeWidth }) => (
 
 const Candle: React.FC<Partial<LayerProps>> = ({ delay }) => (
   <Layer width="50" flavor="transparent" delay={delay} boxShadow="transparent" mb={-3}>
-    <img src={candle} />
+    <img data-pin-nopin="true" src={candle} />
   </Layer>
 );
 

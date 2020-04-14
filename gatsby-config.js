@@ -202,5 +202,24 @@ module.exports = {
         verbose: true,
       },
     },
+    {
+      resolve: `gatsby-plugin-disqus`,
+      options: {
+        shortname: `cookinginpjs`
+      }
+    },
+    `gatsby-plugin-instagram-embed`,
+    {
+      resolve: `gatsby-plugin-pinterest`,
+      options: {
+        // If you just want to use the default, you can set this to `true`, defaults to `false`
+        saveButton: {
+          // Set to true to hide the text and display only a round P button
+          round: false, // default
+          // Set to true to display a bigger button
+          tall: true, // default
+        },
+      },
+    },
   ],
 };

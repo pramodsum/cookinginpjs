@@ -61,7 +61,7 @@ const Author = ({ data, location, pageContext }) => {
               </div>
             </div>
             <div className="author-header-image">
-              {author.profile_image && <img src={author.profile_image} alt={author.name} />}
+              {author.profile_image && <img data-pin-nopin="true" src={author.profile_image} alt={author.name} />}
             </div>
           </header>
           <section className="post-feed">

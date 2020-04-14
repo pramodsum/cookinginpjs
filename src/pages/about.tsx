@@ -68,7 +68,7 @@ const AboutPage: React.FC<MetadataProps> = ({ data, location }) => (
     <Layout showSidebar={false}>
       <Main>
         <ImageWrapper>
-          <Img wrapperSize="250px" showBorder={false} src={profileImg} />
+          <Img data-pin-nopin="true" wrapperSize="250px" showBorder={false} src={profileImg} />
         </ImageWrapper>
         <Content>
           <Title>Hello and welcome!</Title>

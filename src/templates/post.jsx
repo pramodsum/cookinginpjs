@@ -5,13 +5,15 @@ import Helmet from 'react-helmet';
 import styled from '@emotion/styled';
 import { Box, SimpleGrid } from '@chakra-ui/core';
 import { readingTime as readingTimeHelper } from '@tryghost/helpers';
+import { Disqus } from 'gatsby-plugin-disqus';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import Layout from '../components/common/Layout';
 import { MetaData } from '../components/common/meta';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from '../components/common/Link';
 import Image from '../components/common/Image';
 import Content from '../components/common/Content';
+import config from '../utils/siteConfig';
 
 // NOTE: bring this back when i figure out pagination :(
 // const styles = {
@@ -121,7 +123,13 @@ const ReadingTime = styled(Box)({
  */
 const Post = ({ data, location }) => {
   const page = data.ghostPost;
-  const { codeinjection_styles, title, feature_image, html, tags } = page;
+  const { codeinjection_styles, title, feature_image, html, tags, id } = page;
+
+  let disqusConfig = {
+    url: `${config.siteUrl + location.pathname}`,
+    identifier: id,
+    title: title,
+  };
 
   return (
     <>
@@ -132,7 +140,7 @@ const Post = ({ data, location }) => {
       <Layout>
         <PostWrapper>
           <Title>{title}</Title>
-          <ReadingTime>{readingTimeHelper(page)}</ReadingTime>
+            <ReadingTime>{readingTimeHelper(page)}</ReadingTime>
           {tags.length > 0 && (
             <TagList>
               <TagsIcon icon={['fas', 'tags']} />
@@ -150,6 +158,7 @@ const Post = ({ data, location }) => {
             </FeatureWrapper>
           )}
           <Content className="external-scripts" dangerouslySetInnerHTML={{ __html: html }} />
+          <Disqus config={disqusConfig} />
         </PostWrapper>
       </Layout>
     </>

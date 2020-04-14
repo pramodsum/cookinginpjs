@@ -39,9 +39,9 @@ const HomeContainer = styled(Box)`
     height: auto;
   }
 
-@media screen and (max-width: 960px) {
-  padding: 1rem;
-}
+  @media screen and (max-width: 960px) {
+    padding: 1rem;
+  }
 
   @media screen and (max-width: 768px) {
     padding: 1rem 0.5rem;
@@ -67,7 +67,6 @@ const Heart = styled.small`
 `;
 
 const Social = styled(Box)`
-  text-align: left;
   padding-bottom: 3rem;
 
   & strong {
@@ -117,9 +116,11 @@ const DefaultLayout: React.SFC<DefaultLayoutProps> = ({ data, children, showSide
       </Helmet>
       <Header title={site.title} />
       {showSidebar ? <Main>{children}</Main> : <div>{children}</div>}
-      <Social>
-        <strong>Need more?</strong> We'd love to hear from you on{' '}
-        <BoldLink href="https://instagram.com/cookinginpjs/">instagram</BoldLink>.
+      <Social display="flex" justifyContent="center" flexDirection="column" alignItems="center">
+        <Box>
+          <strong>Need more?</strong> We'd love to hear from you on{' '}
+          <BoldLink href="https://instagram.com/cookinginpjs/">instagram</BoldLink>.
+        </Box>
         <SocialLinks justify="flex-start" />
       </Social>
       <Footer>
