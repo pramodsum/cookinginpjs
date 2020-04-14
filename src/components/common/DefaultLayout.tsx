@@ -91,6 +91,17 @@ export type DefaultLayoutProps = {
 
 const DefaultLayout: React.SFC<DefaultLayoutProps> = ({ data, children, showSidebar = true }) => {
   const site = data.allGhostSettings.edges[0].node;
+
+  const SocialContainer = () => (
+    <Social display="flex" justifyContent="center" flexDirection="column" alignItems="center">
+      <Box>
+        <strong>Need more?</strong> We'd love to hear from you on{' '}
+        <BoldLink href="https://instagram.com/cookinginpjs/">instagram</BoldLink>.
+      </Box>
+      <SocialLinks justify="flex-start" />
+    </Social>
+  );
+
   return (
     <HomeContainer>
       <Helmet title={site.title} defer={false}>
@@ -115,14 +126,15 @@ const DefaultLayout: React.SFC<DefaultLayoutProps> = ({ data, children, showSide
         <script src="https://cdn.polyfill.io/v2/polyfill.js?features=default,String.prototype.repeat,Array.prototype.find,Array.prototype.findIndex,Math.trunc" />
       </Helmet>
       <Header title={site.title} />
-      {showSidebar ? <Main>{children}</Main> : <div>{children}</div>}
-      <Social display="flex" justifyContent="center" flexDirection="column" alignItems="center">
-        <Box>
-          <strong>Need more?</strong> We'd love to hear from you on{' '}
-          <BoldLink href="https://instagram.com/cookinginpjs/">instagram</BoldLink>.
-        </Box>
-        <SocialLinks justify="flex-start" />
-      </Social>
+      {showSidebar ? (
+        <Main>
+          {children}
+          <SocialContainer />
+        </Main>
+      ) : (
+        <div>{children}</div>
+      )}
+      {!showSidebar && <SocialContainer />}
       <Footer>
         <div>
           Made with <Heart>♡</Heart> by{` `}
