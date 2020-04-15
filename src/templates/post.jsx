@@ -101,10 +101,14 @@ const TagsIcon = styled(FontAwesomeIcon)({
 });
 
 const Tag = styled.li({
-  fontFamily: "'Srisakdi', cursive",
   fontSize: '15px',
   marginRight: '3px',
   textTransform: 'lowercase',
+  color: 'gray',
+
+  '& a': {
+    color: 'gray',
+  }
 });
 
 const ReadingTime = styled(Box)({

@@ -22,8 +22,8 @@ const Content = styled.section({
     },
 
     '& iframe': {
-      width: '100%'
-    }
+      width: '100%',
+    },
   },
   '& img': {
     width: '100%',
@@ -68,7 +68,7 @@ const Content = styled.section({
     },
   },
 
-  '& ingredients': {
+  '& ingredients, & timeline': {
     display: 'grid',
     gridColumnGap: '15px',
     gridTemplateColumns: 'repeat(1,1fr)',
@@ -79,26 +79,39 @@ const Content = styled.section({
       '&:last-child': {
         paddingLeft: '5px',
         borderLeft: '1px dashed gray',
-        textAlign: 'right'
+        textAlign: 'right',
       },
     },
+
     '& row': {
       display: 'flex',
       justifyContent: 'space-between',
-      
+
       '&:first-child': {
         borderBottom: '1px dashed gray',
       },
       '&:nth-child(2n)': {
-        background: '#fffbeb'
+        background: '#fffbeb',
       },
 
       '& div:last-child': {
         minWidth: '130px',
         maxWidth: '130px',
         borderLeft: '1px dashed gray',
-        textAlign: 'right'
+        textAlign: 'right',
       },
+    },
+  },
+
+  '& timeline': {
+    '& row div': {
+      padding: '5px 0px',
+    },
+    '& row div:last-child, & header:last-child': {
+      minWidth: '50%',
+      maxWidth: '50%',
+      paddingLeft: '5px',
+      textAlign: 'left'
     },
   },
 });
