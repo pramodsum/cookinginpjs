@@ -104,10 +104,19 @@ const Content = styled.section({
   },
 
   '& timeline': {
-    '& row div': {
-      padding: '5px 0px',
+    '& row': {
+      justifyContent: 'flex-start',
+      alignItems: 'center',
+      padding: '0px 10px',
+
+      '& label, & input[type="checkbox"]': {
+        padding: '10px 5px 5px',
+      }
+
     },
+
     '& row div:last-child, & header:last-child': {
+      borderLeft: 'none',
       minWidth: '50%',
       maxWidth: '50%',
       paddingLeft: '5px',
