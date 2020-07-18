@@ -111,7 +111,7 @@
     "gh-pages": "^1.2.0",
     "instafeed-lite": "^1.0.10",
     "install-peers": "^1.0.3",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "mapbox-gl": "^0.52.0",
     "prismjs": "^1.15.0",
     "prop-types": "^15.7.2",
