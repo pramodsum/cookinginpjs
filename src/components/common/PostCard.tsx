@@ -96,7 +96,7 @@ type PostCardProps = {
   post: PostProps;
 };
 
-const PostCard: React.SFC<PostCardProps> = ({ post }) => {
+const PostCard: React.FC<PostCardProps> = ({ post }) => {
   const { id, slug, feature_image, title, published_at_pretty, tags } = post;
   return (
     <Post id={id}>

@@ -68,37 +68,19 @@ const Content = styled.section({
     },
   },
 
-  '& ingredients, & timeline': {
-    display: 'grid',
-    gridColumnGap: '15px',
-    gridTemplateColumns: 'repeat(1,1fr)',
+  '& table, & timeline': {
+    width: '100%',
+    marginBottom: '10px',
 
-    '& header': {
-      fontWeight: 'bold',
-
-      '&:last-child': {
-        paddingLeft: '5px',
-        borderLeft: '1px dashed gray',
-        textAlign: 'right',
-      },
+    '& thead': {
+      borderBottom: '1px dashed gray',
     },
 
-    '& row': {
-      display: 'flex',
-      justifyContent: 'space-between',
+    '& tr': {
+      textAlign: 'left',
 
-      '&:first-child': {
-        borderBottom: '1px dashed gray',
-      },
       '&:nth-child(2n)': {
         background: '#fffbeb',
-      },
-
-      '& div:last-child': {
-        minWidth: '130px',
-        maxWidth: '130px',
-        borderLeft: '1px dashed gray',
-        textAlign: 'right',
       },
     },
   },
@@ -111,16 +93,15 @@ const Content = styled.section({
 
       '& label, & input[type="checkbox"]': {
         padding: '10px 5px 5px',
-      }
-
+      },
     },
 
-    '& row div:last-child, & header:last-child': {
+    '& row div:last-child, & thead:last-child': {
       borderLeft: 'none',
       minWidth: '50%',
       maxWidth: '50%',
       paddingLeft: '5px',
-      textAlign: 'left'
+      textAlign: 'left',
     },
   },
 });

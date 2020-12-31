@@ -1,8 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import Helmet from 'react-helmet';
 import styled from '@emotion/styled';
-import { Box } from '@chakra-ui/core';
+import { Box, Flex } from '@chakra-ui/core';
 import Layout from '../components/common/Layout';
 import { MetaData } from '../components/common/meta';
 
@@ -23,10 +22,11 @@ const ProductWrapper = styled(Box)({
 });
 
 const Title = styled.h1({
-  fontFamily: "'Homemade Apple', cursive",
-  textTransform: 'lowercase',
+  textTransform: 'uppercase',
   overflowWrap: 'break-word',
   fontSize: '2rem',
+  fontWeight: 'lighter',
+  letterSpacing: '-0.1rem'
 });
 
 type ProductProps = {
@@ -43,14 +43,14 @@ type ProductProps = {
   };
 };
 
-const Product: React.SFC<ProductProps> = ({
+const Product: React.FC<ProductProps> = ({
   pageResources,
   location,
 }) => {
   if (!pageResources?.json?.data) return null;
 
   const { shopifyProduct } = pageResources.json.data;
-  const { title, descriptionHtml, variants } = shopifyProduct;
+  const { title,  variants } = shopifyProduct;
   const [selectedVariant, setSelectedVariant] = React.useState<
     ProductQuery_shopifyProduct_variants
   >();
@@ -69,13 +69,15 @@ const Product: React.SFC<ProductProps> = ({
   return (
     <>
       <MetaData data={pageResources.json.data} location={location} type="website" />
-      <Layout>
+      <Layout showSidebar={false}>
         <ProductWrapper>
           <Title>{title}</Title>
-          <Box display="flex">
-            <CakeImgBackground>
-              {cakeVariant && <CakeImg cakeFlavor={title} variant={cakeVariant} />}
-            </CakeImgBackground>
+          <Flex flexDirection={['column', 'row']}>
+            <Flex height="200px">
+              <CakeImgBackground>
+                {cakeVariant && <CakeImg cakeFlavor={title} variant={cakeVariant} />}
+              </CakeImgBackground>
+            </Flex>
             {shopifyProduct && (
               <OrderForm
                 findMatchingVariant={findMatchingVariant}
@@ -84,7 +86,7 @@ const Product: React.SFC<ProductProps> = ({
                 {...shopifyProduct}
               />
             )}
-          </Box>
+          </Flex>
           {/* <p dangerouslySetInnerHTML={{ __html: descriptionHtml }} /> */}
           {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
         </ProductWrapper>

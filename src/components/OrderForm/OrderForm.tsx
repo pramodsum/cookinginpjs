@@ -14,8 +14,8 @@ import { CakeVariant } from '../common/CakeImg';
 const H3: React.FC<HeadingProps> = props => <Heading as="h3" size="md" {...props} />;
 
 const OptionTitle = styled(H3)({
-  fontFamily: "'Homemade Apple', cursive",
-  textTransform: 'lowercase',
+  fontWeight: 'lighter',
+  textTransform: 'uppercase',
   overflowWrap: 'break-word',
 });
 
@@ -99,7 +99,7 @@ const OrderForm: React.FC<ProductQuery_shopifyProduct & {
   }, [size, frosting]);
 
   return (
-    <Box>
+    <Box fontFamily="'Lato', serif">
       <OptionTitle
         display="flex"
         justifyContent="space-between"

@@ -7,7 +7,7 @@ type ImageMetaProps = {
   image: string | null;
 };
 
-const ImageMeta: React.SFC<ImageMetaProps> = ({ image }) => {
+const ImageMeta: React.FC<ImageMetaProps> = ({ image }) => {
   if (!image) {
     return null;
   }

@@ -17,7 +17,7 @@ export type ArticleMetaGhostProps = {
   canonical: string;
 };
 
-const ArticleMetaGhost: React.SFC<ArticleMetaGhostProps> = ({ data, settings, canonical }) => {
+const ArticleMetaGhost: React.FC<ArticleMetaGhostProps> = ({ data, settings, canonical }) => {
   const ghostPost = data;
   const articleSettings = settings.allGhostSettings.edges[0].node;
   const author = getAuthorProperties(ghostPost.primary_author);

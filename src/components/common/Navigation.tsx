@@ -11,7 +11,7 @@ type NavigationProps = {
   navClass?: string;
 };
 
-const Navigation: React.SFC<NavigationProps> = ({ data, navClass = 'site-nav-item' }) => (
+const Navigation: React.FC<NavigationProps> = ({ data, navClass = 'site-nav-item' }) => (
   <>
     {data.map((navItem, i) => {
       if (navItem.url.match(/^\s?http(s?)/gi)) {

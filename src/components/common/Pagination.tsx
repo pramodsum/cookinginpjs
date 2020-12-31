@@ -19,7 +19,7 @@ type PaginationProps = {
   pageContext: PageContext;
 };
 
-const Pagination: React.SFC<PaginationProps> = ({ pageContext }) => {
+const Pagination: React.FC<PaginationProps> = ({ pageContext }) => {
   const { previousPagePath, nextPagePath } = pageContext;
   return (
     <Nav role="navigation">

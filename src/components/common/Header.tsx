@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { Box } from '@chakra-ui/core';
+import { Box, Heading } from '@chakra-ui/core';
 import { InternalLink } from './Link';
 import Menu from '../Menu/Menu';
 // @ts-ignore
@@ -30,49 +30,6 @@ const Container = styled(Box)`
   width: 100%;
 `;
 
-const Title = styled.h1<{ collapsed?: boolean }>`
-  font-size: ${props => (props.collapsed ? '5rem' : '6rem')};
-  letter-spacing: ${props => (props.collapsed ? '-1px' : '-3px')};
-  margin: 0;
-
-  & a {
-    padding: 0 30px;
-  }
-
-  & a:hover {
-    background: url(${bgy}) repeat;
-  }
-
-  @media screen and (max-width: 960px) {
-    font-size: 5rem;
-    letter-spacing: -1px;
-    text-align: center;
-
-    & a {
-      padding: 0;
-    }
-  }
-
-  @media screen and (max-width: 600px) {
-    font-size: 3.75rem;
-    letter-spacing: -2px;
-    padding: 0 2rem;
-  }
-`;
-
-const Subtitle = styled.h3<{ collapsed?: boolean }>`
-  font-size: 1.15rem;
-  font-weight: 300;
-  color: gray;
-  font-family: 'Homemade Apple', cursive;
-  margin: ${props => (props.collapsed ? '10px 0 5px' : '30px 0 15px')};
-
-  @media screen and (max-width: 960px) {
-    font-size: 1.05rem;
-    padding: 0 2rem;
-  }
-`;
-
 type HeaderProps = {
   title: string;
   collapsed?: boolean;
@@ -96,4 +53,37 @@ class Header extends React.Component<HeaderProps> {
     );
   }
 }
+
+const HeadingWithLinks = styled(Heading)`
+  & a {
+    padding: 0 30px;
+  }
+
+  & a:hover {
+    background: url(${bgy}) repeat;
+  }
+
+  @media screen and (max-width: 960px) {
+    & a {
+      padding: 0;
+    }
+  }
+`;
+
+const Title: React.FC<{ collapsed?: boolean }> = ({ collapsed, ...props }) => (
+  <HeadingWithLinks
+    as="h1"
+    fontFamily="'Playfair Display', Georgia, Serif"
+    fontSize={['2rem', '3.75rem', '5rem']}
+    letterSpacing={'-1px'}
+    my={[0, 3]}
+    {...props}
+  />
+);
+
+
+const Subtitle: React.FC<{ collapsed?: boolean }> = ({ collapsed, ...props }) => (
+  <Heading fontFamily="'Homemade Apple', cursive" color="dimgray" mt={collapsed ? '10px' : '30px'} mb={collapsed ? '5px' : '15px'} display={['none', 'block'] }fontSize={ ['1rem', '1.15rem']} fontWeight="lighter" {...props} />
+);
+
 export default Header;

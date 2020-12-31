@@ -18,7 +18,7 @@ export type WebsiteMetaProps = {
   type: string;
 };
 
-const WebsiteMeta: React.SFC<WebsiteMetaProps> = ({
+const WebsiteMeta: React.FC<WebsiteMetaProps> = ({
   data,
   settings,
   canonical,

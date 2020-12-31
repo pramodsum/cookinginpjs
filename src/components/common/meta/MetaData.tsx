@@ -26,7 +26,7 @@ export type MetaDataProps = {
   type?: string;
 };
 
-const MetaData: React.SFC<MetaDataProps> = ({
+const MetaData: React.FC<MetaDataProps> = ({
   data,
   settings,
   title,
