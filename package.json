@@ -113,7 +113,7 @@
     "install-peers": "^1.0.3",
     "lodash": "^4.17.15",
     "mapbox-gl": "^0.52.0",
-    "prismjs": "^1.15.0",
+    "prismjs": "^1.24.0",
     "prop-types": "^15.7.2",
     "react": "16.11.0",
     "react-adsense": "^0.1.0",
